@@ -1,0 +1,136 @@
+.text-primario{
+    color: #00AAB4;;
+}
+.text-secondario{
+    color: #7C6582;
+}
+.text-terzo{
+    color: #7D6A4D;
+}
+.bg-primario{
+    background-color: #00AAB4;
+}
+.bg-secondario{
+    background-color: #7C6582;
+}
+.bg-terzo{
+    background-color: #7D6A4D;
+}
+.titoli{
+    color: #4d3410;
+   
+}
+
+.sottotitoli{
+color: rgb(164, 38, 38);
+font-size: medium;
+margin-right: 200px;
+}
+/* statistiche */
+.Bottoni{
+    margin: 20px;
+}
+
+/* parte centrale */
+
+.main1{
+   background-color:#65827c ;
+   color: red;
+   height: 100vh;
+   border-top: solid 5px;
+   border-bottom:solid 5px ;
+   border-color: black;
+  
+}
+
+    .mappa{
+    height:70vh;
+    background-color: aqua;
+    margin-top: 10px;
+    border: solid 3px;
+    border-color: black;   
+    }
+
+.caselle{
+height: 35px;
+width:auto;
+font-size: 12px;
+justify-content: center;
+border:solid 1px;
+border-color:black;
+margin: 0%;
+padding: 0%;
+
+
+}
+    .schedaNemici{
+        background-image: url(./media/spade-incrociate.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 25vh;
+        width: 20vh;
+        margin: 5px;
+        border: solid 3px;
+        border-color: black;
+        border-radius: 20px;
+    }
+    .statisticheNemici{
+        display: flex;
+      justify-content:start;
+      margin-top: 10px;
+      
+
+    }
+    
+/* parte schede armi ed equipaggiamento */
+.main{
+    background-color:#65827c ;
+    color: red;
+    height: 100vh;
+    border: solid 5px;
+    border-color: black;
+     display:flex column;
+ 
+ }
+.schedeArmi{
+    background-image: url(./media/scheda-arma-bg.jpg);
+    background-position: center;
+    background-size: contain;
+    height: 25vh;
+    width: 20vh;
+    margin: 20px;
+    border: solid 3px;
+    border-color: black;
+    border-radius: 20px;
+}
+.schedeEquip{
+    background-image: url(./media/scheda-equipaggiamento.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 25vh;
+    width: 20vh;
+    margin: 20px;
+    border: solid 3px;
+    border-color: black;
+    border-radius: 20px;
+}
+
+/* classi js bottoni speciali */
+.divCombattivita{
+height: 35px;
+width: 30px;
+background-color: white;
+border: solid 1px;
+border-color:gray ;
+border-radius: 5px;
+}
+
+.giocatore{
+height:35px;
+background-image: url(/media/giocatore.png);
+background-size: contain;
+background-repeat: no-repeat;
+}
+

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">   
+</head>
+<body>
+
+  <!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg bg-primario">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="#">Nuova partita</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Salva partita</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Carica partita
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Salvataggio</a></li>  
+                </ul>
+              
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Tutorial</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+<!-- caratteristiche -->
+
+    <div class="container-fluid">
+         <div class="row"> 
+            <div class="col-3 text-center justify-content-center main">
+                <h2 class="titoli">Caratteristiche</h2>
+                <h3 class="sottotitoli">Punti Stamina 5/5</h3>
+                <div id="divResistenza" class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Resistenza</span>
+                  <button id="resistenza" type="button" class="btn bg-primario text-red btn-lg">Tira</button>                  
+                </div>
+                <div id="divCombattivita" class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Combattività</span>                
+                  <button id="combattività" type="button" class="btn bg-primario text-red btn-lg">Tira</button>
+                </div>
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Difesa</label>
+                    <select id="difesa" class="form-select" id="inputGroupSelect01">
+                     
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Movimento</label>
+                    <select id="movimento" class="form-select" id="inputGroupSelect01">
+                      
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Rifornimenti</label>
+                    <select id="rifornimenti" class="form-select" id="inputGroupSelect01">
+                      
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>      
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Abilità</label>
+                    <select id="abilità" class="form-select" id="inputGroupSelect01">
+                      <option value="0">Arte della guerra</option>
+                      <option value="1">Medicina</option>
+                      <option value="2">Raggio psichico</option>
+                      <option value="3">Scudo psichico</option>
+                    </select>
+                  </div>
+                  <div class="Bottoni">
+                    <button id="Dado" type="button" class="btn bg-primario text-red btn-sm">Lancia Dado</button>
+                  </div>
+                  <div class="Bottoni">
+                    <button id="turno" type="button" class="btn bg-primario text-red btn-lg">Inizia turno</button>
+                  </div>
+            </div>
+
+            <!--parte centrale mappa-->
+            
+            <div class="col-6 main1 text-center">
+                
+              <div id="Mappa" class="mappa container-fluid">
+                <div class="row">
+                  <div class="col-1 container-fluid p-0">
+                   <div id="A-1" class="caselle text-center mt-1">A-1</div>
+                   <div id="A-2" class="caselle text-center">A-2</div>
+                   <div id="A-3" class="caselle text-center">A-3</div>
+                   <div id="A-4" class="caselle text-center">A-4</div>
+                   <div id="A-5" class="caselle text-center">A-5</div>
+                   <div id="A-6" class="caselle text-center giocatore">A-6</div>
+                   <div id="A-7" class="caselle text-center">A-7</div>
+                   <div id="A-8" class="caselle text-center">A-8</div>
+                   <div id="A-9" class="caselle text-center">A-9</div>
+                   <div id="A-10" class="caselle text-center">A-10</div>
+                   <div id="A-11" class="caselle text-center">A-11</div>
+                   <div id="A-12" class="caselle text-center">A-12</div>
+                  </div>
+                  <div class="col-1 container-fluid p-0">
+                  <div id="B-1" class="caselle text-center mt-1">B-1</div>
+                   <div id="B-2" class="caselle text-center">B-2</div>
+                   <div id="B-3" class="caselle text-center">B-3</div>
+                   <div id="B-4" class="caselle text-center">B-4</div>
+                   <div id="B-5" class="caselle text-center">B-5</div>
+                   <div id="B-6" class="caselle text-center">B-6</div>
+                   <div id="B-7" class="caselle text-center">B-7</div>
+                   <div id="B-8" class="caselle text-center">B-8</div>
+                   <div id="B-9" class="caselle text-center">B-9</div>
+                   <div id="B-10" class="caselle text-center">B-10</div>
+                   <div id="B-11" class="caselle text-center">B-11</div>
+                   <div id="B-12" class="caselle text-center">B-12</div>
+                   </div>
+                   <div class="col-1 container-fluid p-0">
+                   <div id="C-1" class="caselle text-center mt-1">C-1</div>
+                   <div id="C-2" class="caselle text-center">C-2</div>
+                   <div id="C-3" class="caselle text-center">C-3</div>
+                   <div id="C-4" class="caselle text-center">C-4</div>
+                   <div id="C-5" class="caselle text-center">C-5</div>
+                   <div id="C-6" class="caselle text-center">C-6</div>
+                   <div id="C-7" class="caselle text-center">C-7</div>
+                   <div id="C-8" class="caselle text-center">C-8</div>
+                   <div id="C-9" class="caselle text-center">C-9</div>
+                   <div id="C-10" class="caselle text-center">C-10</div>
+                   <div id="C-11" class="caselle text-center">C-11</div>
+                   <div id="C-12" class="caselle text-center">C-12</div>
+                   </div>
+                   <div class="col-1 container-fluid p-0">
+                    <div id="D-1" class="caselle text-center mt-1">D-1</div>
+                    <div id="D-2" class="caselle text-center">D-2</div>
+                    <div id="D-3" class="caselle text-center">D-3</div>
+                    <div id="D-4" class="caselle text-center">D-4</div>
+                    <div id="D-5" class="caselle text-center">D-5</div>
+                    <div id="D-6" class="caselle text-center">D-6</div>
+                    <div id="D-7" class="caselle text-center">D-7</div>
+                    <div id="D-8" class="caselle text-center">D-8</div>
+                    <div id="D-9" class="caselle text-center">D-9</div>
+                    <div id="D-10" class="caselle text-center">D-10</div>
+                    <div id="D-11" class="caselle text-center">D-11</div>
+                    <div id="D-12" class="caselle text-center">D-12</div>
+                   </div>
+                   <div class="col-1 container-fluid p-0">
+                    <div id="E-1" class="caselle text-center mt-1">E-1</div>
+                    <div id="E-2" class="caselle text-center">E-2</div>
+                    <div id="E-3" class="caselle text-center">E-3</div>
+                    <div id="E-4" class="caselle text-center">E-4</div>
+                    <div id="E-5" class="caselle text-center">E-5</div>
+                    <div id="E-6" class="caselle text-center">E-6</div>
+                    <div id="E-7" class="caselle text-center">E-7</div>
+                    <div id="E-8" class="caselle text-center">E-8</div>
+                    <div id="E-9" class="caselle text-center">E-9</div>
+                    <div id="E-10" class="caselle text-center">E-10</div>
+                    <div id="E-11" class="caselle text-center">E-11</div>
+                    <div id="E-12" class="caselle text-center">E-12</div>
+                   </div>
+                   <div class="col-1 container-fluid p-0">
+                    <div id="F-1" class="caselle text-center mt-1">F-1</div>
+                    <div id="F-2" class="caselle text-center">F-2</div>
+                    <div id="F-3" class="caselle text-center">F-3</div>
+                    <div id="F-4" class="caselle text-center">F-4</div>
+                    <div id="F-5" class="caselle text-center">F-5</div>
+                    <div id="F-6" class="caselle text-center">F-6</div>
+                    <div id="F-7" class="caselle text-center">F-7</div>
+                    <div id="F-8" class="caselle text-center">F-8</div>
+                    <div id="F-9" class="caselle text-center">F-9</div>
+                    <div id="F-10" class="caselle text-center">F-10</div>
+                    <div id="F-11" class="caselle text-center">F-11</div>
+                    <div id="F-12" class="caselle text-center">F-12</div>
+                   </div>
+                   <div class="col-1 container-fluid p-0">
+                    <div id="G-1" class="caselle text-center mt-1">G-1</div>
+                   <div id="G-2" class="caselle text-center">G-2</div>
+                   <div id="G-3" class="caselle text-center">G-3</div>
+                   <div id="G-4" class="caselle text-center">G-4</div>
+                   <div id="G-5" class="caselle text-center">G-5</div>
+                   <div id="G-6" class="caselle text-center">G-6</div>
+                   <div id="G-7" class="caselle text-center">G-7</div>
+                   <div id="G-8" class="caselle text-center">G-8</div>
+                   <div id="G-9" class="caselle text-center">G-9</div>
+                   <div id="G-10" class="caselle text-center">G-10</div>
+                   <div id="G-11" class="caselle text-center">G-11</div>
+                   <div id="G-12" class="caselle text-center">G-12</div>
+                   </div> 
+                   <div class="col-1 container-fluid p-0">
+                    <div id="H-1" class="caselle text-center mt-1">H-1</div>
+                   <div id="H-2" class="caselle text-center">H-2</div>
+                   <div id="H-3" class="caselle text-center">H-3</div>
+                   <div id="H-4" class="caselle text-center">H-4</div>
+                   <div id="H-5" class="caselle text-center">H-5</div>
+                   <div id="H-6" class="caselle text-center">H-6</div>
+                   <div id="H-7" class="caselle text-center">H-7</div>
+                   <div id="H-8" class="caselle text-center">H-8</div>
+                   <div id="H-9" class="caselle text-center">H-9</div>
+                   <div id="H-10" class="caselle text-center">H-10</div>
+                   <div id="H-11" class="caselle text-center">H-11</div>
+                   <div id="H-12" class="caselle text-center">H-12</div>
+                   </div>
+                   <div class="col-1 container-fluid p-0">
+                    <div id="I-1" class="caselle text-center mt-1">I-1</div>
+                    <div id="I-2" class="caselle text-center">I-2</div>
+                    <div id="I-3" class="caselle text-center">I-3</div>
+                    <div id="I-4" class="caselle text-center">I-4</div>
+                    <div id="I-5" class="caselle text-center">I-5</div>
+                    <div id="I-6" class="caselle text-center">I-6</div>
+                    <div id="I-7" class="caselle text-center">I-7</div>
+                    <div id="I-8" class="caselle text-center">I-8</div>
+                    <div id="I-9" class="caselle text-center">I-9</div>
+                    <div id="I-10" class="caselle text-center">I-10</div>
+                    <div id="I-11" class="caselle text-center">I-11</div>
+                    <div id="I-12" class="caselle text-center">I-12</div>
+                   </div>
+                   <div class="col-1 container-fluid p-0">
+                    <div id="L-1" class="caselle text-center mt-1">L-1</div>
+                   <div id="L-2" class="caselle text-center">L-2</div>
+                   <div id="L-3" class="caselle text-center">L-3</div>
+                   <div id="L-4" class="caselle text-center">L-4</div>
+                   <div id="L-5" class="caselle text-center">L-5</div>
+                   <div id="L-6" class="caselle text-center">L-6</div>
+                   <div id="L-7" class="caselle text-center">L-7</div>
+                   <div id="L-8" class="caselle text-center">L-8</div>
+                   <div id="L-9" class="caselle text-center">L-9</div>
+                   <div id="L-10" class="caselle text-center">L-10</div>
+                   <div id="L-11" class="caselle text-center">L-11</div>
+                   <div id="L-12" class="caselle text-center">L-12</div>
+                   </div>
+                   <div class="col-1 container-fluid p-0">
+                    <div id="M-1" class="caselle text-center mt-1">M-1</div>
+                    <div id="M-2" class="caselle text-center">M-2</div>
+                    <div id="M-3" class="caselle text-center">M-3</div>
+                    <div id="M-4" class="caselle text-center">M-4</div>
+                    <div id="M-5" class="caselle text-center">M-5</div>
+                    <div id="M-6" class="caselle text-center">M-6</div>
+                    <div id="M-7" class="caselle text-center">M-7</div>
+                    <div id="M-8" class="caselle text-center">M-8</div>
+                    <div id="M-9" class="caselle text-center">M-9</div>
+                    <div id="M-10" class="caselle text-center">M-10</div>
+                    <div id="M-11" class="caselle text-center">M-11</div>
+                    <div id="M-12" class="caselle text-center">M-12</div>
+                   </div>
+                   <div class="col-1 container-fluid p-0">
+                    <div id="N-1" class="caselle text-center mt-1">N-1</div>
+                    <div id="N-2" class="caselle text-center">N-2</div>
+                    <div id="N-3" class="caselle text-center">N-3</div>
+                    <div id="N-4" class="caselle text-center">N-4</div>
+                    <div id="N-5" class="caselle text-center">N-5</div>
+                    <div id="N-6" class="caselle text-center">N-6</div>
+                    <div id="N-7" class="caselle text-center">N-7</div>
+                    <div id="N-8" class="caselle text-center">N-8</div>
+                    <div id="N-9" class="caselle text-center">N-9</div>
+                    <div id="N-10" class="caselle text-center">N-10</div>
+                    <div id="N-11" class="caselle text-center">N-11</div>
+                    <div id="N-12" class="caselle text-center">N-12</div>
+                   </div>
+                </div>
+
+              </div>
+
+              <!--parte statistiche nemico-->
+
+              <div class="container-fluid">
+                <div class="row" >
+                  <div class="col-3">
+                    <div class="schedaNemici"></div>
+                  </div>
+                  <div class="col-3">
+
+                    <p class="statisticheNemici text-white">Nome:</p>
+                    <p class="statisticheNemici text-white">Resistenza:</p>
+                    <p class="statisticheNemici text-white">Combattività:</p>
+                    
+                  </div>
+                  <div class="col-3">
+
+                    <p class="statisticheNemici text-white">Difesa:</p> 
+                    <p class="statisticheNemici text-white">Movimento:</p>
+                  </div>
+                  <div class="col-3"></div>
+                </div>
+
+              </div>
+            </div>
+
+              <!-- parte schede arme ed equipaggiamento -->
+
+            <div class="col-3 main text-center">
+              <h2 class="titoli">Armi</h2>
+              <div class="d-flex">
+                <div id="arma1" class="schedeArmi"></div>
+                <div id="arma2" class="schedeArmi"></div>
+              </div>
+              <h2 class="titoli">Equipaggiamento</h2>
+              <div class="d-flex">
+                <div id="slot1" class="schedeEquip"></div>
+                <div id="slot2" class="schedeEquip"></div>
+              </div>
+              <h2 class="titoli">Mano Giocatore</h2>
+              <button type="button" class="btn bg-primario btn-sm">Gioca una carta</button>
+            </div>
+          </div>
+            
+         </div>
+    </div>
+
+
+    <script src="./Main.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>    
+</body>
+</html>
