@@ -8,10 +8,12 @@ let difesa= document.querySelector('#difesa');
 let rifornimenti= document.querySelector('#rifornimenti');
 let abilità= document.querySelector('#abilità');
 let turno= document.querySelector('#turno');
-let Mappa= document.querySelectorAll('div');
+let Mappa= document.querySelectorAll('section');
 
+let giocatore={Y:1, X:8};
+let resistValue= 0;
+let combatValue= 0;
 
-let giocatore={Y:1, X:6};
 
 let A1 = document.querySelector('#A-1'); let A2 = document.querySelector('#A-2');
 let A3 = document.querySelector('#A-3'); let A4 = document.querySelector('#A-4');
@@ -99,93 +101,88 @@ let N11 = document.querySelector('#N-11'); let N12 = document.querySelector('#N-
 
 // array caselle mappa
 
-// const mappa ={
+    const caselle = [
+        {name:'A1', Y :1 , X:1},  {name:'B1', Y :2 , X:1},
+        {name:'A2', Y :1 , X:2},  {name:'B2', Y :2 , X:2},
+        {name:'A3', Y :1 , X:3},  {name:'B3', Y :2 , X:3},
+        {name:'A4', Y :1 , X:4},  {name:'B4', Y :2 , X:4},
+        {name:'A5', Y :1 , X:5},  {name:'B5', Y :2 , X:5},
+        {name:'A6', Y :1 , X:6},  {name:'B6', Y :2 , X:6},
+        {name:'A7', Y :1 , X:7},  {name:'B7', Y :2 , X:7},
+        {name:'A8', Y :1 , X:8},  {name:'B8', Y :2 , X:8},
+        {name:'A9', Y :1 , X:9},  {name:'B9', Y :2 , X:9},
+        {name:'A10', Y :1 , X:10},  {name:'B10', Y :2 , X:10},
+        {name:'A11', Y :1 , X:11},  {name:'B11', Y :2 , X:11},
+        {name:'A12', Y :1 , X:12},  {name:'B12', Y :2 , X:12},
 
-    // caselleArray : [
-    //     {name:'A1', Y :1 , X:1},  {name:'B1', Y :2 , X:1},
-    //     {name:'A2', Y :1 , X:2},  {name:'B2', Y :2 , X:2},
-    //     {name:'A3', Y :1 , X:3},  {name:'B3', Y :2 , X:3},
-    //     {name:'A4', Y :1 , X:4},  {name:'B4', Y :2 , X:4},
-    //     {name:'A5', Y :1 , X:5},  {name:'B5', Y :2 , X:5},
-    //     {name:'A6', Y :1 , X:6},  {name:'B6', Y :2 , X:6},
-    //     {name:'A7', Y :1 , X:7},  {name:'B7', Y :2 , X:7},
-    //     {name:'A8', Y :1 , X:8},  {name:'B8', Y :2 , X:8},
-    //     {name:'A9', Y :1 , X:9},  {name:'B9', Y :2 , X:9},
-    //     {name:'A10', Y :1 , X:10},  {name:'B10', Y :2 , X:10},
-    //     {name:'A11', Y :1 , X:11},  {name:'B11', Y :2 , X:11},
-    //     {name:'A12', Y :1 , X:12},  {name:'B12', Y :2 , X:12},
+        {name:'C1', Y :3 , X:1},  {name:'D1', Y :4 , X:1},
+        {name:'C2', Y :3 , X:2},  {name:'D2', Y :4 , X:2},
+        {name:'C3', Y :3 , X:3},  {name:'D3', Y :4 , X:3},
+        {name:'C4', Y :3 , X:4},  {name:'D4', Y :4 , X:4},
+        {name:'C5', Y :3 , X:5},  {name:'D5', Y :4 , X:5},
+        {name:'C6', Y :3 , X:6},  {name:'D6', Y :4 , X:6},
+        {name:'C7', Y :3 , X:7},  {name:'D7', Y :4 , X:7},
+        {name:'C8', Y :3 , X:8},  {name:'D8', Y :4 , X:8},
+        {name:'C9', Y :3 , X:9},  {name:'D9', Y :4 , X:9},
+        {name:'C10', Y :3 , X:10}, {name:'D10', Y :4 , X:10},
+        {name:'C11', Y :3 , X:11}, {name:'D11', Y :4 , X:11},
+        {name:'C12', Y :3 , X:12}, {name:'D12', Y :4 , X:12},
 
-    //     {name:'C1', Y :3 , X:1},  {name:'D1', Y :4 , X:1},
-    //     {name:'C2', Y :3 , X:2},  {name:'D2', Y :4 , X:2},
-    //     {name:'C3', Y :3 , X:3},  {name:'D3', Y :4 , X:3},
-    //     {name:'C4', Y :3 , X:4},  {name:'D4', Y :4 , X:4},
-    //     {name:'C5', Y :3 , X:5},  {name:'D5', Y :4 , X:5},
-    //     {name:'C6', Y :3 , X:6},  {name:'D6', Y :4 , X:6},
-    //     {name:'C7', Y :3 , X:7},  {name:'D7', Y :4 , X:7},
-    //     {name:'C8', Y :3 , X:8},  {name:'D8', Y :4 , X:8},
-    //     {name:'C9', Y :3 , X:9},  {name:'D9', Y :4 , X:9},
-    //     {name:'C10', Y :3 , X:10}, {name:'D10', Y :4 , X:10},
-    //     {name:'C11', Y :3 , X:11}, {name:'D11', Y :4 , X:11},
-    //     {name:'C12', Y :3 , X:12}, {name:'D12', Y :4 , X:12},
+        {name:'E1', Y :5 , X:1},  {name:'F1', Y :6 , X:1},
+        {name:'E2', Y :5 , X:2},  {name:'F2', Y :6 , X:2},
+        {name:'E3', Y :5 , X:3},  {name:'F3', Y :6 , X:3},
+        {name:'E4', Y :5 , X:4},  {name:'F4', Y :6 , X:4},
+        {name:'E5', Y :5 , X:5},  {name:'F5', Y :6 , X:5},
+        {name:'E6', Y :5 , X:6},  {name:'F6', Y :6 , X:6},
+        {name:'E7', Y :5 , X:7},  {name:'F7', Y :6 , X:7},
+        {name:'E8', Y :5 , X:8},  {name:'F8', Y :6 , X:8},
+        {name:'E9', Y :5 , X:9},  {name:'F9', Y :6 , X:9},
+        {name:'E10', Y :5 , X:10}, {name:'F10', Y :6 , X:10},
+        {name:'E11', Y :5 , X:11}, {name:'F11', Y :6 , X:11},
+        {name:'E12', Y :5 , X:12}, {name:'F12', Y :6 , X:12},
 
-    //     {name:'E1', Y :5 , X:1},  {name:'F1', Y :6 , X:1},
-    //     {name:'E2', Y :5 , X:2},  {name:'F2', Y :6 , X:2},
-    //     {name:'E3', Y :5 , X:3},  {name:'F3', Y :6 , X:3},
-    //     {name:'E4', Y :5 , X:4},  {name:'F4', Y :6 , X:4},
-    //     {name:'E5', Y :5 , X:5},  {name:'F5', Y :6 , X:5},
-    //     {name:'E6', Y :5 , X:6},  {name:'F6', Y :6 , X:6},
-    //     {name:'E7', Y :5 , X:7},  {name:'F7', Y :6 , X:7},
-    //     {name:'E8', Y :5 , X:8},  {name:'F8', Y :6 , X:8},
-    //     {name:'E9', Y :5 , X:9},  {name:'F9', Y :6 , X:9},
-    //     {name:'E10', Y :5 , X:10}, {name:'F10', Y :6 , X:10},
-    //     {name:'E11', Y :5 , X:11}, {name:'F11', Y :6 , X:11},
-    //     {name:'E12', Y :5 , X:12}, {name:'F12', Y :6 , X:12},
+        {name:'G1', Y :7 , X:1},  {name:'H1', Y :8 , X:1},
+        {name:'G2', Y :7 , X:2},  {name:'H2', Y :8 , X:2},
+        {name:'G3', Y :7 , X:3},  {name:'H3', Y :8 , X:3},
+        {name:'G4', Y :7 , X:4},  {name:'H4', Y :8 , X:4},
+        {name:'G5', Y :7 , X:5},  {name:'H5', Y :8 , X:5},
+        {name:'G6', Y :7 , X:6},  {name:'H6', Y :8 , X:6},
+        {name:'G7', Y :7 , X:7},  {name:'H7', Y :8, X:7},
+        {name:'G8', Y :7 , X:8},  {name:'H8', Y :8, X:8},
+        {name:'G9', Y :7 , X:9},  {name:'H9', Y :8, X:9},
+        {name:'G10', Y :7 , X:10}, {name:'H10', Y :8 , X:10},
+        {name:'G11', Y :7 , X:11}, {name:'H11', Y :8 , X:11},
+        {name:'G12', Y :7 , X:12}, {name:'H12', Y :8 , X:12},
 
-    //     {name:'G1', Y :7 , X:1},  {name:'H1', Y :8 , X:1},
-    //     {name:'G2', Y :7 , X:2},  {name:'H2', Y :8 , X:2},
-    //     {name:'G3', Y :7 , X:3},  {name:'H3', Y :8 , X:3},
-    //     {name:'G4', Y :7 , X:4},  {name:'H4', Y :8 , X:4},
-    //     {name:'G5', Y :7 , X:5},  {name:'H5', Y :8 , X:5},
-    //     {name:'G6', Y :7 , X:6},  {name:'H6', Y :8 , X:6},
-    //     {name:'G7', Y :7 , X:7},  {name:'H7', Y :8, X:7},
-    //     {name:'G8', Y :7 , X:8},  {name:'H8', Y :8, X:8},
-    //     {name:'G9', Y :7 , X:9},  {name:'H9', Y :8, X:9},
-    //     {name:'G10', Y :7 , X:10}, {name:'H10', Y :8 , X:10},
-    //     {name:'G11', Y :7 , X:11}, {name:'H11', Y :8 , X:11},
-    //     {name:'G12', Y :7 , X:12}, {name:'H12', Y :8 , X:12},
+        {name:'I1', Y :9 , X:1},   {name:'L1', Y :10 , X:1},
+        {name:'I2', Y :9 , X:2},   {name:'L2', Y :10 , X:2},
+        {name:'I3', Y :9 , X:3},   {name:'L3', Y :10 , X:3},
+        {name:'I4', Y :9 , X:4},   {name:'L4', Y :10 , X:4},
+        {name:'I5', Y :9 , X:5},   {name:'L5', Y :10 , X:5},
+        {name:'I6', Y :9 , X:6},   {name:'L6', Y :10 , X:6},
+        {name:'I7', Y :9 , X:7},   {name:'L7', Y :10 , X:7},
+        {name:'I8', Y :9 , X:8},   {name:'L8', Y :10 , X:8},
+        {name:'I9', Y :9 , X:9},   {name:'L9', Y :10 , X:9},
+        {name:'I10', Y :9 , X:10}, {name:'L10', Y :10 , X:10},
+        {name:'I11', Y :9 , X:11}, {name:'L11', Y :10 , X:11},
+        {name:'I12', Y :9 , X:12}, {name:'L12', Y :10 , X:12},
 
-    //     {name:'I1', Y :9 , X:1},   {name:'L1', Y :10 , X:1},
-    //     {name:'I2', Y :9 , X:2},   {name:'L2', Y :10 , X:2},
-    //     {name:'I3', Y :9 , X:3},   {name:'L3', Y :10 , X:3},
-    //     {name:'I4', Y :9 , X:4},   {name:'L4', Y :10 , X:4},
-    //     {name:'I5', Y :9 , X:5},   {name:'L5', Y :10 , X:5},
-    //     {name:'I6', Y :9 , X:6},   {name:'L6', Y :10 , X:6},
-    //     {name:'I7', Y :9 , X:7},   {name:'L7', Y :10 , X:7},
-    //     {name:'I8', Y :9 , X:8},   {name:'L8', Y :10 , X:8},
-    //     {name:'I9', Y :9 , X:9},   {name:'L9', Y :10 , X:9},
-    //     {name:'I10', Y :9 , X:10}, {name:'L10', Y :10 , X:10},
-    //     {name:'I11', Y :9 , X:11}, {name:'L11', Y :10 , X:11},
-    //     {name:'I12', Y :9 , X:12}, {name:'L12', Y :10 , X:12},
-
-    //     {name:'M1', Y :11 , X:1},  {name:'N1', Y :12 , X:1},
-    //     {name:'M2', Y :11 , X:2},  {name:'N2', Y :12 , X:2},
-    //     {name:'M3', Y :11 , X:3},  {name:'N3', Y :12 , X:3},
-    //     {name:'M4', Y :11 , X:4},  {name:'N4', Y :12 , X:4},
-    //     {name:'M5', Y :11 , X:5},  {name:'N5', Y :12 , X:5},
-    //     {name:'M6', Y :11 , X:6},  {name:'N6', Y :12 , X:6},
-    //     {name:'M7', Y :11 , X:7},  {name:'N7', Y :12 , X:7},
-    //     {name:'M8', Y :11 , X:8},  {name:'N8', Y :12 , X:8},
-    //     {name:'M9', Y :11 , X:9},  {name:'N9', Y :12 , X:9},
-    //     {name:'M10', Y :11 , X:10}, {name:'N10', Y :12 , X:10},
-    //     {name:'M11', Y :11 , X:11}, {name:'N11', Y :12 , X:11},
-    //     {name:'M12', Y :11 , X:12}, {name:'N12', Y :12 , X:12}
+        {name:'M1', Y :11 , X:1},  {name:'N1', Y :12 , X:1},
+        {name:'M2', Y :11 , X:2},  {name:'N2', Y :12 , X:2},
+        {name:'M3', Y :11 , X:3},  {name:'N3', Y :12 , X:3},
+        {name:'M4', Y :11 , X:4},  {name:'N4', Y :12 , X:4},
+        {name:'M5', Y :11 , X:5},  {name:'N5', Y :12 , X:5},
+        {name:'M6', Y :11 , X:6},  {name:'N6', Y :12 , X:6},
+        {name:'M7', Y :11 , X:7},  {name:'N7', Y :12 , X:7},
+        {name:'M8', Y :11 , X:8},  {name:'N8', Y :12 , X:8},
+        {name:'M9', Y :11 , X:9},  {name:'N9', Y :12 , X:9},
+        {name:'M10', Y :11 , X:10}, {name:'N10', Y :12 , X:10},
+        {name:'M11', Y :11 , X:11}, {name:'N11', Y :12 , X:11},
+        {name:'M12', Y :11 , X:12}, {name:'N12', Y :12 , X:12}
    
-    // ]
+    ];
 
-   
-
-// };
-
+  
 // valori booleani
 
 let check=false;
@@ -216,11 +213,13 @@ if(jack==false){
     tiro = Math.ceil(Math.random() * 10);
     valoreCombattività = tiro + 15;   
    alert(valoreCombattività);
+   combatValue = valoreCombattività;
+   
    let div = document.createElement('div');      
-            div.classList.add('divCombattivita');
-            
-            div.innerHTML = valoreCombattività;
-    divCombattivita.appendChild(div);
+   div.classList.add('divCombattivita');
+   
+   div.innerHTML = valoreCombattività;
+   divCombattivita.appendChild(div);
    jack=true;
    
 }else if(jack==true){
@@ -237,6 +236,7 @@ resistenza.addEventListener('click', ()=>{
     tiro = Math.ceil(Math.random() * 10);
     valoreResistenza = tiro + 20; 
    alert(valoreResistenza);
+   resistValue=valoreResistenza;
 
    let div = document.createElement('div');      
             div.classList.add('divCombattivita');
@@ -281,7 +281,6 @@ difesa.addEventListener('click', ()=>{
 
     // funzione rifornimenti
 
-
 rifornimenti.addEventListener('click', ()=>{
         if(item!=false){
             alert('aspetta il prossimo turno');
@@ -307,7 +306,6 @@ abilità.addEventListener('click', ()=>{
 
 turno.addEventListener('click', ()=>{
     if(combat==false && notCombat==true){
-    
      
      move=false;
      shield=false;
@@ -316,16 +314,21 @@ turno.addEventListener('click', ()=>{
      map=false;
      combat= false;
      notCombat=true;
+
     }else if(combat==true && notCombat==false){
      move=false;
+
      shield=false;
      item=false;
      abilities=false;
      map=false;
      combat= false;
      notCombat=true;
+
     }else{
+
         alert('finisci questo turno prima');
+
     };
    
 }); 
@@ -357,6 +360,7 @@ let mappamentoY = (valore1 , valore2)=>{
 
 };
 
+
 // al click sulla casella deve prendere l'informazione movimento e
 //  paragonarla con il risultato delle funzioni mappamentoX ed Y della 
 // casella con la casella giocatore e quella cliccata. se rispetta la
@@ -364,18 +368,18 @@ let mappamentoY = (valore1 , valore2)=>{
 // allora toglie la classlist giocatore alla vecchia casella e la inserisce nella casella
 // cliccata, altrimenti darà un alert che dice "è troppo lontano, scegli un altra via"
 
-// funzioni caselle mappa da A1(343) ad A12(629)
-//  funzioni caselle mappa da B1(653) ad B12(939)
-// funzioni caselle mappa da C1(969) ad C12(1255)
-// funzioni caselle mappa da D1(1285) ad D12(1571)
-// funzioni caselle mappa da E1(1601) ad E12(1887)
-// funzioni caselle mappa da F1(1917) ad F12(2203)
-// funzioni caselle mappa da G1(2234) ad G12(2520)
-// funzioni caselle mappa da H1(2555) ad H12(2841)
-// funzioni caselle mappa da I1(2234) ad I12(2520)
-// funzioni caselle mappa da L1(2234) ad L12(2520)
-// funzioni caselle mappa da M1(2234) ad M12(2520)
-// funzioni caselle mappa da N1(2234) ad N12(2520)
+// funzioni caselle mappa da A1(381) ad A12(667)
+//  funzioni caselle mappa da B1(697) ad B12(983)
+// funzioni caselle mappa da C1(1013) ad C12(1299)
+// funzioni caselle mappa da D1(1329) ad D12(1615)
+// funzioni caselle mappa da E1(1645) ad E12(1931)
+// funzioni caselle mappa da F1(1961) ad F12(2247)
+// funzioni caselle mappa da G1(2278) ad G12(2564)
+// funzioni caselle mappa da H1(2599) ad H12(2885)
+// funzioni caselle mappa da I1(2909) ad I12(3195)
+// funzioni caselle mappa da L1(3225) ad L12(3511)
+// funzioni caselle mappa da M1(3538) ad M12(3827)
+// funzioni caselle mappa da N1(3857) ad N12(4143)
 
 
 A1.addEventListener('click' , ()=>{
@@ -392,9 +396,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -418,9 +422,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -444,9 +448,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -470,9 +474,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -496,9 +500,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -522,9 +526,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -548,9 +552,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -574,9 +578,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -600,9 +604,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -626,9 +630,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -652,9 +656,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -678,9 +682,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=1;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -708,9 +712,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -734,9 +738,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -760,9 +764,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -786,9 +790,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -812,9 +816,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -838,9 +842,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -864,9 +868,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -890,9 +894,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -916,9 +920,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -942,9 +946,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -968,9 +972,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -994,9 +998,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=2;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1024,9 +1028,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1050,9 +1054,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1076,9 +1080,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1102,9 +1106,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1128,9 +1132,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1154,9 +1158,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1180,9 +1184,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1206,9 +1210,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1232,9 +1236,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1258,9 +1262,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1284,9 +1288,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1310,9 +1314,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=3;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1340,9 +1344,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1366,9 +1370,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1392,9 +1396,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1418,9 +1422,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1444,9 +1448,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1470,9 +1474,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1496,9 +1500,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1522,9 +1526,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1548,9 +1552,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1574,9 +1578,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1600,9 +1604,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1626,9 +1630,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=4;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1656,9 +1660,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1682,9 +1686,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1708,9 +1712,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1734,9 +1738,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1760,9 +1764,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1786,9 +1790,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1812,9 +1816,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1838,9 +1842,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1864,9 +1868,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1890,9 +1894,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1916,9 +1920,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1942,9 +1946,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=5;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1972,9 +1976,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -1998,9 +2002,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2024,9 +2028,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2050,9 +2054,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2076,9 +2080,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2102,9 +2106,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2128,9 +2132,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2154,9 +2158,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2180,9 +2184,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2206,9 +2210,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2232,9 +2236,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2258,9 +2262,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=6;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2288,9 +2292,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2314,9 +2318,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2340,9 +2344,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2366,9 +2370,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2392,9 +2396,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2418,9 +2422,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2444,9 +2448,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2470,9 +2474,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2496,9 +2500,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2522,9 +2526,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2548,9 +2552,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2574,9 +2578,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=7;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2604,9 +2608,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2630,9 +2634,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2656,9 +2660,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2682,9 +2686,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2708,9 +2712,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2734,9 +2738,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2760,9 +2764,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2786,9 +2790,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2812,9 +2816,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2838,9 +2842,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2864,9 +2868,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2890,9 +2894,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=8;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2920,9 +2924,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2946,9 +2950,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2972,9 +2976,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -2998,9 +3002,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3024,9 +3028,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3050,9 +3054,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3076,9 +3080,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3102,9 +3106,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3128,9 +3132,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3154,9 +3158,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3180,9 +3184,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3206,9 +3210,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=9;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3236,9 +3240,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3262,9 +3266,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3288,9 +3292,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3314,9 +3318,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3340,9 +3344,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3366,9 +3370,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3392,9 +3396,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3418,9 +3422,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3444,9 +3448,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3470,9 +3474,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3496,9 +3500,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3522,9 +3526,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=10;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3552,9 +3556,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3578,9 +3582,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3604,9 +3608,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3630,9 +3634,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3656,9 +3660,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3682,9 +3686,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3708,9 +3712,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3734,9 +3738,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3760,9 +3764,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3786,9 +3790,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3812,9 +3816,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3838,9 +3842,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=11;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3868,9 +3872,9 @@ Mappa.forEach(div => {
   giocatore.X=1;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3894,9 +3898,9 @@ Mappa.forEach(div => {
   giocatore.X=2;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3920,9 +3924,9 @@ Mappa.forEach(div => {
   giocatore.X=3;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3946,9 +3950,9 @@ Mappa.forEach(div => {
   giocatore.X=4;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3972,9 +3976,9 @@ Mappa.forEach(div => {
   giocatore.X=5;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -3998,9 +4002,9 @@ Mappa.forEach(div => {
   giocatore.X=6;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -4024,9 +4028,9 @@ Mappa.forEach(div => {
   giocatore.X=7;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -4050,9 +4054,9 @@ Mappa.forEach(div => {
   giocatore.X=8;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -4076,9 +4080,9 @@ Mappa.forEach(div => {
   giocatore.X=9;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -4102,9 +4106,9 @@ Mappa.forEach(div => {
   giocatore.X=10;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -4128,9 +4132,9 @@ Mappa.forEach(div => {
   giocatore.X=11;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 
@@ -4154,9 +4158,9 @@ Mappa.forEach(div => {
   giocatore.X=12;
   giocatore.Y=12;
   map=true;
-  console.log(giocatore);
+  
 }
-else if(orizzontale<=movimento.value && verticale<=movimento.value && map==true){
+else if(map==true){
 
     alert('aspetta il prossimo turno');
 

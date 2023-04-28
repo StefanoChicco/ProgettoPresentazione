@@ -35,8 +35,7 @@ margin-right: 200px;
 
 .main1{
    background-color:#65827c ;
-   color: red;
-   height: 100vh;
+   color: white;
    border-top: solid 5px;
    border-bottom:solid 5px ;
    border-color: black;
@@ -44,11 +43,15 @@ margin-right: 200px;
 }
 
     .mappa{
-    height:70vh;
-    background-color: aqua;
+    
+    background-image: url(./media/mappa.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     margin-top: 10px;
     border: solid 3px;
-    border-color: black;   
+    border-color: black;  
+
     }
 
 .caselle{
@@ -83,11 +86,18 @@ padding: 0%;
 
     }
     
+    .giocatore{
+    height:35px;
+    background-image: url(/media/giocatore\ -\ Copia.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    }
+    
 /* parte schede armi ed equipaggiamento */
 .main{
     background-color:#65827c ;
     color: red;
-    height: 100vh;
+    
     border: solid 5px;
     border-color: black;
      display:flex column;
@@ -99,7 +109,7 @@ padding: 0%;
     background-size: contain;
     height: 25vh;
     width: 20vh;
-    margin: 20px;
+    margin: 5px;
     border: solid 3px;
     border-color: black;
     border-radius: 20px;
@@ -111,7 +121,7 @@ padding: 0%;
     background-repeat: no-repeat;
     height: 25vh;
     width: 20vh;
-    margin: 20px;
+    margin: 5px;
     border: solid 3px;
     border-color: black;
     border-radius: 20px;
@@ -125,12 +135,5 @@ background-color: white;
 border: solid 1px;
 border-color:gray ;
 border-radius: 5px;
-}
-
-.giocatore{
-height:35px;
-background-image: url(/media/giocatore.png);
-background-size: contain;
-background-repeat: no-repeat;
 }
 
