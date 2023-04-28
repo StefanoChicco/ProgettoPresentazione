@@ -10,11 +10,6 @@ let abilità= document.querySelector('#abilità');
 let turno= document.querySelector('#turno');
 let Mappa= document.querySelectorAll('section');
 
-let giocatore={Y:1, X:8};
-let resistValue= 0;
-let combatValue= 0;
-
-
 let A1 = document.querySelector('#A-1'); let A2 = document.querySelector('#A-2');
 let A3 = document.querySelector('#A-3'); let A4 = document.querySelector('#A-4');
 let A5 = document.querySelector('#A-5'); let A6 = document.querySelector('#A-6');
@@ -99,6 +94,7 @@ let N7 = document.querySelector('#N-7'); let N8 = document.querySelector('#N-8')
 let N9 = document.querySelector('#N-9'); let N10 = document.querySelector('#N-10');
 let N11 = document.querySelector('#N-11'); let N12 = document.querySelector('#N-12');
 
+
 // array caselle mappa
 
     const caselle = [
@@ -182,18 +178,88 @@ let N11 = document.querySelector('#N-11'); let N12 = document.querySelector('#N-
    
     ];
 
-  
-// valori booleani
+    // valori iniziali giocatore: posizione, resistenza, combattività.
 
-let check=false;
-let jack=false;
-let move=false;
-let shield=false;
-let item=false;
-let abilities=false;
-let map=false;
-let combat= false;
-let notCombat=true;
+    let giocatore={Y:1, X:8};
+    let resistValue= 0;
+    let combatValue= 0;
+
+    // valori nemici
+
+    let cervo={Y:2, X:10};
+    let cervoResist=15;
+    let cervoCombat=10;
+
+    let cinghiale={Y:6, X:9};
+    let cinghialeResist=20;
+    let cinghialeCombat=18;
+
+    let drago={Y:6, X:2};
+    let dragoResist=60;
+    let dragoCombat=45;
+
+    let ghoul={Y:5, X:12};
+    let ghoulResist=22;
+    let ghoulCombat=19;
+
+    let lupo={Y:11, X:3};
+    let lupoResist=18;
+    let lupoCombat=23;
+
+    let lupoMannnaro={Y:12, X:5};
+    let lupoMannnaroResist=40;
+    let lupoMannnaroCombat=33;
+
+    let minotauro={Y:7, X:11};
+    let minotauroResist=50;
+    let minotauroCombat=38;
+
+    let orso={Y:2, X:5};
+    let orsoResist=33;
+    let orsoCombat=30;
+
+    let pantera={Y:9, X:8};
+    let panteraResist=25;
+    let panteraCombat=26;
+
+    let ragnoGigante={Y:5, X:6};
+    let ragnoGiganteResist=28;
+    let ragnoGiganteCombat=26;
+
+    let ratto={Y:2, X:8};
+    let rattoResist=7;
+    let rattoCombat=8;
+
+    let succubus={Y:10, X:11};
+    let succubusResist=37;
+    let succubusCombat=30;
+
+    let tigre={Y:3, X:2};
+    let tigreResist=33;
+    let tigreCombat=35;
+
+    let zombie={Y:8, X:5};
+    let zombieResist=15;
+    let zombieCombat=14;
+
+// valori booleani statistiche, movimento, combattimento.
+
+let check= false;
+let jack= false;
+let move= false;
+let shield= false;
+let item= false;
+let abilities= false;
+let map= false;
+let combat=  false;
+let notCombat= true;
+
+// valori boleani abilità
+
+let arteGuerra= false;
+let medicina= false;
+let raggioPsico= false;
+let scudoPsico= false;
 
 // funzione dado
 
@@ -202,30 +268,6 @@ dado.addEventListener('click', ()=>{
     tiro = Math.ceil(Math.random() * 10); 
    alert(tiro);
     
-});
-
-// funzioni combattività
-
-combattività.addEventListener('click', ()=>{
-  
-if(jack==false){
-    
-    tiro = Math.ceil(Math.random() * 10);
-    valoreCombattività = tiro + 15;   
-   alert(valoreCombattività);
-   combatValue = valoreCombattività;
-   
-   let div = document.createElement('div');      
-   div.classList.add('divCombattivita');
-   
-   div.innerHTML = valoreCombattività;
-   divCombattivita.appendChild(div);
-   jack=true;
-   
-}else if(jack==true){
-    alert('Mò TE LO TIENI!');
-
-}
 });
 
 // funzioni resistenza
@@ -251,39 +293,68 @@ resistenza.addEventListener('click', ()=>{
 }
 });
 
-//  funzioni movimento
+// funzioni combattività
 
-movimento.addEventListener('click', ()=>{
-    if(move!=false){
-        alert('aspetta il prossimo turno');
-    }else {
-        move=true; 
-    };
+combattività.addEventListener('click', ()=>{
+  
+if(check==false){
+    alert('prima tira per la resistenza')
+    
+    }else if(jack==false){
+        tiro = Math.ceil(Math.random() * 10);
+    valoreCombattività = tiro + 15;   
+   alert(valoreCombattività);
+   combatValue = valoreCombattività;
    
-   });
+   let div = document.createElement('div');      
+   div.classList.add('divCombattivita');
+   
+   div.innerHTML = valoreCombattività;
+   divCombattivita.appendChild(div);
+   jack=true;
+    }else{
+    alert('Mò TE LO TIENI!');
+
+}
+});
 
 //    funzioni difesa
 
 difesa.addEventListener('click', ()=>{
   
-        switch (shield) {
-            case true :
-                alert('aspetta il prossimo turno');
-                break;
-                
-                default:
-                    
-                    shield=true;
-                break;
-        }
-            
-    });
+    if(shield!=false){
+        alert('aspetta il prossimo turno');
+
+        }else if(jack==false){
+            alert('prima combattività')
+    }else{
+        
+        shield=true; 
+    };
+   
+   });
+
+//  funzioni movimento
+
+movimento.addEventListener('click', ()=>{
+    if(move!=false){
+        alert('aspetta il prossimo turno');
+
+        }else if(shield==false){
+            alert('prima difesa');
+    }else{
+        move=true; 
+    };
+   
+   });
 
     // funzione rifornimenti
 
 rifornimenti.addEventListener('click', ()=>{
         if(item!=false){
             alert('aspetta il prossimo turno');
+        } else if(move==false){
+            alert('prima movimento')
         }else {
             item=true; 
         };
@@ -293,10 +364,13 @@ rifornimenti.addEventListener('click', ()=>{
     // funzione abilità
 
 abilità.addEventListener('click', ()=>{
-    if(abilities==false){
-        abilities=true;
-    }else {
+    if(abilities!=false){
         alert("aspetta l'inizio del turno");
+        
+    } else if(jack==false){
+        alert("prima devi iniziare il primo turno")
+    }else {
+        abilities=true;
         
     };
    
@@ -316,8 +390,8 @@ turno.addEventListener('click', ()=>{
      notCombat=true;
 
     }else if(combat==true && notCombat==false){
-     move=false;
 
+     move=false;
      shield=false;
      item=false;
      abilities=false;
@@ -327,7 +401,7 @@ turno.addEventListener('click', ()=>{
 
     }else{
 
-        alert('finisci questo turno prima');
+        alert('finisci questo turno');
 
     };
    
@@ -402,6 +476,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -428,6 +504,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -454,6 +532,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -480,6 +560,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -506,6 +588,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -532,6 +616,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -558,6 +644,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -584,6 +672,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -610,6 +700,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -636,6 +728,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -662,6 +756,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -688,6 +784,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -718,6 +816,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -744,6 +844,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -770,6 +872,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -796,6 +900,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -822,6 +928,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -848,6 +956,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -874,6 +984,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -900,6 +1012,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -926,6 +1040,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -952,6 +1068,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -978,6 +1096,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1004,6 +1124,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1034,6 +1156,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1060,6 +1184,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1086,6 +1212,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1112,6 +1240,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1138,6 +1268,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1164,6 +1296,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1190,6 +1324,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1216,6 +1352,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1242,6 +1380,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1268,6 +1408,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1294,6 +1436,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1320,6 +1464,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1350,6 +1496,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1376,6 +1524,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1402,6 +1552,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1428,6 +1580,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1454,6 +1608,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1480,6 +1636,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1506,6 +1664,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1532,6 +1692,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1558,6 +1720,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1584,6 +1748,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1610,6 +1776,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1636,6 +1804,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1666,6 +1836,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1692,6 +1864,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1718,6 +1892,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1744,6 +1920,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1770,6 +1948,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1796,6 +1976,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1822,6 +2004,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1848,6 +2032,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1874,6 +2060,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1900,6 +2088,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1926,6 +2116,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1952,6 +2144,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -1982,6 +2176,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2008,6 +2204,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2034,6 +2232,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2060,6 +2260,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2086,6 +2288,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2112,6 +2316,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2138,6 +2344,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2164,6 +2372,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2190,6 +2400,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2216,6 +2428,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2242,6 +2456,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2268,6 +2484,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2298,6 +2516,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2324,6 +2544,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2350,6 +2572,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2376,6 +2600,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2402,6 +2628,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2428,6 +2656,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2454,6 +2684,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2480,6 +2712,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2506,6 +2740,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2532,6 +2768,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2558,6 +2796,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2584,6 +2824,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2614,6 +2856,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2640,6 +2884,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2666,6 +2912,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2692,6 +2940,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2718,6 +2968,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2744,6 +2996,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2770,6 +3024,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2796,6 +3052,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2822,6 +3080,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2848,6 +3108,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2874,6 +3136,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2900,6 +3164,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2930,6 +3196,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2956,6 +3224,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -2982,6 +3252,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3008,6 +3280,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3034,6 +3308,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3060,6 +3336,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3086,6 +3364,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3112,6 +3392,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3138,6 +3420,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3164,6 +3448,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3190,6 +3476,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3216,6 +3504,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3246,6 +3536,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3272,6 +3564,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3298,6 +3592,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3324,6 +3620,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3350,6 +3648,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3376,6 +3676,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3402,6 +3704,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3428,6 +3732,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3454,6 +3760,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3480,6 +3788,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3506,6 +3816,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3532,6 +3844,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3562,6 +3876,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3588,6 +3904,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3614,6 +3932,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3640,6 +3960,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3666,6 +3988,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3692,6 +4016,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3718,6 +4044,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3744,6 +4072,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3770,6 +4100,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3796,6 +4128,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3822,6 +4156,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3848,6 +4184,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3878,6 +4216,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3904,6 +4244,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3930,6 +4272,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3956,6 +4300,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -3982,6 +4328,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -4008,6 +4356,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -4034,6 +4384,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -4060,6 +4412,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -4086,6 +4440,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -4112,6 +4468,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -4138,6 +4496,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -4164,6 +4524,8 @@ else if(map==true){
 
     alert('aspetta il prossimo turno');
 
+}else if(check==false){
+    alert("aspetta l'inizio del turno");
 }else{
     alert('è troppo lontano, scegli un altra via');  
 }
@@ -4171,3 +4533,14 @@ else if(map==true){
 });
 
 // 
+
+// per il combattimento fa partire una funzione (dopo lo spostamento del pg) che per ogni nemico deve
+// paragonare i parametri X e y del giocatore con quelli nemici e se combaciano con uno far partire il 
+// combattimento e cancellare la classlist nemico dalla mappa.
+
+// la funzione combattimento mette a paragone le caratteristiche combattività del giocatore
+// con quelle del nemico(sottrae la forza del giocatore a quella del nemico) e si tira il dado
+// a seconda del tiro uscito ci sarà una tabella che informa il numero dei danni ricevuti dal 
+// giocatore e dal nemico e andranno scalati dal loro livello di combattività. una volta che la 
+// resistenza del nemico va a 0 il giocatore viene premiato con un oggetto casuale(tranne per i boss
+// che danno un oggetto specifico)e il giocatore può far avanzare il turno.

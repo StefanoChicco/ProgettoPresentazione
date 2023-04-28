@@ -1,11 +1,11 @@
 .text-primario{
-    color: #00AAB4;;
+    color: #00AAB4;
 }
 .text-secondario{
     color: #7C6582;
 }
 .text-terzo{
-    color: #7D6A4D;
+    color: #5a4c38;
 }
 .bg-primario{
     background-color: #00AAB4;
@@ -17,24 +17,47 @@
     background-color: #7D6A4D;
 }
 .titoli{
-    color: #4d3410;
+    color: black;
    
+}
+#Navbar{
+
+background-image: url(./media/lone\ wolf.jpg);
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+
 }
 
 .sottotitoli{
-color: rgb(164, 38, 38);
+color:#5a4c38;
 font-size: medium;
 margin-right: 200px;
 }
+
 /* statistiche */
+
 .Bottoni{
     margin: 20px;
 }
+.main{
+    
+    color: red;
+    background-image: url(./media/guerriero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: solid 5px;
+
+    border-color: black;
+     display:flex column;
+ 
+ }
 
 /* parte centrale */
 
 .main1{
-   background-color:#65827c ;
+   background-image: url(./media/pergamena.jpg);
    color: white;
    border-top: solid 5px;
    border-bottom:solid 5px ;
@@ -85,6 +108,15 @@ padding: 0%;
       
 
     }
+    .parteNemici{
+        background-image: url(./media/teste\ mozzate.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom; 
+        border-left: solid 5px;
+        border-right: solid 5px;
+        border-color: black;
+    }
     
     .giocatore{
     height:35px;
@@ -94,15 +126,21 @@ padding: 0%;
     }
     
 /* parte schede armi ed equipaggiamento */
-.main{
-    background-color:#65827c ;
-    color: red;
+
+.main2{
     
+    color: red;
+    background-image: url(./media/spada-pegamena.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     border: solid 5px;
+
     border-color: black;
      display:flex column;
  
  }
+
 .schedeArmi{
     background-image: url(./media/scheda-arma-bg.jpg);
     background-position: center;
@@ -128,6 +166,7 @@ padding: 0%;
 }
 
 /* classi js bottoni speciali */
+
 .divCombattivita{
 height: 35px;
 width: 30px;
@@ -137,3 +176,109 @@ border-color:gray ;
 border-radius: 5px;
 }
 
+/* classi nemici */
+
+.cinghiale{
+        height:35px;
+        background-image: url(/media/cinghiale.png);
+        background-size: contain;
+        background-repeat: no-repeat;       
+}
+
+.cervo{
+    height:35px;
+    background-image: url(/media/cervo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.drago{
+    height:35px;
+    background-image: url(/media/drago.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.ghoul{
+    height:35px;
+    background-image: url(/media/ghoul.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.ghoul{
+    height:35px;
+    background-image: url(/media/ghoul.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.lupo{
+    height:35px;
+    background-image: url(/media/lupo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.lupoMannaro{
+    height:35px;
+    background-image: url(/media/lupoMannaro.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.minotauro{
+    height:35px;
+    background-image: url(/media/minotauro.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.orso{
+    height:35px;
+    background-image: url(/media/orso.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.pantera{
+    height:35px;
+    background-image: url(/media/pantera.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.ragnoGigante{
+    height:35px;
+    background-image: url(/media/ragnoGigante.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.ratto{
+    height:35px;
+    background-image: url(/media/ratto.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.succubus{
+    height:35px;
+    background-image: url(/media/succubus.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.tigre{
+    height:35px;
+    background-image: url(/media/tigre.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.zombie{
+    height:35px;
+    background-image: url(/media/zombie.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
