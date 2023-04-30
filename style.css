@@ -57,7 +57,8 @@ margin-right: 200px;
 /* parte centrale */
 
 .main1{
-   background-image: url(./media/pergamena.jpg);
+   background-image: url(./media/tavolo.jpg);
+  background-position: center;
    color: white;
    border-top: solid 5px;
    border-bottom:solid 5px ;
