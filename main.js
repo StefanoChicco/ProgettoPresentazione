@@ -9,6 +9,9 @@ let rifornimenti= document.querySelector('#rifornimenti');
 let abilità= document.querySelector('#abilità');
 let turno= document.querySelector('#turno');
 let Mappa= document.querySelectorAll('section');
+let CombattivitàNemico= document.querySelector('#CombattivitàNemico');
+let ResistenzaNemico= document.querySelector('#ResistenzaNemico');
+let NomeNemico= document.querySelector('#NomeNemico');
 
 let A1 = document.querySelector('#A-1'); let A2 = document.querySelector('#A-2');
 let A3 = document.querySelector('#A-3'); let A4 = document.querySelector('#A-4');
@@ -203,6 +206,7 @@ let N11 = document.querySelector('#N-11'); let N12 = document.querySelector('#N-
     {name:'Zombie' , Y:8 , X:5 , Resist:15 , Combat:14}];
 
 // Array per paragone dado/combattività
+
 //  -14 o inferiore
     let tabella1=[{N:0,G:100},{N:0,G:100},{N:0,G:8},{N:0,G:8},{N:1,G:7},
                 {N:2,G:6},{N:3,G:5},{N:4,G:4},{N:5,G:3},{N:6,G:0}];
@@ -236,11 +240,8 @@ let N11 = document.querySelector('#N-11'); let N12 = document.querySelector('#N-
 // +12 o superiore
     let tabella11=[{N:7,G:4},{N:8,G:3},{N:9,G:2},{N:10,G:2},{N:11,G:2},
                 {N:12,G:1},{N:14,G:0},{N:16,G:0},{N:18,G:0},{N:20,G:0}];
-// solo fino a +7/+8 nelle tabella del destino
+
       
-
-
-
 // valori booleani statistiche, movimento, combattimento.
 
 let check= false;
@@ -250,8 +251,7 @@ let shield= false;
 let item= false;
 let abilities= false;
 let map= false;
-let combat=  false;
-
+let combat= false;
 
 // valori boleani abilità
 
@@ -275,6 +275,7 @@ dado.addEventListener('click', ()=>{
    tiroDado=tiro;
     nemici.forEach(nemico => {
         if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
+
             let scontro = confronto(combatGiocatore , nemico.Combat);
     
                 if(scontro < -13) {
@@ -503,14 +504,30 @@ document.querySelectorAll(".caselle").forEach((casella) => {
             giocatore.X= casella.dataset.x;
             giocatore.Y= casella.dataset.y;
             map=true;
-            // parte nuova legata ai nemici
+            
             nemici.forEach(nemico => {
                 if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
-                combat=true;
-                let scontro =confronto(combatGiocatore, nemico.Combat);
-                      return scontro;
+                    casella.classList.add('nuvola'); 
+                    combat=true;
+                    
+        {let div = document.createElement('div');      
+        div.classList.add('divNemico');
+        
+        div.innerHTML = nemico.Combat;
+        CombattivitàNemico.appendChild(div);}  
+        
+        {let div = document.createElement('div');      
+        div.classList.add('divNemico');
+        
+        div.innerHTML = nemico.Resist;
+        ResistenzaNemico.appendChild(div);} 
 
-                };
+        {let div = document.createElement('div');      
+        div.classList.add('divNemico');
+        
+        div.innerHTML = nemico.name;
+        NomeNemico.appendChild(div); } 
+    };
             });
            
         }

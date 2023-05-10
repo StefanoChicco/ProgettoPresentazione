@@ -109,6 +109,12 @@ padding: 0%;
       
 
     }
+    .divNemico{
+        height: 35px;
+        width: 30px;  
+        color: black;  
+    }
+
     .parteNemici{
         background-image: url(./media/teste\ mozzate.png);
         background-repeat: no-repeat;
@@ -118,6 +124,7 @@ padding: 0%;
         border-right: solid 5px;
         border-color: black;
     }
+
     
     .giocatore{
     height:35px;
@@ -280,6 +287,13 @@ border-radius: 5px;
 .zombie{
     height:35px;
     background-image: url(/media/zombie.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.nuvola{
+    height:35px;
+    background-image: url(/media/nuvola.png)!important;
     background-size: contain;
     background-repeat: no-repeat;
 }
