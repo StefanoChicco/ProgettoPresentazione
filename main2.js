@@ -1,29 +1,31 @@
 document.querySelectorAll(".caselle").forEach((casella) => {
-    casella.addEventListener('click', () => {
-       let x=casella.dataset.x;
-       let y=casella.dataset.y;
-       console.log(x,y);
-       let orizzontale =mappamentoX(giocatore.X , x);
-        let verticale =mappamentoY(giocatore.Y , y);
-        
-    if(orizzontale<=movimento.value && verticale<=movimento.value && map==false){
-    Mappa.forEach(section => {
-        section.classList.remove('giocatore')
-    });
-        casella.classList.add('giocatore');  
-      giocatore.X= casella.dataset.x;
-      giocatore.Y= casella.daset.y;
-      map=true;
+    casella.addEventListener('click', () => {       
+        nemici.forEach(nemico => {
+            if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
+            combat=true;
+            
+                
+
+            }
+        });
+       
       
-    }
-    else if(map==true){
-    
-        alert('aspetta il prossimo turno');
-    
-    }else if(check==false){
-        alert("aspetta l'inizio del turno");
-    }else{
-        alert('è troppo lontano, scegli un altra via');  
-    }
     });
+    
 });
+
+// al click se le variabili X ed Y del giocatore corrispondono con quelle di 
+// un mostro parte l'evento combattimento. vengono messi a paragone i valori 
+// combattività dei due e dopo il lancio del dado vengono scalati i punti
+// resistenza a seconda del risultato del primo paragone e del numero uscito dal dado
+// seguendo una tabella che compare in mezzo alla mappa assieme al numero dato dalla 
+// differenza del punteggio giocatore con quello del nemico. sotto nella barra 
+// dei nemici vengono visualizzati i valori del nemico e i suoi punti resistenza 
+// rimanenti.
+
+// nemici.forEach(nemico => {
+//     if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
+//     console.log('funziono');
+//     }
+// });
+

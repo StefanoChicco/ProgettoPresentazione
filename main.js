@@ -97,7 +97,7 @@ let N11 = document.querySelector('#N-11'); let N12 = document.querySelector('#N-
 
 // array caselle mappa
 
-    const caselle = [
+    let caselle = [
         {name:'A1', Y :1 , X:1},  {name:'B1', Y :2 , X:1},
         {name:'A2', Y :1 , X:2},  {name:'B2', Y :2 , X:2},
         {name:'A3', Y :1 , X:3},  {name:'B3', Y :2 , X:3},
@@ -181,66 +181,65 @@ let N11 = document.querySelector('#N-11'); let N12 = document.querySelector('#N-
     // valori iniziali giocatore: posizione, resistenza, combattività.
 
     let giocatore={Y:1, X:8};
-    let resistValue= 0;
-    let combatValue= 0;
+    let resistGiocatore= 0;
+    let combatGiocatore= 0;
+    let tiroDado=0;
 
     // valori nemici
+    let nemici =[
+    {name:'Cervo', Y:2 , X:10 , Resist: 15 ,Combat:10},
+    {name:'Cinghiale', Y:6, X:9 , Resist:20 , Combat:18},
+    {name:'Drago',Y:6, X:2,Resist:60,Combat:45},
+    {name:'Ghoul' ,Y:5, X:12 , Resist:22 , Combat:19},
+    {name:'Lupo', Y:11, X:3,Resist:18 , Combat:23},
+    {name:'Lupo Mannnaro', Y:12, X:5,Resist:40, Combat:33},
+    {name:'Minotauro' , Y:7, X:11 , Resist:50 , Combat:38},
+    {name:'Orso' , Y:2, X:5 , Resist:33 , Combat:30},
+    {name:'Pantera' , Y:9, X:8 , Resist:25 , Combat:26},
+    {name:'Ragno Gigante' , Y:5, X:6 , Resist:28 , Combat:26},
+    {name:'Ratto' , Y:2, X:8 , Resist:7 , Combat:8},
+    {name:'Succubus' , Y:10, X:11 , Resist:37 , Combat:30},
+    {name:'Tigre' , Y:3, X:2 , Resist:33 , Combat:35},
+    {name:'Zombie' , Y:8 , X:5 , Resist:15 , Combat:14}];
 
-    let cervo={Y:2, X:10};
-    let cervoResist=15;
-    let cervoCombat=10;
+// Array per paragone dado/combattività
+//  -14 o inferiore
+    let tabella1=[{N:0,G:100},{N:0,G:100},{N:0,G:8},{N:0,G:8},{N:1,G:7},
+                {N:2,G:6},{N:3,G:5},{N:4,G:4},{N:5,G:3},{N:6,G:0}];
+// -11 o inferiore
+    let tabella2=[{N:0,G:100},{N:0,G:8},{N:0,G:7},{N:1,G:7},{N:2,G:6},
+                {N:3,G:6},{N:4,G:5},{N:5,G:4},{N:6,G:3},{N:7,G:0}];
+// -8 o inferiore
+    let tabella3=[{N:0,G:8},{N:0,G:7},{N:1,G:6},{N:2,G:6},{N:3,G:5},
+                {N:4,G:5},{N:5,G:4},{N:6,G:3},{N:7,G:2},{N:8,G:0}];
+// -5 o inferiore
+    let tabella4=[{N:0,G:6},{N:1,G:6},{N:2,G:5},{N:3,G:5},{N:4,G:4},
+                {N:5,G:4},{N:6,G:3},{N:7,G:2},{N:8,G:0},{N:9,G:0}];
+// -2 o inferiore
+    let tabella5=[{N:1,G:6},{N:2,G:5},{N:3,G:5},{N:4,G:4},{N:5,G:4},
+                {N:6,G:3},{N:7,G:2},{N:8,G:1},{N:9,G:0},{N:10,G:0}];
+// 0 o inferiore o superiore
+    let tabella6=[{N:2,G:5},{N:3,G:5},{N:4,G:4},{N:5,G:4},{N:6,G:3},
+                {N:7,G:2},{N:8,G:2},{N:9,G:1},{N:10,G:0},{N:11,G:0}];
+// +2 o superiore
+    let tabella7=[{N:3,G:5},{N:4,G:4},{N:5,G:4},{N:6,G:3},{N:7,G:2},
+                {N:8,G:2},{N:9,G:1},{N:10,G:0},{N:11,G:0},{N:12,G:0}];
+// +5 o superiore
+    let tabella8=[{N:4,G:5},{N:5,G:4},{N:6,G:3},{N:7,G:3},{N:8,G:2},
+                {N:9,G:2},{N:10,G:1},{N:11,G:0},{N:12,G:0},{N:14,G:0}];
+// +7 o superiore
+    let tabella9=[{N:5,G:4},{N:6,G:3},{N:7,G:3},{N:8,G:2},{N:9,G:2},
+                {N:10,G:2},{N:11,G:1},{N:12,G:0},{N:14,G:0},{N:16,G:0}];
+// +10 o superiore
+    let tabella10=[{N:6,G:4},{N:7,G:3},{N:8,G:3},{N:9,G:2},{N:10,G:2},
+                {N:11,G:1},{N:12,G:0},{N:14,G:0},{N:16,G:0},{N:18,G:0}];
+// +12 o superiore
+    let tabella11=[{N:7,G:4},{N:8,G:3},{N:9,G:2},{N:10,G:2},{N:11,G:2},
+                {N:12,G:1},{N:14,G:0},{N:16,G:0},{N:18,G:0},{N:20,G:0}];
+// solo fino a +7/+8 nelle tabella del destino
+      
 
-    let cinghiale={Y:6, X:9};
-    let cinghialeResist=20;
-    let cinghialeCombat=18;
 
-    let drago={Y:6, X:2};
-    let dragoResist=60;
-    let dragoCombat=45;
-
-    let ghoul={Y:5, X:12};
-    let ghoulResist=22;
-    let ghoulCombat=19;
-
-    let lupo={Y:11, X:3};
-    let lupoResist=18;
-    let lupoCombat=23;
-
-    let lupoMannnaro={Y:12, X:5};
-    let lupoMannnaroResist=40;
-    let lupoMannnaroCombat=33;
-
-    let minotauro={Y:7, X:11};
-    let minotauroResist=50;
-    let minotauroCombat=38;
-
-    let orso={Y:2, X:5};
-    let orsoResist=33;
-    let orsoCombat=30;
-
-    let pantera={Y:9, X:8};
-    let panteraResist=25;
-    let panteraCombat=26;
-
-    let ragnoGigante={Y:5, X:6};
-    let ragnoGiganteResist=28;
-    let ragnoGiganteCombat=26;
-
-    let ratto={Y:2, X:8};
-    let rattoResist=7;
-    let rattoCombat=8;
-
-    let succubus={Y:10, X:11};
-    let succubusResist=37;
-    let succubusCombat=30;
-
-    let tigre={Y:3, X:2};
-    let tigreResist=33;
-    let tigreCombat=35;
-
-    let zombie={Y:8, X:5};
-    let zombieResist=15;
-    let zombieCombat=14;
 
 // valori booleani statistiche, movimento, combattimento.
 
@@ -252,7 +251,7 @@ let item= false;
 let abilities= false;
 let map= false;
 let combat=  false;
-let notCombat= true;
+
 
 // valori boleani abilità
 
@@ -262,11 +261,61 @@ let raggioPsico= false;
 let scudoPsico= false;
 
 // funzione dado
+let confronto =(valore1 , valore2)=>{
+
+    let sottrazione=valore1-valore2;
+    return sottrazione;
+}
 
 dado.addEventListener('click', ()=>{
+    if(combat==true){
 
-    tiro = Math.ceil(Math.random() * 10); 
+    tiro = Math.floor(Math.random() * 10); 
    alert(tiro);
+   tiroDado=tiro;
+    nemici.forEach(nemico => {
+        if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
+            let scontro = confronto(combatGiocatore , nemico.Combat);
+    
+                if(scontro < -13) {
+                console.log(tabella1[tiroDado]);   
+
+                }else if(scontro>-14 && scontro< -10){
+                console.log (tabella2[tiroDado]);    
+
+                }else if(scontro>-11 && scontro< -7){
+                console.log (tabella3[tiroDado]);    
+
+                }else if(scontro>-8 && scontro< -4){                
+                console.log (tabella4[tiroDado]);                    
+                
+                }else if(scontro>-5 && scontro< -1){
+                console.log (tabella5[tiroDado]);                    
+                
+                }else if(scontro>-2 && scontro< 2){                
+                console.log (tabella6[tiroDado]);                    
+                
+                }else if(scontro> 1 && scontro< 5){              
+                console.log (tabella7[tiroDado]);                    
+              
+                }else if(scontro > 4 && scontro< 7){                   
+                console.log (tabella8[tiroDado]);                    
+              
+                }else if(scontro > 6 && scontro< 10){                   
+                console.log (tabella9[tiroDado]);                    
+              
+                }else if(scontro > 9 && scontro< 13){   
+                console.log (tabella10[tiroDado]);
+
+                }else{
+                console.log (tabella11[tiroDado]);
+              
+                }
+        }    
+    });   
+    }else{
+        alert('Non sei in combattimento');
+    }
     
 });
 
@@ -275,20 +324,20 @@ dado.addEventListener('click', ()=>{
 resistenza.addEventListener('click', ()=>{
 
     if(check==false){
-    tiro = Math.ceil(Math.random() * 10);
-    valoreResistenza = tiro + 20; 
-   alert(valoreResistenza);
-   resistValue=valoreResistenza;
+        tiro = Math.ceil(Math.random() * 10);
+        valoreResistenza = tiro + 20; 
+        resistGiocatore=valoreResistenza;
+   
 
-   let div = document.createElement('div');      
+        let div = document.createElement('div');      
             div.classList.add('divCombattivita');
             
             div.innerHTML = valoreResistenza;
-    divResistenza.appendChild(div);
+        divResistenza.appendChild(div);
 
-    check=true;
-}else if(check==true){
-    alert('Mò TE LO TIENI!');
+        check=true;
+    }else if(check==true){
+        alert('Mò TE LO TIENI!');
 
 }
 });
@@ -302,9 +351,9 @@ if(check==false){
     
     }else if(jack==false){
         tiro = Math.ceil(Math.random() * 10);
-    valoreCombattività = tiro + 15;   
-   alert(valoreCombattività);
-   combatValue = valoreCombattività;
+        valoreCombattività = tiro + 15;   
+        combatGiocatore = valoreCombattività;
+   
    
    let div = document.createElement('div');      
    div.classList.add('divCombattivita');
@@ -325,9 +374,11 @@ difesa.addEventListener('click', ()=>{
     if(shield!=false){
         alert('aspetta il prossimo turno');
 
-        }else if(jack==false){
-            alert('prima combattività')
-    }else{
+    }else if(check==false){
+        alert('prima tira per la resistenza e la combattività')
+        
+        }
+    else{
         
         shield=true; 
     };
@@ -340,9 +391,11 @@ movimento.addEventListener('click', ()=>{
     if(move!=false){
         alert('aspetta il prossimo turno');
 
-        }else if(shield==false){
-            alert('prima difesa');
-    }else{
+        }
+        else if(check==false){
+            alert('prima tira per la resistenza e la combattività')
+            
+            }else{
         move=true; 
     };
    
@@ -353,9 +406,9 @@ movimento.addEventListener('click', ()=>{
 rifornimenti.addEventListener('click', ()=>{
         if(item!=false){
             alert('aspetta il prossimo turno');
-        } else if(move==false){
-            alert('prima movimento')
-        }else {
+        } else if(check==false){
+            alert('prima tira per la resistenza e la combattività')           
+            }else {
             item=true; 
         };
        
@@ -379,35 +432,22 @@ abilità.addEventListener('click', ()=>{
 // funzione Turno
 
 turno.addEventListener('click', ()=>{
-    if(combat==false && notCombat==true){
+    if(combat==false){
      
      move=false;
      shield=false;
      item=false;
      abilities=false;
      map=false;
-     combat= false;
-     notCombat=true;
-
-    }else if(combat==true && notCombat==false){
-
-     move=false;
-     shield=false;
-     item=false;
-     abilities=false;
-     map=false;
-     combat= false;
-     notCombat=true;
-
     }else{
 
-        alert('finisci questo turno');
+        alert('finisci questo scontro');
 
     };
    
 }); 
 
-// funzioni mappamento
+// funzioni mappamento per movimento giocatore
 
 let mappamentoX = (valore1 , valore2)=>{
 
@@ -435,12 +475,57 @@ let mappamentoY = (valore1 , valore2)=>{
 };
 
 
+
+
+
 // al click sulla casella deve prendere l'informazione movimento e
 //  paragonarla con il risultato delle funzioni mappamentoX ed Y della 
 // casella con la casella giocatore e quella cliccata. se rispetta la
 // condizione (risultato<=movimento) per entrambe le funzioni e il valore map è false, 
 // allora toglie la classlist giocatore alla vecchia casella e la inserisce nella casella
 // cliccata, altrimenti darà un alert che dice "è troppo lontano, scegli un altra via"
+
+// funzione movimento giocatore.
+
+document.querySelectorAll(".caselle").forEach((casella) => {
+    casella.addEventListener('click', () => {
+       let x=casella.dataset.x;
+       let y=casella.dataset.y;
+       
+       let orizzontale =mappamentoX(giocatore.X , x);
+       let verticale =mappamentoY(giocatore.Y , y);
+       
+       if(orizzontale<=movimento.value && verticale<=movimento.value && map==false && combat==false){
+           Mappa.forEach(section => {
+               section.classList.remove('giocatore')
+            });
+            casella.classList.add('giocatore');  
+            giocatore.X= casella.dataset.x;
+            giocatore.Y= casella.dataset.y;
+            map=true;
+            // parte nuova legata ai nemici
+            nemici.forEach(nemico => {
+                if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
+                combat=true;
+                let scontro =confronto(combatGiocatore, nemico.Combat);
+                      return scontro;
+
+                };
+            });
+           
+        }
+        else if(map==true){
+    
+        alert('aspetta il prossimo turno');
+
+        }else if(check==false){
+            alert("prima resistenza e combattività");
+        }else{
+            alert('è troppo lontano, scegli un altra via');  
+        }
+});
+});
+
 
 // funzioni caselle mappa da A1(381) ad A12(667)
 //  funzioni caselle mappa da B1(697) ad B12(983)
@@ -454,38 +539,6 @@ let mappamentoY = (valore1 , valore2)=>{
 // funzioni caselle mappa da L1(3225) ad L12(3511)
 // funzioni caselle mappa da M1(3538) ad M12(3827)
 // funzioni caselle mappa da N1(3857) ad N12(4143)
-
-document.querySelectorAll(".caselle").forEach((casella) => {
-    casella.addEventListener('click', () => {
-       let x=casella.dataset.x;
-       let y=casella.dataset.y;
-       console.log(x,y);
-       let orizzontale =mappamentoX(giocatore.X , x);
-        let verticale =mappamentoY(giocatore.Y , y);
-        
-    if(orizzontale<=movimento.value && verticale<=movimento.value && map==false){
-    Mappa.forEach(section => {
-        section.classList.remove('giocatore')
-    });
-        casella.classList.add('giocatore');  
-      giocatore.X= casella.dataset.x;
-      giocatore.Y= casella.daset.y;
-      map=true;
-      
-    }
-    else if(map==true){
-    
-        alert('aspetta il prossimo turno');
-    
-    }else if(check==false){
-        alert("aspetta l'inizio del turno");
-    }else{
-        alert('è troppo lontano, scegli un altra via');  
-    }
-    });
-});
-
-
 // A1.addEventListener('click' , ()=>{
 //     X = 1;
 //     Y = 1;
