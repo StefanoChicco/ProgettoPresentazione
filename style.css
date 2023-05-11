@@ -110,8 +110,8 @@ padding: 0%;
 
     }
     .divNemico{
-        height: 35px;
-        width: 30px;  
+        height: 100%;
+        width: 100%;  
         color: black;  
     }
 
@@ -203,13 +203,6 @@ border-radius: 5px;
 .drago{
     height:35px;
     background-image: url(/media/drago.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.ghoul{
-    height:35px;
-    background-image: url(/media/ghoul.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
