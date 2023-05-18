@@ -45,7 +45,11 @@
         <div class="row"> 
             <div class="col-12 col-md-3 text-center justify-content-center main">
                 <h2 class="titoli">Caratteristiche</h2>
-                <h3 id="Stamina" class="sottotitoli">Punti Stamina 5/5</h3>
+                <h3 id="Stamina" class="sottotitoli">Punti Stamina</h3>
+                <div class="d-flex">
+                  <p class="text-terzo ms-5" id="puntiStamina">5</p>
+                  <p class="text-terzo">/5</p>
+                </div>
                 <div id="divResistenza" class="input-group input-group-sm mb-3">
                   <span class="input-group-text" id="inputGroup-sizing-sm">Resistenza</span>
                   <button id="resistenza" type="button" class="btn bg-primario text-red btn-lg">Tira</button>                  
@@ -56,9 +60,9 @@
                 </div>
                   <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Difesa</label>
-                    <select id="difesa" class="form-select" id="inputGroupSelect01">
+                    <select id="difesa" class="form-select" name="difesa">
                      
-                      <option value="0">0</option>
+                      <option selected value="0">0</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -68,9 +72,9 @@
                   </div>
                   <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Movimento</label>
-                    <select id="movimento" class="form-select" id="inputGroupSelect01">
+                    <select id="movimento" class="form-select" name="movimento">
                       
-                      <option value="0">0</option>
+                      <option selected value="0">0</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -80,9 +84,9 @@
                   </div>
                   <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Rifornimenti</label>
-                    <select id="rifornimenti" class="form-select" id="inputGroupSelect01">
+                    <select id="rifornimenti" class="form-select" name="rifornimenti">
                       
-                      <option value="0">0</option>
+                      <option selected value="0">0</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>      
@@ -90,7 +94,7 @@
                   </div>
                   <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Abilità</label>
-                    <select id="abilità" class="form-select" id="inputGroupSelect01">
+                    <select id="abilità" class="form-select" name="abilità">
                       <option value="0">Arte della guerra</option>
                       <option value="1">Medicina</option>
                       <option value="2">Raggio psichico</option>
@@ -323,7 +327,7 @@
 
 
     <script src="./main.js"></script> 
-    <!-- <script src="./main2.js"></script>  -->
+    <script src="./main2.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>    
 </body>
 </html>

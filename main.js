@@ -1,4 +1,6 @@
 let dado = document.querySelector('#Dado');
+let stamina=document.querySelector('#Stamina');
+let puntiStamina=document.querySelector('#puntiStamina');
 let combattività= document.querySelector('#combattività');
 let resistenza= document.querySelector('#resistenza');
 let divCombattivita= document.querySelector('#divCombattivita');
@@ -8,20 +10,22 @@ let difesa= document.querySelector('#difesa');
 let rifornimenti= document.querySelector('#rifornimenti');
 let abilità= document.querySelector('#abilità');
 let turno= document.querySelector('#turno');
-let Mappa= document.querySelectorAll('section');
 let CombattivitàNemico= document.querySelector('#CombattivitàNemico');
 let ResistenzaNemico= document.querySelector('#ResistenzaNemico');
 let NomeNemico= document.querySelector('#NomeNemico');
 let ResistN=document.querySelector('#ResistN');
 let cardNemici=document.querySelector('#cardNemici');
+let Mappa= document.querySelectorAll('section');
+let Element = document.getElementsByTagName("option");
+
+
 
     
-    // valori iniziali giocatore: posizione, resistenza, combattività.
+    // valori iniziali giocatore: posizione, resistenza, combattività, count nemici sconfitti.
 
     let giocatore={Y:1, X:8};
     let resistGiocatore= 0;
     let combatGiocatore= 0;
-    let tiroDado=0;
     let nemiciMorti=0;
 
     // valori nemici
@@ -127,17 +131,18 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemico.Y=100;
                             nemiciMorti=nemiciMorti +1 ;
-                            
-                            Mappa.forEach(section => {
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola')
+                            cardNemici.innerHTML ='';
+                                Mappa.forEach(section => {
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola')
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
                             });
                         }
 
@@ -154,18 +159,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';   
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemico.Y=100;
                             nemiciMorti=nemiciMorti +1 ;                            
-                            
-                            Mappa.forEach(section => {
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola')
-                            }); 
+                            cardNemici.innerHTML ='';
+                                Mappa.forEach(section => {
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola')
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                                }); 
                         }
                     
                 }else if(scontro>-11 && scontro< -7){
@@ -181,18 +187,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemico.Y=100;
                             nemiciMorti=nemiciMorti +1 ;
-                            
-                            Mappa.forEach(section => {
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola')
-                            });
+                            cardNemici.innerHTML ='';
+                                Mappa.forEach(section => {
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola')
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                                });
                             
                               
                          
@@ -211,18 +218,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';                    
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemi;
                             nemiciMorti=nemiciMorti +1 ;
-                            
-                            Mappa.forEach(section => {
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola')
-                            });
+                            cardNemici.innerHTML ='';
+                                Mappa.forEach(section => {
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola')
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                                });
                             
                               
                          
@@ -241,18 +249,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';                    
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                           nemico.X=100;
                             nemi;
                             nemiciMorti=nemiciMorti +1 ;
-                            
-                            Mappa.forEach(section => {
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola')
-                            });                         
+                            cardNemici.innerHTML ='';
+                                Mappa.forEach(section => {
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola')
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                                });                         
                         }
                     
                 }else if(scontro>-2 && scontro< 2){                
@@ -268,18 +277,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';                    
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemico.Y=100;
                             nemiciMorti=nemiciMorti +1 ;
-                           
-                            Mappa.forEach(section => {
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola')
-                            });                 
+                           cardNemici.innerHTML ='';
+                                Mappa.forEach(section => {
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola')
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                                });                 
                         }
                     
                 }else if(scontro> 1 && scontro< 5){              
@@ -295,18 +305,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';                    
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemico.Y=100;
                             nemiciMorti=nemiciMorti +1 ;
-                           
-                            Mappa.forEach(section => {
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola')
-                            });                       
+                           cardNemici.innerHTML ='';
+                                Mappa.forEach(section => {
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola')
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                                });                       
                         }
                     
                 }else if(scontro > 4 && scontro< 7){                   
@@ -322,18 +333,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';                    
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemico.Y=100;
                             nemiciMorti=nemiciMorti +1 ;
-                            
-                            MappaforEach(section => {
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola')
-                            });
+                            cardNemici.innerHTML ='';
+                                Mappa.forEach(section => {
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola')
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                                });
                             
                         }
                     
@@ -350,18 +362,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';                   
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemico.Y=100;
                             nemiciMorti=nemiciMorti +1 ;
-                            
-                           Mappa.forEach(section => {
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola')
-                            });
+                            cardNemici.innerHTML ='';
+                                Mappa.forEach(section => {
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola')
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                                });
                             
                               
                     
@@ -380,17 +393,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemico.Y=100;
                             nemiciMorti=nemiciMorti +1 ;
+                            cardNemici.innerHTML ='';
 
                             Mappa.forEach(section => {  
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola');
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola');
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
                             });
                             
                               
@@ -410,18 +425,19 @@ dado.addEventListener('click', ()=>{
                     p.innerText = vitaN + '/';  
                     
                         if(vitaG<1){
-                            alert('Sei Morto, la partita è finita!');
-                            document.location.href = '/index.html';
+                           
+                            confirm('Sei morto, Game over!');
                         }else if(vitaN<1){
                             combat=false;
                             nemico.X=100;
                             nemico.Y=100;
                             nemiciMorti=nemiciMorti +1; 
-                           
-                            Mappa.forEach(section => {  
-                            section.classList.remove(nemico.classe);
-                            section.classList.remove('nuvola');
-                            });
+                            cardNemici.innerHTML ='';                           
+                                Mappa.forEach(section => {  
+                                section.classList.remove(nemico.classe);
+                                section.classList.remove('nuvola');
+                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                                });
                             
                            
                         
@@ -435,6 +451,14 @@ dado.addEventListener('click', ()=>{
     }
     
 });
+
+// funzione Stamina e punti Stamina
+
+let counterStamina=(valore1, valore2, valore3, valore4)=>{
+    let sottrazione= valore1 - valore2 - valore3 - valore4;      
+           return sottrazione;
+}
+
 
 // funzioni resistenza
 
@@ -481,34 +505,65 @@ if(check==false){
 
 //    funzioni difesa
 
-difesa.addEventListener('click', ()=>{
-  
-    if(shield!=false){
-        alert('aspetta il prossimo turno');
+// provare a fare una classlist per ogni valore e agire sulla classlist per i valori booleani per evitare l'alert al
+// primo click.
 
-    }else if(check==false){
-        alert('prima tira per la resistenza e la combattività')
+document.addEventListener('click', ()=>{
+    let PuntiStamina= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
+    
+    if( PuntiStamina>=0){
         
-        }
-    else{
+        puntiStamina.innerText =''; 
         
-        shield=true; 
-    };
-   
-   });
+        let p = document.createElement('p');
+        
+        p.classList.add('text-terzo');
+        
+        p.innerText = `${PuntiStamina}`;
+        
+        puntiStamina.appendChild(p);
+        
+        }else{
+        
+            alert('non hai abbastanza punti');}
+            
+           
+});
+
+difesa.addEventListener('click', ()=>{
+
+    let puntiDifesa= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
+  
+    if(shield==false && puntiDifesa>=0 && check==true && jack==true){
+
+            shield=true; 
+            
+        
+        }else if(check==false && jack==false){
+            alert('prima tira per la resistenza e la combattività');
+        
+        }else{
+        
+            alert('aspetta il prossimo turno');}
+           
+});
 
 //  funzioni movimento
 
 movimento.addEventListener('click', ()=>{
-    if(move!=false){
-        alert('aspetta il prossimo turno');
 
-        }
-        else if(check==false){
-            alert('prima tira per la resistenza e la combattività')
-            
-            }else{
+    let puntiMovimento= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
+
+    if(move==false && puntiMovimento>=0 && check==true && jack==true){
+  
         move=true; 
+        
+    }
+    else if(check==false && jack==false){
+        alert('prima tira per la resistenza e la combattività')
+        
+    }else{
+        alert('aspetta il prossimo turno');
     };
    
    });
@@ -516,12 +571,19 @@ movimento.addEventListener('click', ()=>{
     // funzione rifornimenti
 
 rifornimenti.addEventListener('click', ()=>{
-        if(item!=false){
-            alert('aspetta il prossimo turno');
-        } else if(check==false){
-            alert('prima tira per la resistenza e la combattività')           
-            }else {
+
+    let puntiRifornimenti= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
+
+        if(item==false && puntiRifornimenti>=0 && check==true && jack==true){
+
+
             item=true; 
+        } else if(check==false && jack==false){
+            alert('prima tira per la resistenza e la combattività')  
+        }else if(puntiRifornimenti<0){ 
+            alert('non hai abbastanza punti Stamina')            
+        }else {
+            alert('aspetta il prossimo turno');
         };
        
     }); 
@@ -529,14 +591,14 @@ rifornimenti.addEventListener('click', ()=>{
     // funzione abilità
 
 abilità.addEventListener('click', ()=>{
-    if(abilities!=false){
-        alert("aspetta l'inizio del turno");
-        
-    } else if(jack==false){
-        alert("prima devi iniziare il primo turno")
-    }else {
+    if(abilities==false){
         abilities=true;
         
+    } else if(check==false && jack==false){
+        alert("prima devi iniziare il primo turno")
+    }else {
+        
+        alert("aspetta l'inizio del turno");
     };
    
 });
@@ -545,7 +607,7 @@ abilità.addEventListener('click', ()=>{
 
 turno.addEventListener('click', ()=>{
     if(combat==false){
-     
+     cardNemici.innerHTML ='';
      move=false;
      shield=false;
      item=false;
@@ -587,20 +649,9 @@ let mappamentoY = (valore1 , valore2)=>{
 
 };
 
+// funzione movimento giocatore e inizio scontro.
 
-
-
-
-// al click sulla casella deve prendere l'informazione movimento e
-//  paragonarla con il risultato delle funzioni mappamentoX ed Y della 
-// casella con la casella giocatore e quella cliccata. se rispetta la
-// condizione (risultato<=movimento) per entrambe le funzioni e il valore map è false, 
-// allora toglie la classlist giocatore alla vecchia casella e la inserisce nella casella
-// cliccata, altrimenti darà un alert che dice "è troppo lontano, scegli un altra via"
-
-// funzione movimento giocatore.
-
-document.querySelectorAll(".caselle").forEach((casella) => {
+Mappa.forEach((casella) => {
     casella.addEventListener('click', () => {
        let x=casella.dataset.x;
        let y=casella.dataset.y;
@@ -630,7 +681,7 @@ document.querySelectorAll(".caselle").forEach((casella) => {
         
                     div.innerHTML = `
                     
-                    <div id="NomeNemico" class="statisticheNemici text-terzo">Nome:${nemico.name}
+                    <div id="NomeNemico" class="statisticheNemici text-terzo">Nome: ${nemico.name}
                     </div>
                     <div id="ResistenzaNemico" class="statisticheNemici text-terzo">Resistenza:<p id="ResistN"></p>${nemico.Resist}
                     </div>
@@ -638,22 +689,6 @@ document.querySelectorAll(".caselle").forEach((casella) => {
                     `;
         
                     cardNemici.appendChild(div);
-              
-                    
-                    // {let div = document.createElement('div');      
-                    // div.classList.add('divNemico');
-                    // div.innerText = nemico.Combat;
-                    // CombattivitàNemico.appendChild(div);}  
-                    
-                    // {let div = document.createElement('div');      
-                    // div.classList.add('divNemico');       
-                    // div.innerText = nemico.Resist;
-                    // ResistenzaNemico.appendChild(div);} 
-
-                    // {let div = document.createElement('div');      
-                    // div.classList.add('divNemico');       
-                    // div.innerText = nemico.name;
-                    // NomeNemico.appendChild(div); } 
 
                 };
             });
@@ -669,14 +704,3 @@ document.querySelectorAll(".caselle").forEach((casella) => {
 });
 
 
-
-// per il combattimento fa partire una funzione (dopo lo spostamento del pg) che per ogni nemico deve
-// paragonare i parametri X e y del giocatore con quelli nemici e se combaciano con uno far partire il 
-// combattimento e cancellare la classlist nemico dalla mappa.
-
-// la funzione combattimento mette a paragone le caratteristiche combattività del giocatore
-// con quelle del nemico(sottrae la forza del giocatore a quella del nemico) e si tira il dado
-// a seconda del tiro uscito ci sarà una tabella che informa il numero dei danni ricevuti dal 
-// giocatore e dal nemico e andranno scalati dal loro livello di combattività. una volta che la 
-// resistenza del nemico va a 0 il giocatore viene premiato con un oggetto casuale(tranne per i boss
-// che danno un oggetto specifico)e il giocatore può far avanzare il turno.
