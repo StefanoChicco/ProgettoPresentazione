@@ -11,7 +11,7 @@
         }
       }
 
-    //   al click deve prendere il valore dell'opzione selezionata 
+ 
 
 
 
@@ -82,4 +82,6 @@ window.confirm = function(message) {
          document.location.href = '/index.html';
     }
   )};
-  
+
+
+      

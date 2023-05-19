@@ -107,6 +107,8 @@ let confronto =(valore1 , valore2)=>{
     return sottrazione;
 }
 
+
+
 dado.addEventListener('click', ()=>{
     if(combat==true){
 
@@ -117,332 +119,80 @@ dado.addEventListener('click', ()=>{
         if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
 
             let scontro = confronto(combatGiocatore , nemico.Combat);
-    
+            let combattimento=(valore)=>{
+
+                let vitaN = nemico.Resist - valore[tiroDado].N;  
+                let vitaG = resistGiocatore - valore[tiroDado].G; 
+                nemico.Resist=vitaN;
+                resistGiocatore=vitaG;
+                
+                let div = document.getElementById('resistenza');                          
+                div.innerHTML = vitaG +'/' + vitaMassima;
+                
+                let p = document.getElementById('ResistN');      
+                p.innerText = vitaN + '/';
+                
+                    if(vitaG<1){
+                       
+                        confirm('Sei morto, Game over!');
+                    }else if(vitaN<1){
+                        combat=false;
+                        nemico.X=100;
+                        nemico.Y=100;
+                        nemiciMorti=nemiciMorti +1 ;
+                        cardNemici.innerHTML ='';
+                            Mappa.forEach(section => {
+                            section.classList.remove(nemico.classe);
+                            section.classList.remove('nuvola')
+                            cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
+                        });
+                    }
+            }
+            
                 if(scontro < -13) {
-                    let vitaN = nemico.Resist - tabella1[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella1[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemico.Y=100;
-                            nemiciMorti=nemiciMorti +1 ;
-                            cardNemici.innerHTML ='';
-                                Mappa.forEach(section => {
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola')
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                            });
-                        }
+                    let battaglia1 = combattimento(tabella1);
+                    return battaglia1;
 
                 }else if(scontro>-14 && scontro< -10){
-                    let vitaN = nemico.Resist - tabella2[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella2[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';   
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemico.Y=100;
-                            nemiciMorti=nemiciMorti +1 ;                            
-                            cardNemici.innerHTML ='';
-                                Mappa.forEach(section => {
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola')
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                                }); 
-                        }
+                    let battaglia2 = combattimento(tabella2);
+                    return battaglia2;
                     
                 }else if(scontro>-11 && scontro< -7){
-                    let vitaN = nemico.Resist - tabella3[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella3[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemico.Y=100;
-                            nemiciMorti=nemiciMorti +1 ;
-                            cardNemici.innerHTML ='';
-                                Mappa.forEach(section => {
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola')
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                                });
-                            
-                              
-                         
-                        }
+                    let battaglia3 = combattimento(tabella3);
+                    return battaglia3;
                     
                 }else if(scontro>-8 && scontro< -4){                
-                    let vitaN = nemico.Resist - tabella4[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella4[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';                    
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemi;
-                            nemiciMorti=nemiciMorti +1 ;
-                            cardNemici.innerHTML ='';
-                                Mappa.forEach(section => {
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola')
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                                });
-                            
-                              
-                         
-                        }
+                    let battaglia4 = combattimento(tabella4);
+                    return battaglia4;
                     
                 }else if(scontro>-5 && scontro< -1){
-                    let vitaN = nemico.Resist - tabella5[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella5[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';                    
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                          nemico.X=100;
-                            nemi;
-                            nemiciMorti=nemiciMorti +1 ;
-                            cardNemici.innerHTML ='';
-                                Mappa.forEach(section => {
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola')
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                                });                         
-                        }
+                    let battaglia5 = combattimento(tabella5);
+                    return battaglia5;
                     
                 }else if(scontro>-2 && scontro< 2){                
-                    let vitaN = nemico.Resist - tabella6[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella6[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';                    
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemico.Y=100;
-                            nemiciMorti=nemiciMorti +1 ;
-                           cardNemici.innerHTML ='';
-                                Mappa.forEach(section => {
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola')
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                                });                 
-                        }
+                    let battaglia6 = combattimento(tabella6);
+                    return battaglia6;
                     
                 }else if(scontro> 1 && scontro< 5){              
-                    let vitaN = nemico.Resist - tabella7[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella7[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';                    
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemico.Y=100;
-                            nemiciMorti=nemiciMorti +1 ;
-                           cardNemici.innerHTML ='';
-                                Mappa.forEach(section => {
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola')
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                                });                       
-                        }
-                    
+                    let battaglia7 = combattimento(tabella7);
+                    return battaglia7;
+
                 }else if(scontro > 4 && scontro< 7){                   
-                    let vitaN = nemico.Resist - tabella8[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella8[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';                    
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemico.Y=100;
-                            nemiciMorti=nemiciMorti +1 ;
-                            cardNemici.innerHTML ='';
-                                Mappa.forEach(section => {
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola')
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                                });
-                            
-                        }
+                    let battaglia8 = combattimento(tabella8);
+                    return battaglia8;
                     
                 }else if(scontro > 6 && scontro< 10){                   
-                    let vitaN = nemico.Resist - tabella9[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella9[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';                   
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemico.Y=100;
-                            nemiciMorti=nemiciMorti +1 ;
-                            cardNemici.innerHTML ='';
-                                Mappa.forEach(section => {
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola')
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                                });
-                            
-                              
-                    
-                        }
+                    let battaglia9 = combattimento(tabella9);
+                    return battaglia9;
                     
                 }else if(scontro > 9 && scontro< 13){   
-                    let vitaN = nemico.Resist - tabella10[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella10[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemico.Y=100;
-                            nemiciMorti=nemiciMorti +1 ;
-                            cardNemici.innerHTML ='';
-
-                            Mappa.forEach(section => {  
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola');
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                            });
-                            
-                              
-                     
-                        }
+                    let battaglia10 = combattimento(tabella10);
+                    return battaglia10;
 
                 }else if(scontro>12){
-                    let vitaN = nemico.Resist - tabella11[tiroDado].N;  
-                    let vitaG = resistGiocatore - tabella11[tiroDado].G; 
-                    nemico.Resist=vitaN;
-                    resistGiocatore=vitaG;
-                    
-                    let div = document.getElementById('resistenza');                          
-                    div.innerHTML = vitaG +'/' + vitaMassima;
-                    
-                    let p = document.getElementById('ResistN');      
-                    p.innerText = vitaN + '/';  
-                    
-                        if(vitaG<1){
-                           
-                            confirm('Sei morto, Game over!');
-                        }else if(vitaN<1){
-                            combat=false;
-                            nemico.X=100;
-                            nemico.Y=100;
-                            nemiciMorti=nemiciMorti +1; 
-                            cardNemici.innerHTML ='';                           
-                                Mappa.forEach(section => {  
-                                section.classList.remove(nemico.classe);
-                                section.classList.remove('nuvola');
-                                cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
-                                });
-                            
-                           
-                        
-                            
-                        }
+                    let battaglia11 = combattimento(tabella11);
+                    return battaglia11;
+
                 }
             }    
         });   
