@@ -1,18 +1,8 @@
-    let Stamina = button => {
-        let element = document.getElementsByTagName("option");
-        let hidden = element.getAttribute("hidden");
-        
-        if (hidden) {
-           element.removeAttribute("hidden");
-           button.innerText = "Hide option";
-        } else {
-           element.setAttribute("hidden", "hidden");
-           button.innerText = "Show option";
-        }
-      }
 
- 
+// al click sul pulsante mostra solo gli elementi option con valore inferiore o uguale 
+// al valore dei punti stamina totali
 
+// 
 
 
     let carte =[
@@ -62,8 +52,8 @@ window.alert = function (message) {
 
 //CONFIRM
 window.confirm = function(message) {
-    var a = document.createElement('div');
-    var y = document.createElement('button');  
+    let a = document.createElement('div');
+    let y = document.createElement('button');  
     //regole di stile CSS
     a.style.cssText = "width:50vw; height:300px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgSkull.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
     //buttons style
@@ -83,5 +73,11 @@ window.confirm = function(message) {
     }
   )};
 
+// il problema sono gli alert modificati che non intervengono più sul
+// bloccare il codice se non vengono rispettati i parametri.
+// cercare soluzione o chiedere. 
 
-      
+// durante il combattimento sul pulsante lancia dado, ai danni subiti dal giocatore 
+// dev'essere sottratto il valore difesa e poi essere applicati al giocatore. se il giocatore
+// non subisce danni o la sottrazzione porta ad un numero negativo allora i danni 
+// del giocatore sono 0.

@@ -16,7 +16,7 @@ let NomeNemico= document.querySelector('#NomeNemico');
 let ResistN=document.querySelector('#ResistN');
 let cardNemici=document.querySelector('#cardNemici');
 let Mappa= document.querySelectorAll('section');
-let Element = document.getElementsByTagName("option");
+let Statistiche= document.querySelectorAll('option');
 
 
 
@@ -77,15 +77,15 @@ let Element = document.getElementsByTagName("option");
 // +10 o superiore
     let tabella10=[{N:6,G:4},{N:7,G:3},{N:8,G:3},{N:9,G:2},{N:10,G:2},
                 {N:11,G:1},{N:12,G:0},{N:14,G:0},{N:16,G:0},{N:18,G:0}];
-// +12 o superiore
+// +13 o superiore
     let tabella11=[{N:7,G:4},{N:8,G:3},{N:9,G:2},{N:10,G:2},{N:11,G:2},
                 {N:12,G:1},{N:14,G:0},{N:16,G:0},{N:18,G:0},{N:20,G:0}];
 
       
 // valori booleani statistiche, movimento, combattimento.
 
-let check= false;
-let jack= false;
+let resist= false;
+let comb= false;
 let move= false;
 let shield= false;
 let item= false;
@@ -111,18 +111,22 @@ let confronto =(valore1 , valore2)=>{
 
 dado.addEventListener('click', ()=>{
     if(combat==true){
-
+  
         tiro = Math.floor(Math.random() * 10); 
         alert(tiro);
         tiroDado=tiro;
         nemici.forEach(nemico => {
         if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
-
+  
             let scontro = confronto(combatGiocatore , nemico.Combat);
-            let combattimento=(valore)=>{
-
+            let combattimento=(valore, valore2)=>{
+            let Difesa= valore[tiroDado].G - valore2;
+            if(Difesa<0){
+              Difesa=0;
+            } 
+            console.log(Difesa);
                 let vitaN = nemico.Resist - valore[tiroDado].N;  
-                let vitaG = resistGiocatore - valore[tiroDado].G; 
+                let vitaG = resistGiocatore - Difesa; 
                 nemico.Resist=vitaN;
                 resistGiocatore=vitaG;
                 
@@ -150,49 +154,49 @@ dado.addEventListener('click', ()=>{
             }
             
                 if(scontro < -13) {
-                    let battaglia1 = combattimento(tabella1);
+                    let battaglia1 = combattimento(tabella1,difesa.value);
                     return battaglia1;
-
+  
                 }else if(scontro>-14 && scontro< -10){
-                    let battaglia2 = combattimento(tabella2);
+                    let battaglia2 = combattimento(tabella2,difesa.value);
                     return battaglia2;
                     
                 }else if(scontro>-11 && scontro< -7){
-                    let battaglia3 = combattimento(tabella3);
+                    let battaglia3 = combattimento(tabella3,difesa.value);
                     return battaglia3;
                     
                 }else if(scontro>-8 && scontro< -4){                
-                    let battaglia4 = combattimento(tabella4);
+                    let battaglia4 = combattimento(tabella4,difesa.value);
                     return battaglia4;
                     
                 }else if(scontro>-5 && scontro< -1){
-                    let battaglia5 = combattimento(tabella5);
+                    let battaglia5 = combattimento(tabella5,difesa.value);
                     return battaglia5;
                     
                 }else if(scontro>-2 && scontro< 2){                
-                    let battaglia6 = combattimento(tabella6);
+                    let battaglia6 = combattimento(tabella6,difesa.value);
                     return battaglia6;
                     
                 }else if(scontro> 1 && scontro< 5){              
-                    let battaglia7 = combattimento(tabella7);
+                    let battaglia7 = combattimento(tabella7,difesa.value);
                     return battaglia7;
-
+  
                 }else if(scontro > 4 && scontro< 7){                   
-                    let battaglia8 = combattimento(tabella8);
+                    let battaglia8 = combattimento(tabella8,difesa.value);
                     return battaglia8;
                     
                 }else if(scontro > 6 && scontro< 10){                   
-                    let battaglia9 = combattimento(tabella9);
+                    let battaglia9 = combattimento(tabella9,difesa.value);
                     return battaglia9;
                     
                 }else if(scontro > 9 && scontro< 13){   
-                    let battaglia10 = combattimento(tabella10);
+                    let battaglia10 = combattimento(tabella10, difesa.value);
                     return battaglia10;
-
+  
                 }else if(scontro>12){
-                    let battaglia11 = combattimento(tabella11);
+                    let battaglia11 = combattimento(tabella11, difesa.value);
                     return battaglia11;
-
+  
                 }
             }    
         });   
@@ -200,10 +204,7 @@ dado.addEventListener('click', ()=>{
         alert('Non sei in combattimento');
     }
     
-});
-
-// funzione Stamina e punti Stamina
-
+  });
 let counterStamina=(valore1, valore2, valore3, valore4)=>{
     let sottrazione= valore1 - valore2 - valore3 - valore4;      
            return sottrazione;
@@ -214,7 +215,7 @@ let counterStamina=(valore1, valore2, valore3, valore4)=>{
 
 resistenza.addEventListener('click', ()=>{
 
-    if(check==false){
+    if(resist==false){
         tiro = Math.ceil(Math.random() * 10);
         valoreResistenza = tiro + 20; 
         resistGiocatore=valoreResistenza;
@@ -223,8 +224,8 @@ resistenza.addEventListener('click', ()=>{
             button.innerHTML = valoreResistenza;
         
 
-        check=true;
-    }else if(check==true){
+        resist=true;
+    }else if(resist==true){
         alert('Mò TE LO TIENI!');
     
 }
@@ -234,10 +235,10 @@ resistenza.addEventListener('click', ()=>{
 
 combattività.addEventListener('click', ()=>{
   
-if(check==false){
+if(resist==false){
     alert('prima tira per la resistenza')
     
-    }else if(jack==false){
+    }else if(comb==false){
         tiro = Math.ceil(Math.random() * 10);
         valoreCombattività = tiro + 15;   
         combatGiocatore = valoreCombattività;
@@ -246,7 +247,7 @@ if(check==false){
    let button = document.getElementById('combattività');      
    button.innerHTML = valoreCombattività;
    
-   jack=true;
+   comb=true;
     }else{
     alert('Mò TE LO TIENI!');
 
@@ -258,11 +259,68 @@ if(check==false){
 // provare a fare una classlist per ogni valore e agire sulla classlist per i valori booleani per evitare l'alert al
 // primo click.
 
+difesa.addEventListener('click', ()=>{
+
+     if(resist==false || comb==false){
+            alert('prima tira per la resistenza e la combattività');
+        
+        }else if(combat==true){
+            alert('Sei in combattimento, non puoi cambiare le statistiche')
+        };          
+           
+});
+
+//  funzioni movimento
+
+movimento.addEventListener('click', ()=>{
+   
+     if(resist==false || comb==false){
+        alert('prima tira per la resistenza e la combattività')
+        
+    }else if(combat==true){
+        alert('Sei in combattimento, non puoi cambiare le statistiche')
+    };
+   
+   });
+
+    // funzione rifornimenti
+
+rifornimenti.addEventListener('click', ()=>{
+
+        if(resist==false || comb==false){
+            alert('prima tira per la resistenza e la combattività')         
+        }else if(combat==true){
+            alert('Sei in combattimento, non puoi cambiare le statistiche')
+        };
+       
+    }); 
+
+    // funzione abilità
+
+abilità.addEventListener('click', ()=>{
+
+    if(resist==false || comb==false){
+        alert("prima tira per la resistenza e la combattività")
+
+    }else if(combat==true){
+        alert('Sei in combattimento, non puoi cambiare le abilità')
+    };
+   
+});
+
 document.addEventListener('click', ()=>{
     let PuntiStamina= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
-    
     if( PuntiStamina>=0){
-        
+        Statistiche.forEach(option => {
+            let number=parseInt(option.value);
+            if(number>PuntiStamina){
+                option.setAttribute("hidden", "hidden");          
+            }else{
+                option.removeAttribute("hidden");
+                
+            }
+        });
+    
         puntiStamina.innerText =''; 
         
         let p = document.createElement('p');
@@ -272,86 +330,13 @@ document.addEventListener('click', ()=>{
         p.innerText = `${PuntiStamina}`;
         
         puntiStamina.appendChild(p);
-        
-        }else{
-        
-            alert('non hai abbastanza punti');}
-            
-           
-});
-
-difesa.addEventListener('click', ()=>{
-
-    let puntiDifesa= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
-  
-    if(shield==false && puntiDifesa>=0 && check==true && jack==true){
-
-            shield=true; 
-            
-        
-        }else if(check==false && jack==false){
-            alert('prima tira per la resistenza e la combattività');
-        
-        }else{
-        
-            alert('aspetta il prossimo turno');}
-           
-});
-
-//  funzioni movimento
-
-movimento.addEventListener('click', ()=>{
-
-    let puntiMovimento= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
-
-    if(move==false && puntiMovimento>=0 && check==true && jack==true){
-  
-        move=true; 
-        
-    }
-    else if(check==false && jack==false){
-        alert('prima tira per la resistenza e la combattività')
-        
     }else{
-        alert('aspetta il prossimo turno');
-    };
-   
-   });
-
-    // funzione rifornimenti
-
-rifornimenti.addEventListener('click', ()=>{
-
-    let puntiRifornimenti= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
-
-        if(item==false && puntiRifornimenti>=0 && check==true && jack==true){
-
-
-            item=true; 
-        } else if(check==false && jack==false){
-            alert('prima tira per la resistenza e la combattività')  
-        }else if(puntiRifornimenti<0){ 
-            alert('non hai abbastanza punti Stamina')            
-        }else {
-            alert('aspetta il prossimo turno');
-        };
-       
-    }); 
-
-    // funzione abilità
-
-abilità.addEventListener('click', ()=>{
-    if(abilities==false){
-        abilities=true;
+        alert('Non hai abbastanza punti');
+    }    
         
-    } else if(check==false && jack==false){
-        alert("prima devi iniziare il primo turno")
-    }else {
-        
-        alert("aspetta l'inizio del turno");
-    };
-   
+           
 });
+
 
 // funzione Turno
 
@@ -364,6 +349,7 @@ turno.addEventListener('click', ()=>{
      abilities=false;
      map=false;
 
+    
     }else{
 
         alert('finisci questo scontro');
@@ -445,7 +431,7 @@ Mappa.forEach((casella) => {
            
         }else if(map==true){
             alert('aspetta il prossimo turno');                 
-        }else if(check==false){
+        }else if(resist==false){
             alert("prima resistenza e combattività");
         }else{
             alert('è troppo lontano, scegli un altra via');  
