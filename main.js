@@ -86,10 +86,6 @@ let Statistiche= document.querySelectorAll('option');
 
 let resist= false;
 let comb= false;
-let move= false;
-let shield= false;
-let item= false;
-let abilities= false;
 let map= false;
 let combat= false;
 
@@ -124,7 +120,6 @@ dado.addEventListener('click', ()=>{
             if(Difesa<0){
               Difesa=0;
             } 
-            console.log(Difesa);
                 let vitaN = nemico.Resist - valore[tiroDado].N;  
                 let vitaG = resistGiocatore - Difesa; 
                 nemico.Resist=vitaN;
@@ -387,56 +382,56 @@ let mappamentoY = (valore1 , valore2)=>{
 
 // funzione movimento giocatore e inizio scontro.
 
-Mappa.forEach((casella) => {
-    casella.addEventListener('click', () => {
-       let x=casella.dataset.x;
-       let y=casella.dataset.y;
+// Mappa.forEach((casella) => {
+//     casella.addEventListener('click', () => {
+//        let x=casella.dataset.x;
+//        let y=casella.dataset.y;
        
-       let orizzontale =mappamentoX(giocatore.X , x);
-       let verticale =mappamentoY(giocatore.Y , y);
+//        let orizzontale =mappamentoX(giocatore.X , x);
+//        let verticale =mappamentoY(giocatore.Y , y);
        
-       if(orizzontale<=movimento.value && verticale<=movimento.value && map==false && combat==false){
-           Mappa.forEach(section => {
-               section.classList.remove('giocatore')
-            });
-            casella.classList.add('giocatore');  
-            giocatore.X= casella.dataset.x;
-            giocatore.Y= casella.dataset.y;
-            map=true;
+//        if(orizzontale<=movimento.value && verticale<=movimento.value && map==false && combat==false){
+//            Mappa.forEach(section => {
+//                section.classList.remove('giocatore')
+//             });
+//             casella.classList.add('giocatore');  
+//             giocatore.X= casella.dataset.x;
+//             giocatore.Y= casella.dataset.y;
+//             map=true;
             
-            nemici.forEach(nemico => {
-                if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
-                    casella.classList.add('nuvola'); 
-                    combat=true; 
+//             nemici.forEach(nemico => {
+//                 if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
+//                     casella.classList.add('nuvola'); 
+//                     combat=true; 
 
-                    cardNemici.innerHTML =''; 
+//                     cardNemici.innerHTML =''; 
                     
-                    let div = document.createElement('div');
+//                     let div = document.createElement('div');
 
-                    div.classList.add('col-12', 'col-md-6', 'my-2');
+//                     div.classList.add('col-12', 'col-md-6', 'my-2');
         
-                    div.innerHTML = `
+//                     div.innerHTML = `
                     
-                    <div id="NomeNemico" class="statisticheNemici text-terzo">Nome: ${nemico.name}
-                    </div>
-                    <div id="ResistenzaNemico" class="statisticheNemici text-terzo">Resistenza:<p id="ResistN"></p>${nemico.Resist}
-                    </div>
-                    <div id="CombattivitàNemico" class="statisticheNemici text-terzo">Combattività:${nemico.Combat}</div> 
-                    `;
+//                     <div id="NomeNemico" class="statisticheNemici text-terzo">Nome: ${nemico.name}
+//                     </div>
+//                     <div id="ResistenzaNemico" class="statisticheNemici text-terzo">Resistenza:<p id="ResistN"></p>${nemico.Resist}
+//                     </div>
+//                     <div id="CombattivitàNemico" class="statisticheNemici text-terzo">Combattività:${nemico.Combat}</div> 
+//                     `;
         
-                    cardNemici.appendChild(div);
+//                     cardNemici.appendChild(div);
 
-                };
-            });
+//                 };
+//             });
            
-        }else if(map==true){
-            alert('aspetta il prossimo turno');                 
-        }else if(resist==false){
-            alert("prima resistenza e combattività");
-        }else{
-            alert('è troppo lontano, scegli un altra via');  
-        }
-    });
-});
+//         }else if(map==true){
+//             alert('aspetta il prossimo turno');                 
+//         }else if(resist==false){
+//             alert("prima resistenza e combattività");
+//         }else{
+//             alert('è troppo lontano, scegli un altra via');  
+//         }
+//     });
+// });
 
 
