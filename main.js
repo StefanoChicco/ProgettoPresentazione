@@ -15,9 +15,9 @@ let ResistenzaNemico= document.querySelector('#ResistenzaNemico');
 let NomeNemico= document.querySelector('#NomeNemico');
 let ResistN=document.querySelector('#ResistN');
 let cardNemici=document.querySelector('#cardNemici');
+let ManoGiocatore=document.querySelector('#manoGiocatore');
 let Mappa= document.querySelectorAll('section');
 let Statistiche= document.querySelectorAll('option');
-
 
 
     

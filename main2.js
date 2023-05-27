@@ -1,34 +1,41 @@
 // 
 
 
-    const oggetti =[
-        {value:'0', classe:'pozVigorilla' , name:'Pozione di Vigorilla', Resist: 4 ,Combat:0 ,Dif:0},
-        {value:'1', classe:'pasto' , name:'Pasto', Resist:3 , Combat:0 ,Dif:0},
-        {value:'2', classe:'bende' , name:'Bende', Resist: 2 , Combat:0 ,Dif:0},
-        {value:'3', classe:'impiastro' , name:'Impiastro', Resist: 4 , Combat:0 ,Dif:0},
-        {value:'4', classe:'pozSalute' , name:'Pozione della Salute', Resist: 6 , Combat:0 ,Dif:0}];
+    let oggetti =[
+        {value:0, classe:'pozVigorilla' , name:'Pozione di Vigorilla', Resist: 4 ,Combat:0 ,Dif:0},
+        {value:1, classe:'pasto' , name:'Pasto', Resist:3 , Combat:0 ,Dif:0},
+        {value:2, classe:'bende' , name:'Bende', Resist: 2 , Combat:0 ,Dif:0},
+        {value:3, classe:'impiastro' , name:'Impiastro', Resist: 4 , Combat:0 ,Dif:0},
+        {value:4, classe:'pozSalute' , name:'Pozione della Salute', Resist: 6 , Combat:0 ,Dif:0}
+      ];
     
-    const armi=[
-        {value:'0', classe:'lancia' , name:'Lancia', Resist: 4 , Combat:2 ,Dif:1},
-        {value:'1', classe:'spada' , name:'Spada', Resist:4,Combat:3 ,Dif:0},
-        {value:'2', classe:'scudo' , name:'Scudo', Resist:4 , Combat:1 ,Dif:2},
-        {value:'3', classe:'ascia' , name:'Ascia', Resist:2 , Combat:4 ,Dif:0},
-        {value:'4', classe:'mazza' , name:'Mazza', Resist:0, Combat:5 ,Dif:0},
-        {value:'5', classe:'arco' , name:'Arco', Resist:0 , Combat:2 ,Dif:2},
-        {value:'6', classe:'pugnale' , name:'Pugnale', Resist:2 , Combat:2 ,Dif:0}];
+    let armi=[
+        {value:0, classe:'lancia' , name:'Lancia', Resist: 4 , Combat:2 ,Dif:1},
+        {value:1, classe:'spada' , name:'Spada', Resist:4,Combat:3 ,Dif:0},
+        {value:2, classe:'scudo' , name:'Scudo', Resist:4 , Combat:1 ,Dif:2},
+        {value:3, classe:'ascia' , name:'Ascia', Resist:2 , Combat:4 ,Dif:0},
+        {value:4, classe:'mazza' , name:'Mazza', Resist:0, Combat:5 ,Dif:0},
+        {value:5, classe:'arco' , name:'Arco', Resist:0 , Combat:2 ,Dif:2},
+        {value:6, classe:'pugnale' , name:'Pugnale', Resist:2 , Combat:2 ,Dif:0}
+      ];
       
-    const equipaggiamenti=[      
-        {value:'0', classe:'amuleto' , name:'Amuleto', Resist:2 , Combat:3 ,Dif:1},
-        {value:'1', classe:'anello' , name:'Anello', Resist:4 , Combat:2 ,Dif:0},
-        {value:'2', classe:'cintura' , name:'Cintura', Resist:2 , Combat:3 ,Dif:1},
-        {value:'3', classe:'elmo' , name:'Elmo', Resist:4 , Combat:0 ,Dif:1},
-        {value:'4', classe:'armatura' , name:'Armatura', Resist:6 , Combat:0 , Dif:2},
-        {value:'5', classe:'mantello' , name:'Mantello', Resist:2 , Combat:0 , Dif:0 }];
+    let equipaggiamenti=[      
+        {value:0, classe:'amuleto' , name:'Amuleto', Resist:2 , Combat:3 ,Dif:1},
+        {value:1, classe:'anello' , name:'Anello', Resist:4 , Combat:2 ,Dif:0},
+        {value:2, classe:'cintura' , name:'Cintura', Resist:2 , Combat:3 ,Dif:1},
+        {value:3, classe:'elmo' , name:'Elmo', Resist:4 , Combat:0 ,Dif:1},
+        {value:4, classe:'armatura' , name:'Armatura', Resist:6 , Combat:0 , Dif:2},
+        {value:5, classe:'mantello' , name:'Mantello', Resist:2 , Combat:0 , Dif:0 }
+      ];
 
-    const armiRare = [
-        {value:'0', classe:'spadaSole' , name:'Spada del Sole', Resist:10 , Combat:6 ,Dif:0},
-        {value:'1', classe:'scudoShianthi' , name:'Scudo degli Shianthi', Resist:10 , Combat:4 ,Dif:3},];
+    let armiRare = [
+        {value:0, classe:'spadaSole' , name:'Spada del Sole', Resist:10 , Combat:6 ,Dif:0},
+        {value:1, classe:'scudoShianthi' , name:'Scudo degli Shianthi', Resist:10 , Combat:4 ,Dif:3}
+      ];
 
+    let carte =[
+
+    ];
 
         // Alert Modificati
 let vis = 10000;
@@ -80,15 +87,17 @@ window.confirm = function(message) {
 // rifornimenti dev'essere implementato nella funzione mappa.
 // al click su di una casella viene lanciato un dado da 1 a 10; se rientra nel rage di numeri allora si tira un altro dado da 100 e 
 // se il numero uscito è compreso tra 0 e 3 allora è un oggetto,tra 4 e 6 è un arma, tra 7 e 9 è un equipaggiamento.
-// Se la categ è == ad arma allora viene lanciato un ulteriore dado da 7 e verrano presi
-// i valori dell'oggetto con il value uguale al tiro di dado, se la categ è == ad oggetto  allora viene lanciato un ulteriore dado da 5
-// se la categ è == ad equipaggiamento allora viene lanciato un ulteriore dado da 6.
-// Inoltre se il numero del primo dado lanciato è divisibile per 10 ottieni 2 oggetti invece di uno.
+// Se la categ è arma allora viene lanciato un ulteriore dado da 7 e verrano presi
+// i valori dell'oggetto con il value uguale al tiro di dado, se la categ è oggetto allora viene lanciato un ulteriore dado da 5
+// se la categ è equipaggiamento allora viene lanciato un ulteriore dado da 6.
+// a seconda del numero uscito deve prendere le caratteristiche dell'oggetto nell'array e pusharle in un altro array vuoto
+// aumentando di uno il countdown carteMassime(se supera 4 deve far partire un confirm che ti avvisa che hai troppe carte
+// e ti chiede quale vuoi tenere tra quelle che già hai e la nuova).
 // I mostri sconfitti rilasciano sempre 1 oggetto(questo è da implementare nella 
 // funzione dado). 
 
 // Per visualizzare le carte creiamo una funzione sul bottone gioca una carta
-// che crea un div con all'interno 4 slot e un bottone per toglierlo. 
+// che crea un div con all'interno le carte in possesso del giocatore e un bottone per toglierlo. 
 // forse necessario local storage?
 
 // al click sul div prende le caratteristiche dell'oggetto e svuota il div e aggiunge i valori 
@@ -97,9 +106,7 @@ window.confirm = function(message) {
 // nella carta messa negli slot dev'essere presente un bottone per rimuoverla dallo slot che svuoti il div
 // e cambi il booleano per permettere di inserire un altra carta al suo interno.
 // 
-
-
-
+let totaleCarte = 0;
 
 Mappa.forEach((casella) => {
   casella.addEventListener('click', () => {
@@ -128,14 +135,25 @@ Mappa.forEach((casella) => {
             console.log(categ,'dado categorie')
             if(categ<4){
               let dadoOggetti=  Math.floor(Math.random() * 5);
-              console.log(dadoOggetti, 'oggetto');
+              oggetti.forEach(oggetto => {
+                if(dadoOggetti == oggetto.value){
+                  console.log(oggetto);
+                }
+              });
             }else if(categ>3 && categ<7){
-              let dadoArmi=  Math.floor(Math.random() * 5);
-                console.log(dadoArmi,'arma');
+              let dadoArmi=  Math.floor(Math.random() * 7);
+              armi.forEach(arma => {
+                if(dadoArmi == arma.value){
+                  console.log(arma);
+            }})
             }else{
-              let dadoEquip=  Math.floor(Math.random() * 5);
-              console.log(dadoEquip,'equipaggiamento');
-            };
+              let dadoEquip=  Math.floor(Math.random() * 6);
+              equipaggiamenti.forEach(equip => {
+                if(dadoEquip == equip.value){
+                  console.log(equip);
+            }})
+              
+            }
           }else{
             console.log('tiro sfortunato')
            };
@@ -175,3 +193,15 @@ Mappa.forEach((casella) => {
       }
   });
 });
+
+
+// let inserireCarte = (valore)=>{
+
+
+
+// };
+
+// ManoGiocatore.addEventListener('click', () => {
+ 
+
+// });
