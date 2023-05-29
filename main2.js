@@ -41,19 +41,19 @@
 let vis = 10000;
 
 //ALERT
-window.alert = function (message) {
+// window.alert = function (message) {
 //Creazione dell'elemento
-  var a = document.createElement('div');
+  // var a = document.createElement('div');
   //regole di stile CSS
-  a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow:-1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000; z-index:"+ vis+ ";";a.innerHTML = "<b></b><br>"+message;document.body.appendChild(a);
+  // a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow:-1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000; z-index:"+ vis+ ";";a.innerHTML = "<b></b><br>"+message;document.body.appendChild(a);
   
-  vis--;
+  // vis--;
   
   //Rimozione dell'elemento al click
-  a.addEventListener("click", function() {
-    a.remove();
-  })
-};
+//   a.addEventListener("click", function() {
+//     a.remove();
+//   })
+// };
 
 //CONFIRM
 window.confirm = function(message) {
@@ -185,11 +185,11 @@ Mappa.forEach((casella) => {
           });
          
       }else if(map==true){
-          alert('aspetta il prossimo turno');                 
+          showAlert('aspetta il prossimo turno');                 
       }else if(resist==false){
-          alert("prima resistenza e combattività");
+          showAlert("prima resistenza e combattività");
       }else{
-          alert('è troppo lontano, scegli un altra via');  
+          showAlert('è troppo lontano, scegli un altra via');  
       }
   });
 });

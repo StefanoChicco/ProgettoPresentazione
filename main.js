@@ -1,3 +1,37 @@
+function showAlert(message) {  
+
+let alertDiv = document.getElementById("custom-alert");
+let alertMessage = document.getElementById("alert-message");
+let alertClose = document.getElementById("alert-close");
+// let alertDad = document.getElelementById("alertDad");
+let inputtino = document.getElementById("inputtino");
+let inputtino2 = document.getElementById("inputtino2");
+let inputtino3 = document.getElementById("inputtino3");
+let inputtino4 = document.getElementById("inputtino4");
+
+
+
+
+alertMessage.textContent = message;
+// alertDad.style.display ="block";
+alertDiv.style.display = "block";
+inputtino.classList.add("inputt");
+inputtino2.classList.add("inputt");
+inputtino3.classList.add("inputt");
+inputtino4.classList.add("inputt");
+
+
+alertClose.addEventListener("click", function () {
+// alertDad.style.display="none";
+alertDiv.style.display = "none";
+inputtino.classList.remove("inputt");
+inputtino2.classList.remove("inputt");
+inputtino3.classList.remove("inputt");
+inputtino4.classList.remove("inputt");
+
+});
+}
+
 let dado = document.querySelector('#Dado');
 let stamina=document.querySelector('#Stamina');
 let puntiStamina=document.querySelector('#puntiStamina');
@@ -109,7 +143,7 @@ dado.addEventListener('click', ()=>{
     if(combat==true){
   
         tiro = Math.floor(Math.random() * 10); 
-        alert(tiro);
+        showAlert(tiro);
         tiroDado=tiro;
         nemici.forEach(nemico => {
         if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
@@ -196,7 +230,7 @@ dado.addEventListener('click', ()=>{
             }    
         });   
     }else{
-        alert('Non sei in combattimento');
+        showAlert('Non sei in combattimento');
     }
     
   });
@@ -221,7 +255,7 @@ resistenza.addEventListener('click', ()=>{
 
         resist=true;
     }else if(resist==true){
-        alert('Mò TE LO TIENI!');
+        showAlert('Mò TE LO TIENI!');
     
 }
 });
@@ -231,7 +265,7 @@ resistenza.addEventListener('click', ()=>{
 combattività.addEventListener('click', ()=>{
   
 if(resist==false){
-    alert('prima tira per la resistenza')
+    showAlert('prima tira per la resistenza')
     
     }else if(comb==false){
         tiro = Math.ceil(Math.random() * 10);
@@ -244,7 +278,7 @@ if(resist==false){
    
    comb=true;
     }else{
-    alert('Mò TE LO TIENI!');
+    showAlert('Mò TE LO TIENI!');
 
 }
 });
@@ -257,10 +291,10 @@ if(resist==false){
 difesa.addEventListener('click', ()=>{
 
      if(resist==false || comb==false){
-            alert('prima tira per la resistenza e la combattività');
+            showAlert('prima tira per la resistenza e la combattività');
         
         }else if(combat==true){
-            alert('Sei in combattimento, non puoi cambiare le statistiche')
+            showAlert('Sei in combattimento, non puoi cambiare le statistiche')
         };          
            
 });
@@ -270,10 +304,10 @@ difesa.addEventListener('click', ()=>{
 movimento.addEventListener('click', ()=>{
    
      if(resist==false || comb==false){
-        alert('prima tira per la resistenza e la combattività')
+        showAlert('prima tira per la resistenza e la combattività')
         
     }else if(combat==true){
-        alert('Sei in combattimento, non puoi cambiare le statistiche')
+        showAlert('Sei in combattimento, non puoi cambiare le statistiche')
     };
    
    });
@@ -283,9 +317,9 @@ movimento.addEventListener('click', ()=>{
 rifornimenti.addEventListener('click', ()=>{
 
         if(resist==false || comb==false){
-            alert('prima tira per la resistenza e la combattività')         
+            showAlert('prima tira per la resistenza e la combattività')         
         }else if(combat==true){
-            alert('Sei in combattimento, non puoi cambiare le statistiche')
+            showAlert('Sei in combattimento, non puoi cambiare le statistiche')
         };
        
     }); 
@@ -295,10 +329,10 @@ rifornimenti.addEventListener('click', ()=>{
 abilità.addEventListener('click', ()=>{
 
     if(resist==false || comb==false){
-        alert("prima tira per la resistenza e la combattività")
+        showAlert("prima tira per la resistenza e la combattività")
 
     }else if(combat==true){
-        alert('Sei in combattimento, non puoi cambiare le abilità')
+        showAlert('Sei in combattimento, non puoi cambiare le abilità')
     };
    
 });
@@ -326,7 +360,7 @@ document.addEventListener('click', ()=>{
         
         puntiStamina.appendChild(p);
     }else{
-        alert('Non hai abbastanza punti');
+        showAlert('Non hai abbastanza punti');
     }    
         
            
@@ -347,7 +381,7 @@ turno.addEventListener('click', ()=>{
     
     }else{
 
-        alert('finisci questo scontro');
+        showAlert('finisci questo scontro');
 
     };
    
