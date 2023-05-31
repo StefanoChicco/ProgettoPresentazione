@@ -1,37 +1,3 @@
-function showAlert(message) {  
-
-let alertDiv = document.getElementById("custom-alert");
-let alertMessage = document.getElementById("alert-message");
-let alertClose = document.getElementById("alert-close");
-// let alertDad = document.getElelementById("alertDad");
-let inputtino = document.getElementById("inputtino");
-let inputtino2 = document.getElementById("inputtino2");
-let inputtino3 = document.getElementById("inputtino3");
-let inputtino4 = document.getElementById("inputtino4");
-
-
-
-
-alertMessage.textContent = message;
-// alertDad.style.display ="block";
-alertDiv.style.display = "block";
-inputtino.classList.add("inputt");
-inputtino2.classList.add("inputt");
-inputtino3.classList.add("inputt");
-inputtino4.classList.add("inputt");
-
-
-alertClose.addEventListener("click", function () {
-// alertDad.style.display="none";
-alertDiv.style.display = "none";
-inputtino.classList.remove("inputt");
-inputtino2.classList.remove("inputt");
-inputtino3.classList.remove("inputt");
-inputtino4.classList.remove("inputt");
-
-});
-}
-
 let dado = document.querySelector('#Dado');
 let stamina=document.querySelector('#Stamina');
 let puntiStamina=document.querySelector('#puntiStamina');
@@ -52,7 +18,10 @@ let cardNemici=document.querySelector('#cardNemici');
 let ManoGiocatore=document.querySelector('#manoGiocatore');
 let Mappa= document.querySelectorAll('section');
 let Statistiche= document.querySelectorAll('option');
-
+let divmovimento=document.createElement('div');
+let divdifesa=document.createElement('div');
+let divrifornimenti=document.createElement('div');
+let divabilità=document.createElement('div');
 
     
     // valori iniziali giocatore: posizione, resistenza, combattività, count nemici sconfitti.
@@ -143,7 +112,7 @@ dado.addEventListener('click', ()=>{
     if(combat==true){
   
         tiro = Math.floor(Math.random() * 10); 
-        showAlert(tiro);
+        alert(tiro);
         tiroDado=tiro;
         nemici.forEach(nemico => {
         if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
@@ -230,7 +199,7 @@ dado.addEventListener('click', ()=>{
             }    
         });   
     }else{
-        showAlert('Non sei in combattimento');
+        alert('Non sei in combattimento');
     }
     
   });
@@ -255,7 +224,7 @@ resistenza.addEventListener('click', ()=>{
 
         resist=true;
     }else if(resist==true){
-        showAlert('Mò TE LO TIENI!');
+        alert('Mò TE LO TIENI!');
     
 }
 });
@@ -265,7 +234,7 @@ resistenza.addEventListener('click', ()=>{
 combattività.addEventListener('click', ()=>{
   
 if(resist==false){
-    showAlert('prima tira per la resistenza')
+    alert('prima tira per la resistenza')
     
     }else if(comb==false){
         tiro = Math.ceil(Math.random() * 10);
@@ -278,7 +247,7 @@ if(resist==false){
    
    comb=true;
     }else{
-    showAlert('Mò TE LO TIENI!');
+    alert('Mò TE LO TIENI!');
 
 }
 });
@@ -291,10 +260,10 @@ if(resist==false){
 difesa.addEventListener('click', ()=>{
 
      if(resist==false || comb==false){
-            showAlert('prima tira per la resistenza e la combattività');
+            alert('prima tira per la resistenza e la combattività');
         
         }else if(combat==true){
-            showAlert('Sei in combattimento, non puoi cambiare le statistiche')
+            alert('Sei in combattimento, non puoi cambiare le statistiche')
         };          
            
 });
@@ -304,10 +273,10 @@ difesa.addEventListener('click', ()=>{
 movimento.addEventListener('click', ()=>{
    
      if(resist==false || comb==false){
-        showAlert('prima tira per la resistenza e la combattività')
+        alert('prima tira per la resistenza e la combattività')
         
     }else if(combat==true){
-        showAlert('Sei in combattimento, non puoi cambiare le statistiche')
+        alert('Sei in combattimento, non puoi cambiare le statistiche')
     };
    
    });
@@ -317,9 +286,9 @@ movimento.addEventListener('click', ()=>{
 rifornimenti.addEventListener('click', ()=>{
 
         if(resist==false || comb==false){
-            showAlert('prima tira per la resistenza e la combattività')         
+            alert('prima tira per la resistenza e la combattività')         
         }else if(combat==true){
-            showAlert('Sei in combattimento, non puoi cambiare le statistiche')
+            alert('Sei in combattimento, non puoi cambiare le statistiche')
         };
        
     }); 
@@ -329,10 +298,10 @@ rifornimenti.addEventListener('click', ()=>{
 abilità.addEventListener('click', ()=>{
 
     if(resist==false || comb==false){
-        showAlert("prima tira per la resistenza e la combattività")
+        alert("prima tira per la resistenza e la combattività")
 
     }else if(combat==true){
-        showAlert('Sei in combattimento, non puoi cambiare le abilità')
+        alert('Sei in combattimento, non puoi cambiare le abilità')
     };
    
 });
@@ -359,9 +328,7 @@ document.addEventListener('click', ()=>{
         p.innerText = `${PuntiStamina}`;
         
         puntiStamina.appendChild(p);
-    }else{
-        showAlert('Non hai abbastanza punti');
-    }    
+    }  
         
            
 });
@@ -377,11 +344,14 @@ turno.addEventListener('click', ()=>{
      item=false;
      abilities=false;
      map=false;
-
-    
+   
+     divdifesa.parentNode.replaceChild(difesa, divdifesa);
+     divmovimento.parentNode.replaceChild(movimento, divmovimento);
+     divrifornimenti.parentNode.replaceChild(rifornimenti, divrifornimenti);
+     divabilità.parentNode.replaceChild(abilità, divabilità);
     }else{
 
-        showAlert('finisci questo scontro');
+        alert('finisci questo scontro');
 
     };
    

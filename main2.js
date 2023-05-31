@@ -1,83 +1,110 @@
 // 
 
 
-    let oggetti =[
-        {value:0, classe:'pozVigorilla' , name:'Pozione di Vigorilla', Resist: 4 ,Combat:0 ,Dif:0},
-        {value:1, classe:'pasto' , name:'Pasto', Resist:3 , Combat:0 ,Dif:0},
-        {value:2, classe:'bende' , name:'Bende', Resist: 2 , Combat:0 ,Dif:0},
-        {value:3, classe:'impiastro' , name:'Impiastro', Resist: 4 , Combat:0 ,Dif:0},
-        {value:4, classe:'pozSalute' , name:'Pozione della Salute', Resist: 6 , Combat:0 ,Dif:0}
-      ];
-    
-    let armi=[
-        {value:0, classe:'lancia' , name:'Lancia', Resist: 4 , Combat:2 ,Dif:1},
-        {value:1, classe:'spada' , name:'Spada', Resist:4,Combat:3 ,Dif:0},
-        {value:2, classe:'scudo' , name:'Scudo', Resist:4 , Combat:1 ,Dif:2},
-        {value:3, classe:'ascia' , name:'Ascia', Resist:2 , Combat:4 ,Dif:0},
-        {value:4, classe:'mazza' , name:'Mazza', Resist:0, Combat:5 ,Dif:0},
-        {value:5, classe:'arco' , name:'Arco', Resist:0 , Combat:2 ,Dif:2},
-        {value:6, classe:'pugnale' , name:'Pugnale', Resist:2 , Combat:2 ,Dif:0}
-      ];
-      
-    let equipaggiamenti=[      
-        {value:0, classe:'amuleto' , name:'Amuleto', Resist:2 , Combat:3 ,Dif:1},
-        {value:1, classe:'anello' , name:'Anello', Resist:4 , Combat:2 ,Dif:0},
-        {value:2, classe:'cintura' , name:'Cintura', Resist:2 , Combat:3 ,Dif:1},
-        {value:3, classe:'elmo' , name:'Elmo', Resist:4 , Combat:0 ,Dif:1},
-        {value:4, classe:'armatura' , name:'Armatura', Resist:6 , Combat:0 , Dif:2},
-        {value:5, classe:'mantello' , name:'Mantello', Resist:2 , Combat:0 , Dif:0 }
-      ];
+let oggetti =[
+  {value:0, classe:'pozVigorilla' , name:'Pozione di Vigorilla', Resist: 4 ,Combat:0 ,Dif:0},
+  {value:1, classe:'pasto' , name:'Pasto', Resist:3 , Combat:0 ,Dif:0},
+  {value:2, classe:'bende' , name:'Bende', Resist: 2 , Combat:0 ,Dif:0},
+  {value:3, classe:'impiastro' , name:'Impiastro', Resist: 4 , Combat:0 ,Dif:0},
+  {value:4, classe:'pozSalute' , name:'Pozione della Salute', Resist: 6 , Combat:0 ,Dif:0}
+];
 
-    let armiRare = [
-        {value:0, classe:'spadaSole' , name:'Spada del Sole', Resist:10 , Combat:6 ,Dif:0},
-        {value:1, classe:'scudoShianthi' , name:'Scudo degli Shianthi', Resist:10 , Combat:4 ,Dif:3}
-      ];
+let armi=[
+  {value:0, classe:'lancia' , name:'Lancia', Resist: 4 , Combat:2 ,Dif:1},
+  {value:1, classe:'spada' , name:'Spada', Resist:4,Combat:3 ,Dif:0},
+  {value:2, classe:'scudo' , name:'Scudo', Resist:4 , Combat:1 ,Dif:2},
+  {value:3, classe:'ascia' , name:'Ascia', Resist:2 , Combat:4 ,Dif:0},
+  {value:4, classe:'mazza' , name:'Mazza', Resist:0, Combat:5 ,Dif:0},
+  {value:5, classe:'arco' , name:'Arco', Resist:0 , Combat:2 ,Dif:2},
+  {value:6, classe:'pugnale' , name:'Pugnale', Resist:2 , Combat:2 ,Dif:0}
+];
 
-    let carte =[
+let equipaggiamenti=[      
+  {value:0, classe:'amuleto' , name:'Amuleto', Resist:2 , Combat:3 ,Dif:1},
+  {value:1, classe:'anello' , name:'Anello', Resist:4 , Combat:2 ,Dif:0},
+  {value:2, classe:'cintura' , name:'Cintura', Resist:2 , Combat:3 ,Dif:1},
+  {value:3, classe:'elmo' , name:'Elmo', Resist:4 , Combat:0 ,Dif:1},
+  {value:4, classe:'armatura' , name:'Armatura', Resist:6 , Combat:0 , Dif:2},
+  {value:5, classe:'mantello' , name:'Mantello', Resist:2 , Combat:0 , Dif:0 }
+];
 
-    ];
+let armiRare = [
+  {value:0, classe:'spadaSole' , name:'Spada del Sole', Resist:10 , Combat:6 ,Dif:0},
+  {value:1, classe:'scudoShianthi' , name:'Scudo degli Shianthi', Resist:10 , Combat:4 ,Dif:3}
+];
 
-        // Alert Modificati
+let carte =[
+
+];
+
+  // Alert Modificati
 let vis = 10000;
 
 //ALERT
-// window.alert = function (message) {
+window.alert = function (message) {
 //Creazione dell'elemento
-  // var a = document.createElement('div');
-  //regole di stile CSS
-  // a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow:-1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000; z-index:"+ vis+ ";";a.innerHTML = "<b></b><br>"+message;document.body.appendChild(a);
-  
-  // vis--;
-  
-  //Rimozione dell'elemento al click
-//   a.addEventListener("click", function() {
-//     a.remove();
-//   })
-// };
+var a = document.createElement('div');
+//regole di stile CSS
+a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow:-1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000; z-index:"+ vis+ ";";a.innerHTML = "<b></b><br>"+message;document.body.appendChild(a);
+
+vis--;
+
+//Rimozione dell'elemento al click
+a.addEventListener("click", function() {
+a.remove();
+})
+};
 
 //CONFIRM
 window.confirm = function(message) {
-    let a = document.createElement('div');
-    let y = document.createElement('button');  
-    //regole di stile CSS
-    a.style.cssText = "width:50vw; height:300px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgSkull.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
-   
-    //buttons style
-    y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";    
-    a.innerHTML = "<b>Sei Morto!</b><br>"+message;
-      y.innerHTML = "Nuova Partita";
+let a = document.createElement('div');
+let y = document.createElement('button');  
+//regole di stile CSS
+a.style.cssText = "width:50vw; height:300px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgSkull.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
 
-    document.body.appendChild(a);
-    a.appendChild(y);
-    
-      vis--;
-    
-  // case YES  
-    y.addEventListener("click", function() {
-         a.remove();
-         document.location.href = '/index.html';
-    }
-  )};
+//buttons style
+y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";    
+a.innerHTML = "<b>Sei Morto!</b><br>"+message;
+y.innerHTML = "Nuova Partita";
+
+document.body.appendChild(a);
+a.appendChild(y);
+
+vis--;
+// case YES  
+y.addEventListener("click", function() {
+   a.remove();
+   document.location.href = '/index.html';
+}
+)};
+
+window.ManoGioc = function(message){
+let a = document.createElement('div');
+let y = document.createElement('button');
+let x= document.createElement('button');
+a.style.cssText = "width:50vw; height:500px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
+
+//buttons style
+y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";    
+x.style.cssText = "height:30px; position:absolute; bottom:0; right:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";    
+a.innerHTML = "<b>Scegli le tue carte</b><br>"+message;
+y.innerHTML = "Torna indietro";
+x.innerHTML = "Conferma"
+
+document.body.appendChild(a);
+a.appendChild(y);
+a.appendChild(x);
+
+vis--;
+// case YES  
+y.addEventListener("click", function() {
+ a.remove();
+}
+);
+x.addEventListener("click", function() {
+a.remove();
+})
+};
 
 // il problema sono gli alert modificati che non intervengono più sul
 // bloccare il codice se non vengono rispettati i parametri.
@@ -109,89 +136,116 @@ window.confirm = function(message) {
 let totaleCarte = 0;
 
 Mappa.forEach((casella) => {
-  casella.addEventListener('click', () => {
-     let x=casella.dataset.x;
-     let y=casella.dataset.y;
-     
-     let orizzontale =mappamentoX(giocatore.X , x);
-     let verticale =mappamentoY(giocatore.Y , y);
-     
-     if(orizzontale<=movimento.value && verticale<=movimento.value && map==false && combat==false){
-         Mappa.forEach(section => {
-             section.classList.remove('giocatore')
-          });
-          casella.classList.add('giocatore');  
-          giocatore.X= casella.dataset.x;
-          giocatore.Y= casella.dataset.y;
-          map=true;
+casella.addEventListener('click', () => {
+let x=casella.dataset.x;
+let y=casella.dataset.y;
 
+let orizzontale =mappamentoX(giocatore.X , x);
+let verticale =mappamentoY(giocatore.Y , y);
 
-          let dado = Math.floor(Math.random() * 10); 
-          let Rifornimenti = rifornimenti.value*2 +1;
-          console.log(dado,'dado');
-          console.log(Rifornimenti,'Rifornimenti');
-          if(Rifornimenti>=dado){
-            let categ = Math.floor(Math.random() * 10);
-            console.log(categ,'dado categorie')
-            if(categ<4){
-              let dadoOggetti=  Math.floor(Math.random() * 5);
-              oggetti.forEach(oggetto => {
-                if(dadoOggetti == oggetto.value){
-                  console.log(oggetto);
-                }
-              });
-            }else if(categ>3 && categ<7){
-              let dadoArmi=  Math.floor(Math.random() * 7);
-              armi.forEach(arma => {
-                if(dadoArmi == arma.value){
-                  console.log(arma);
-            }})
-            }else{
-              let dadoEquip=  Math.floor(Math.random() * 6);
-              equipaggiamenti.forEach(equip => {
-                if(dadoEquip == equip.value){
-                  console.log(equip);
-            }})
-              
-            }
-          }else{
-            console.log('tiro sfortunato')
-           };
+if(orizzontale<=movimento.value && verticale<=movimento.value && map==false && combat==false && resist==true && comb==true){
+   Mappa.forEach(section => {
+       section.classList.remove('giocatore')
+    });
+    casella.classList.add('giocatore');  
+    giocatore.X= casella.dataset.x;
+    giocatore.Y= casella.dataset.y;
+    map=true;
+    let abilitàLettura = abilità.data-x;
+    if(abilitàLettura==0){
+      abilitàLettura = 'Arte della Guerra';
+    }else if(abilitàLettura==1){
+      abilitàLettura='Medicina';
+    }else if(abilitàLettura==2){
+      abilitàLettura= 'Raggio Psichico';
+    }else{
+      abilitàLettura= 'Scudo Psichico';
+    }
+    difesa.parentNode.replaceChild(divdifesa, difesa);
+    movimento.parentNode.replaceChild(divmovimento, movimento);
+    rifornimenti.parentNode.replaceChild(divrifornimenti, rifornimenti);
+    abilità.parentNode.replaceChild(divabilità, abilità);
 
+    divdifesa.innerText = difesa.value;
+    divdifesa.classList.add('divStatistiche');
+    divmovimento.innerText = movimento.value;
+    divmovimento.classList.add('divStatisticheCorte');
+    divrifornimenti.innerText = rifornimenti.value;
+    divrifornimenti.classList.add('divStatisticheCorte');
+    divabilità.innerText = abilitàLettura;
+    divabilità.classList.add('divStatistiche');
 
-          nemici.forEach(nemico => {
-              if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
-                  casella.classList.add('nuvola'); 
-                  combat=true; 
-
-                  cardNemici.innerHTML =''; 
-                  
-                  let div = document.createElement('div');
-
-                  div.classList.add('col-12', 'col-md-6', 'my-2');
-      
-                  div.innerHTML = `
-                  
-                  <div id="NomeNemico" class="statisticheNemici text-terzo">Nome: ${nemico.name}
-                  </div>
-                  <div id="ResistenzaNemico" class="statisticheNemici text-terzo">Resistenza:<p id="ResistN"></p>${nemico.Resist}
-                  </div>
-                  <div id="CombattivitàNemico" class="statisticheNemici text-terzo">Combattività:${nemico.Combat}</div> 
-                  `;
-      
-                  cardNemici.appendChild(div);
-
-              };
-          });
-         
-      }else if(map==true){
-          showAlert('aspetta il prossimo turno');                 
-      }else if(resist==false){
-          showAlert("prima resistenza e combattività");
-      }else{
-          showAlert('è troppo lontano, scegli un altra via');  
+    let dado = Math.floor(Math.random() * 10); 
+    let Rifornimenti = rifornimenti.value*2 +1;
+    console.log(dado,'dado');
+    console.log(Rifornimenti,'Rifornimenti');
+    if(Rifornimenti>=dado){
+      let categ = Math.floor(Math.random() * 10);
+      console.log(categ,'dado categorie')
+      if(categ<4){
+        let dadoOggetti=  Math.floor(Math.random() * 5);
+        oggetti.forEach(oggetto => {
+          if(dadoOggetti == oggetto.value){
+            let oggettoScelto=oggetto;
+            console.log(oggettoScelto);
+          }
+        });
+      }else if(categ>3 && categ<7){
+        let dadoArmi=  Math.floor(Math.random() * 7);
+        armi.forEach(arma => {
+          if(dadoArmi == arma.value){
+            let armaScelta=arma;
+            console.log(armaScelta);
+      }})
+    }else{
+        let dadoEquip=  Math.floor(Math.random() * 6);
+        equipaggiamenti.forEach(equip => {
+          if(dadoEquip == equip.value){
+            let equipScelto=equip;
+            console.log(equipScelto);
+      }})
+        
       }
-  });
+    }else{
+      console.log('tiro sfortunato')
+     };
+     
+
+    nemici.forEach(nemico => {
+        if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
+            casella.classList.add('nuvola'); 
+            combat=true; 
+
+            cardNemici.innerHTML =''; 
+            
+            let div = document.createElement('div');
+
+            div.classList.add('col-12', 'col-md-6', 'my-2');
+
+            div.innerHTML = `
+            
+            <div id="NomeNemico" class="statisticheNemici text-terzo">Nome: ${nemico.name}
+            </div>
+            <div id="ResistenzaNemico" class="statisticheNemici text-terzo">Resistenza:<p id="ResistN"></p>${nemico.Resist}
+            </div>
+            <div id="CombattivitàNemico" class="statisticheNemici text-terzo">Combattività:${nemico.Combat}</div> 
+            `;
+
+            cardNemici.appendChild(div);
+
+        };
+    });
+   
+}else if(map==true){
+    alert('aspetta il prossimo turno');                 
+}else if(resist==false){
+    alert("prima resistenza e combattività");
+}else if(comb==false){
+  alert('prima combattività')
+}else{
+    alert('è troppo lontano, scegli un altra via');  
+}
+});
 });
 
 
@@ -201,7 +255,21 @@ Mappa.forEach((casella) => {
 
 // };
 
-// ManoGiocatore.addEventListener('click', () => {
- 
+ManoGiocatore.addEventListener('click', () => {
+ManoGioc('Scegli cosa usare');
 
-// });
+console.log('funziono');
+
+});
+
+// let movimento= document.querySelector('#movimento');
+// let difesa= document.querySelector('#difesa');
+// let rifornimenti= document.querySelector('#rifornimenti');
+// let abilità= document.querySelector('#abilità');
+
+
+
+
+
+
+
