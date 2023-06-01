@@ -430,7 +430,7 @@ Mappa.forEach((casella) => {
         console.log(Rifornimenti,'Rifornimenti');
         if(Rifornimenti>=dado && totaleCarte<4){
             totaleCarte ++;
-            console.log(totaleCarte,'totalecarte');
+            
           let categ = Math.floor(Math.random() * 10);
           console.log(categ,'dado categorie')
           if(categ<4){
@@ -439,8 +439,7 @@ Mappa.forEach((casella) => {
               if(dadoOggetti == oggetto.value){
                 let oggettoScelto=oggetto;
                 carte.push(oggettoScelto);
-                console.log(oggettoScelto,'oggetto');
-                console.log(carte,'carte');
+               alert('Hai trovato '+ oggettoScelto.name);
               }
             });
           }else if(categ>3 && categ<7){
@@ -449,8 +448,7 @@ Mappa.forEach((casella) => {
               if(dadoArmi == arma.value){
                 let armaScelta=arma;
                 carte.push(armaScelta);
-                console.log(armaScelta,'arma');
-                console.log(carte,'carte');
+                alert('Hai trovato '+ armaScelta.name);
           }})
             }else{
             let dadoEquip=  Math.floor(Math.random() * 6);
@@ -458,8 +456,7 @@ Mappa.forEach((casella) => {
               if(dadoEquip == equip.value){
                 let equipScelto=equip;
                 carte.push(equipScelto);
-                console.log(equipScelto,'equipaggiamento');
-                console.log(carte,'carte');
+                alert('Hai trovato '+ equipScelto.name);
           }})
             
           }
