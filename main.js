@@ -384,58 +384,126 @@ let mappamentoY = (valore1 , valore2)=>{
 
 };
 
-// funzione movimento giocatore e inizio scontro.
-
-// Mappa.forEach((casella) => {
-//     casella.addEventListener('click', () => {
-//        let x=casella.dataset.x;
-//        let y=casella.dataset.y;
-       
-//        let orizzontale =mappamentoX(giocatore.X , x);
-//        let verticale =mappamentoY(giocatore.Y , y);
-       
-//        if(orizzontale<=movimento.value && verticale<=movimento.value && map==false && combat==false){
-//            Mappa.forEach(section => {
-//                section.classList.remove('giocatore')
-//             });
-//             casella.classList.add('giocatore');  
-//             giocatore.X= casella.dataset.x;
-//             giocatore.Y= casella.dataset.y;
-//             map=true;
+Mappa.forEach((casella) => {
+    casella.addEventListener('click', () => {
+    let x=casella.dataset.x;
+    let y=casella.dataset.y;
+    
+    let orizzontale =mappamentoX(giocatore.X , x);
+    let verticale =mappamentoY(giocatore.Y , y);
+    
+    if(orizzontale<=movimento.value && verticale<=movimento.value && map==false && combat==false && resist==true && comb==true){
+       Mappa.forEach(section => {
+           section.classList.remove('giocatore')
+        });
+        casella.classList.add('giocatore');  
+        giocatore.X= casella.dataset.x;
+        giocatore.Y= casella.dataset.y;
+        map=true;
+        let abilitàLettura = abilità.data-x;
+        if(abilitàLettura==0){
+          abilitàLettura = 'Arte della Guerra';
+        }else if(abilitàLettura==1){
+          abilitàLettura='Medicina';
+        }else if(abilitàLettura==2){
+          abilitàLettura= 'Raggio Psichico';
+        }else{
+          abilitàLettura= 'Scudo Psichico';
+        }
+        difesa.parentNode.replaceChild(divdifesa, difesa);
+        movimento.parentNode.replaceChild(divmovimento, movimento);
+        rifornimenti.parentNode.replaceChild(divrifornimenti, rifornimenti);
+        abilità.parentNode.replaceChild(divabilità, abilità);
+    
+        divdifesa.innerText = difesa.value;
+        divdifesa.classList.add('divStatistiche');
+        divmovimento.innerText = movimento.value;
+        divmovimento.classList.add('divStatisticheCorte');
+        divrifornimenti.innerText = rifornimenti.value;
+        divrifornimenti.classList.add('divStatisticheCorte');
+        divabilità.innerText = abilitàLettura;
+        divabilità.classList.add('divStatistiche');
+    
+        let dado = Math.floor(Math.random() * 10); 
+        let Rifornimenti = rifornimenti.value*2 +1;
+        console.log(dado,'dado');
+        console.log(Rifornimenti,'Rifornimenti');
+        if(Rifornimenti>=dado){
+            totaleCarte ++;
+            console.log(totaleCarte,'totalecarte');
+          let categ = Math.floor(Math.random() * 10);
+          console.log(categ,'dado categorie')
+          if(categ<4){
+            let dadoOggetti=  Math.floor(Math.random() * 5);
+            oggetti.forEach(oggetto => {
+              if(dadoOggetti == oggetto.value){
+                let oggettoScelto=oggetto;
+                carte.push(oggettoScelto);
+                console.log(oggettoScelto,'oggetto');
+                console.log(carte,'carte');
+              }
+            });
+          }else if(categ>3 && categ<7){
+            let dadoArmi=  Math.floor(Math.random() * 7);
+            armi.forEach(arma => {
+              if(dadoArmi == arma.value){
+                let armaScelta=arma;
+                carte.push(armaScelta);
+                console.log(armaScelta,'arma');
+                console.log(carte,'carte');
+          }})
+        }else{
+            let dadoEquip=  Math.floor(Math.random() * 6);
+            equipaggiamenti.forEach(equip => {
+              if(dadoEquip == equip.value){
+                let equipScelto=equip;
+                carte.push(equipScelto);
+                console.log(equipScelto,'equipaggiamento');
+                console.log(carte,'carte');
+          }})
             
-//             nemici.forEach(nemico => {
-//                 if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
-//                     casella.classList.add('nuvola'); 
-//                     combat=true; 
-
-//                     cardNemici.innerHTML =''; 
-                    
-//                     let div = document.createElement('div');
-
-//                     div.classList.add('col-12', 'col-md-6', 'my-2');
-        
-//                     div.innerHTML = `
-                    
-//                     <div id="NomeNemico" class="statisticheNemici text-terzo">Nome: ${nemico.name}
-//                     </div>
-//                     <div id="ResistenzaNemico" class="statisticheNemici text-terzo">Resistenza:<p id="ResistN"></p>${nemico.Resist}
-//                     </div>
-//                     <div id="CombattivitàNemico" class="statisticheNemici text-terzo">Combattività:${nemico.Combat}</div> 
-//                     `;
-        
-//                     cardNemici.appendChild(div);
-
-//                 };
-//             });
-           
-//         }else if(map==true){
-//             alert('aspetta il prossimo turno');                 
-//         }else if(resist==false){
-//             alert("prima resistenza e combattività");
-//         }else{
-//             alert('è troppo lontano, scegli un altra via');  
-//         }
-//     });
-// });
+          }
+        }else{
+          console.log('tiro sfortunato')
+         };
+         
+    
+        nemici.forEach(nemico => {
+            if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
+                casella.classList.add('nuvola'); 
+                combat=true; 
+    
+                cardNemici.innerHTML =''; 
+                
+                let div = document.createElement('div');
+    
+                div.classList.add('col-12', 'col-md-6', 'my-2');
+    
+                div.innerHTML = `
+                
+                <div id="NomeNemico" class="statisticheNemici text-terzo">Nome: ${nemico.name}
+                </div>
+                <div id="ResistenzaNemico" class="statisticheNemici text-terzo">Resistenza:<p id="ResistN"></p>${nemico.Resist}
+                </div>
+                <div id="CombattivitàNemico" class="statisticheNemici text-terzo">Combattività:${nemico.Combat}</div> 
+                `;
+    
+                cardNemici.appendChild(div);
+    
+            };
+        });
+       
+    }else if(map==true){
+        alert('aspetta il prossimo turno');                 
+    }else if(resist==false){
+        alert("prima resistenza e combattività");
+    }else if(comb==false){
+      alert('prima combattività')
+    }else{
+        alert('è troppo lontano, scegli un altra via');  
+    }
+    });
+    });
+    
 
 

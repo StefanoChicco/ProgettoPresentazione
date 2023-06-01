@@ -36,7 +36,7 @@ let armiRare = [
 let carte =[
 
 ];
-
+let totaleCarte = 0;
   // Alert Modificati
 let vis = 10000;
 
@@ -82,18 +82,37 @@ window.ManoGioc = function(message){
 let a = document.createElement('div');
 let y = document.createElement('button');
 let x= document.createElement('button');
-a.style.cssText = "width:50vw; height:500px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
-
-//buttons style
+// let card1=document.createElement('div');
+// let card2= document.createElement('div');
+// let card3= document.createElement('div');
+// let card4=document.createElement('div');
+let divRow = document.createElement('div');
+a.style.cssText = "width:59vw; height:400px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgDark.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
+a.classList.add('container')
+divRow.cssText ="width:59vw; height:300px; border:1px solid #bbb; border-radius:5px; padding:10px; display:flex; background-color:transparent; box-shadow:0px 0px 8px #0006; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
+divRow.classList.add('row')
 y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";    
-x.style.cssText = "height:30px; position:absolute; bottom:0; right:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";    
+carte.forEach((card)=>{
+let carta = document.createElement('div');
+  carta.classList.add('col-3')
+  carta.style.cssText ="height:250px;width:175px;clear:both;margin-left:19px;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";
+  divRow.appendChild(carta);
+})
+// card1.style.cssText ="height:250px; position:absolute; bottom:50px; left:5vh; width:175px;clear:both;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";
+// card2.style.cssText ="height:250px; position:absolute; bottom:50px; left:35vh; width:175px;clear:both;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;"; 
+// card3.style.cssText ="height:250px; position:absolute; bottom:50px; right:35vh; width:175px;clear:both;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;"; 
+// card4.style.cssText ="height:250px; position:absolute; bottom:50px; right:5vh; width:175px;clear:both;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";  
 a.innerHTML = "<b>Scegli le tue carte</b><br>"+message;
 y.innerHTML = "Torna indietro";
-x.innerHTML = "Conferma"
+
 
 document.body.appendChild(a);
 a.appendChild(y);
-a.appendChild(x);
+a.appendChild(divRow);
+// a.appendChild(card1);
+// a.appendChild(card2);
+// a.appendChild(card3);
+// a.appendChild(card4);
 
 vis--;
 // case YES  
@@ -133,120 +152,7 @@ a.remove();
 // nella carta messa negli slot dev'essere presente un bottone per rimuoverla dallo slot che svuoti il div
 // e cambi il booleano per permettere di inserire un altra carta al suo interno.
 // 
-let totaleCarte = 0;
 
-Mappa.forEach((casella) => {
-casella.addEventListener('click', () => {
-let x=casella.dataset.x;
-let y=casella.dataset.y;
-
-let orizzontale =mappamentoX(giocatore.X , x);
-let verticale =mappamentoY(giocatore.Y , y);
-
-if(orizzontale<=movimento.value && verticale<=movimento.value && map==false && combat==false && resist==true && comb==true){
-   Mappa.forEach(section => {
-       section.classList.remove('giocatore')
-    });
-    casella.classList.add('giocatore');  
-    giocatore.X= casella.dataset.x;
-    giocatore.Y= casella.dataset.y;
-    map=true;
-    let abilitàLettura = abilità.data-x;
-    if(abilitàLettura==0){
-      abilitàLettura = 'Arte della Guerra';
-    }else if(abilitàLettura==1){
-      abilitàLettura='Medicina';
-    }else if(abilitàLettura==2){
-      abilitàLettura= 'Raggio Psichico';
-    }else{
-      abilitàLettura= 'Scudo Psichico';
-    }
-    difesa.parentNode.replaceChild(divdifesa, difesa);
-    movimento.parentNode.replaceChild(divmovimento, movimento);
-    rifornimenti.parentNode.replaceChild(divrifornimenti, rifornimenti);
-    abilità.parentNode.replaceChild(divabilità, abilità);
-
-    divdifesa.innerText = difesa.value;
-    divdifesa.classList.add('divStatistiche');
-    divmovimento.innerText = movimento.value;
-    divmovimento.classList.add('divStatisticheCorte');
-    divrifornimenti.innerText = rifornimenti.value;
-    divrifornimenti.classList.add('divStatisticheCorte');
-    divabilità.innerText = abilitàLettura;
-    divabilità.classList.add('divStatistiche');
-
-    let dado = Math.floor(Math.random() * 10); 
-    let Rifornimenti = rifornimenti.value*2 +1;
-    console.log(dado,'dado');
-    console.log(Rifornimenti,'Rifornimenti');
-    if(Rifornimenti>=dado){
-      let categ = Math.floor(Math.random() * 10);
-      console.log(categ,'dado categorie')
-      if(categ<4){
-        let dadoOggetti=  Math.floor(Math.random() * 5);
-        oggetti.forEach(oggetto => {
-          if(dadoOggetti == oggetto.value){
-            let oggettoScelto=oggetto;
-            console.log(oggettoScelto);
-          }
-        });
-      }else if(categ>3 && categ<7){
-        let dadoArmi=  Math.floor(Math.random() * 7);
-        armi.forEach(arma => {
-          if(dadoArmi == arma.value){
-            let armaScelta=arma;
-            console.log(armaScelta);
-      }})
-    }else{
-        let dadoEquip=  Math.floor(Math.random() * 6);
-        equipaggiamenti.forEach(equip => {
-          if(dadoEquip == equip.value){
-            let equipScelto=equip;
-            console.log(equipScelto);
-      }})
-        
-      }
-    }else{
-      console.log('tiro sfortunato')
-     };
-     
-
-    nemici.forEach(nemico => {
-        if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
-            casella.classList.add('nuvola'); 
-            combat=true; 
-
-            cardNemici.innerHTML =''; 
-            
-            let div = document.createElement('div');
-
-            div.classList.add('col-12', 'col-md-6', 'my-2');
-
-            div.innerHTML = `
-            
-            <div id="NomeNemico" class="statisticheNemici text-terzo">Nome: ${nemico.name}
-            </div>
-            <div id="ResistenzaNemico" class="statisticheNemici text-terzo">Resistenza:<p id="ResistN"></p>${nemico.Resist}
-            </div>
-            <div id="CombattivitàNemico" class="statisticheNemici text-terzo">Combattività:${nemico.Combat}</div> 
-            `;
-
-            cardNemici.appendChild(div);
-
-        };
-    });
-   
-}else if(map==true){
-    alert('aspetta il prossimo turno');                 
-}else if(resist==false){
-    alert("prima resistenza e combattività");
-}else if(comb==false){
-  alert('prima combattività')
-}else{
-    alert('è troppo lontano, scegli un altra via');  
-}
-});
-});
 
 
 // let inserireCarte = (valore)=>{
@@ -256,10 +162,9 @@ if(orizzontale<=movimento.value && verticale<=movimento.value && map==false && c
 // };
 
 ManoGiocatore.addEventListener('click', () => {
-ManoGioc('Scegli cosa usare');
+ManoGioc('Zaino');
 
 console.log('funziono');
-
 });
 
 // let movimento= document.querySelector('#movimento');
