@@ -322,3 +322,146 @@ border-top-right-radius: 5px;
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+/* classi oggetti,armi,ecc... */
+
+.bende{
+    background-image: url(/media/bende.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.pasto{
+    background-image: url(/media/pasto.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.pozSalute{
+    background-image: url(/media/pozione.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.impiastro{
+    background-image: url(/media/impiastro.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.pozVigorilla{
+    background-image: url(/media/pozioneVigorilla.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.lancia{
+    background-image: url(/media/lancia.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.spada{
+    background-image: url(/media/spada.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.scudo{
+    background-image: url(/media/scudo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ascia{
+    background-image: url(/media/ascia.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.mazza{
+    background-image: url(/media/mazza.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.arco{
+    background-image: url(/media/arco.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.pugnale{
+    background-image: url(/media/pugnale.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.amuleto{
+    background-image: url(/media/amuleto.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.anello{
+    background-image: url(/media/anello.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cintura{
+    background-image: url(/media/cintura.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.elmo{
+    background-image: url(/media/elmo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.armatura{
+    background-image: url(/media/armatura.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.mantello{
+    background-image: url(/media/mantello.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.spadaSole{
+    background-image: url(/media/spadadelsole.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.scudoShianthi{
+    background-image: url(/media/scudoShianti.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

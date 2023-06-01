@@ -2,35 +2,35 @@
 
 
 let oggetti =[
-  {value:0, classe:'pozVigorilla' , name:'Pozione di Vigorilla', Resist: 4 ,Combat:0 ,Dif:0},
-  {value:1, classe:'pasto' , name:'Pasto', Resist:3 , Combat:0 ,Dif:0},
-  {value:2, classe:'bende' , name:'Bende', Resist: 2 , Combat:0 ,Dif:0},
-  {value:3, classe:'impiastro' , name:'Impiastro', Resist: 4 , Combat:0 ,Dif:0},
-  {value:4, classe:'pozSalute' , name:'Pozione della Salute', Resist: 6 , Combat:0 ,Dif:0}
+  {value:0, array:'1', classe:'pozVigorilla' , name:'Pozione di Vigorilla', Resist: 4 ,Combat:0 ,Dif:0},
+  {value:1, array:'1', classe:'pasto' , name:'Pasto', Resist:3 , Combat:0 ,Dif:0},
+  {value:2, array:'1', classe:'bende' , name:'Bende', Resist: 2 , Combat:0 ,Dif:0},
+  {value:3, array:'1', classe:'impiastro' , name:'Impiastro', Resist: 4 , Combat:0 ,Dif:0},
+  {value:4, array:'1', classe:'pozSalute' , name:'Pozione della Salute', Resist: 6 , Combat:0 ,Dif:0}
 ];
 
 let armi=[
-  {value:0, classe:'lancia' , name:'Lancia', Resist: 4 , Combat:2 ,Dif:1},
-  {value:1, classe:'spada' , name:'Spada', Resist:4,Combat:3 ,Dif:0},
-  {value:2, classe:'scudo' , name:'Scudo', Resist:4 , Combat:1 ,Dif:2},
-  {value:3, classe:'ascia' , name:'Ascia', Resist:2 , Combat:4 ,Dif:0},
-  {value:4, classe:'mazza' , name:'Mazza', Resist:0, Combat:5 ,Dif:0},
-  {value:5, classe:'arco' , name:'Arco', Resist:0 , Combat:2 ,Dif:2},
-  {value:6, classe:'pugnale' , name:'Pugnale', Resist:2 , Combat:2 ,Dif:0}
+  {value:0, array:'2', classe:'lancia' , name:'Lancia', Resist: 4 , Combat:2 ,Dif:1},
+  {value:1, array:'2', classe:'spada' , name:'Spada', Resist:4,Combat:3 ,Dif:0},
+  {value:2, array:'2', classe:'scudo' , name:'Scudo', Resist:4 , Combat:1 ,Dif:2},
+  {value:3, array:'2', classe:'ascia' , name:'Ascia', Resist:2 , Combat:4 ,Dif:0},
+  {value:4, array:'2', classe:'mazza' , name:'Mazza', Resist:0, Combat:5 ,Dif:0},
+  {value:5, array:'2', classe:'arco' , name:'Arco', Resist:0 , Combat:2 ,Dif:2},
+  {value:6, array:'2', classe:'pugnale' , name:'Pugnale', Resist:2 , Combat:2 ,Dif:0}
 ];
 
 let equipaggiamenti=[      
-  {value:0, classe:'amuleto' , name:'Amuleto', Resist:2 , Combat:3 ,Dif:1},
-  {value:1, classe:'anello' , name:'Anello', Resist:4 , Combat:2 ,Dif:0},
-  {value:2, classe:'cintura' , name:'Cintura', Resist:2 , Combat:3 ,Dif:1},
-  {value:3, classe:'elmo' , name:'Elmo', Resist:4 , Combat:0 ,Dif:1},
-  {value:4, classe:'armatura' , name:'Armatura', Resist:6 , Combat:0 , Dif:2},
-  {value:5, classe:'mantello' , name:'Mantello', Resist:2 , Combat:0 , Dif:0 }
+  {value:0, array:'3', classe:'amuleto' , name:'Amuleto', Resist:2 , Combat:3 ,Dif:1},
+  {value:1, array:'3', classe:'anello' , name:'Anello', Resist:4 , Combat:2 ,Dif:0},
+  {value:2, array:'3', classe:'cintura' , name:'Cintura', Resist:2 , Combat:3 ,Dif:1},
+  {value:3, array:'3', classe:'elmo' , name:'Elmo', Resist:4 , Combat:0 ,Dif:1},
+  {value:4, array:'3', classe:'armatura' , name:'Armatura', Resist:6 , Combat:0 , Dif:2},
+  {value:5, array:'3', classe:'mantello' , name:'Mantello', Resist:2 , Combat:0 , Dif:0 }
 ];
 
 let armiRare = [
-  {value:0, classe:'spadaSole' , name:'Spada del Sole', Resist:10 , Combat:6 ,Dif:0},
-  {value:1, classe:'scudoShianthi' , name:'Scudo degli Shianthi', Resist:10 , Combat:4 ,Dif:3}
+  {value:0, array:'4', classe:'spadaSole' , name:'Spada del Sole', Resist:10 , Combat:6 ,Dif:0},
+  {value:1, array:'4', classe:'scudoShianthi' , name:'Scudo degli Shianthi', Resist:10 , Combat:4 ,Dif:3}
 ];
 
 let carte =[
@@ -81,12 +81,8 @@ y.addEventListener("click", function() {
 window.ManoGioc = function(message){
 let a = document.createElement('div');
 let y = document.createElement('button');
-let x= document.createElement('button');
-// let card1=document.createElement('div');
-// let card2= document.createElement('div');
-// let card3= document.createElement('div');
-// let card4=document.createElement('div');
 let divRow = document.createElement('div');
+
 a.style.cssText = "width:59vw; height:400px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgDark.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
 a.classList.add('container')
 divRow.cssText ="width:59vw; height:300px; border:1px solid #bbb; border-radius:5px; padding:10px; display:flex; background-color:transparent; box-shadow:0px 0px 8px #0006; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
@@ -95,14 +91,63 @@ y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;c
 carte.forEach((card)=>{
 let carta = document.createElement('div');
   carta.classList.add('col-3')
-  carta.style.cssText ="height:250px;width:175px;clear:both;margin-left:19px;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";
+  carta.style.cssText ="height:250px;width:175px;clear:both;margin-left:19px;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
   divRow.appendChild(carta);
+
+  let Nome = document.createElement('h3');
+  Nome.style.cssText ="height:5vh;padding:auto;color:white;";
+  Nome.innerHTML= card.name;
+  carta.appendChild(Nome);
+  carta.classList.add(card.classe);
+  if(card.array=='1'){
+
+    let valoreResistenza = document.createElement('p');
+    valoreResistenza.style.cssText ="height:8vh;padding:auto;color:white;padding-top:30px;justify-content:center;margin-top:17vh";
+    valoreResistenza.innerHTML='Resistenza + '+ card.Resist; 
+    carta.appendChild(valoreResistenza); 
+
+    let usa= document.createElement('button');
+    usa.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;color:black;background-color:#5a4c38;right:0px;";
+    usa.innerHTML='Usa';
+    usa.classList.add('btn'); 
+    carta.appendChild(usa); 
+
+    let getta= document.createElement('button');
+    getta.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;color:black;background-color:red;left:0px";
+    getta.innerHTML='Getta'; 
+    getta.classList.add('btn');
+    carta.appendChild(getta); 
+  }else{
+    let valoreResistenza = document.createElement('p');
+    valoreResistenza.style.cssText ="height:6vh;padding:auto;color:white;padding-top:10px;justify-content:center;";
+    valoreResistenza.innerHTML='Resistenza aumentata di '+ card.Resist; 
+    carta.appendChild(valoreResistenza);
+    
+    let valorecombattività = document.createElement('p');
+    valorecombattività.style.cssText ="height:6vh;padding:auto;color:white;padding-top:10px;justify-content:center;";
+    valorecombattività.innerHTML='combattività aumentata di '+ card.Combat; 
+    carta.appendChild(valorecombattività); 
+
+    let valoredifesa = document.createElement('p');
+    valoredifesa.style.cssText ="height:6vh;padding:auto;color:white;padding-top:10px;justify-content:center;";
+    valoredifesa.innerHTML='Difesa aumentata di '+ card.Dif; 
+    carta.appendChild(valoredifesa); 
+
+    let usa= document.createElement('button');
+    usa.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;background-color:#5a4c38;color:black;right:0px;";
+    usa.classList.add('btn');
+    usa.innerHTML='Usa'; 
+    carta.appendChild(usa); 
+
+    let getta= document.createElement('button');
+    getta.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;background-color:red;color:black;left:0px";
+    getta.classList.add('btn');
+    getta.innerHTML='Getta'; 
+    carta.appendChild(getta); 
+  }
+
 })
-// card1.style.cssText ="height:250px; position:absolute; bottom:50px; left:5vh; width:175px;clear:both;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";
-// card2.style.cssText ="height:250px; position:absolute; bottom:50px; left:35vh; width:175px;clear:both;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;"; 
-// card3.style.cssText ="height:250px; position:absolute; bottom:50px; right:35vh; width:175px;clear:both;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;"; 
-// card4.style.cssText ="height:250px; position:absolute; bottom:50px; right:5vh; width:175px;clear:both;background-image:url(/media/scarsella.jpg);background-size:cover;background-position:center;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";  
-a.innerHTML = "<b>Scegli le tue carte</b><br>"+message;
+a.innerHTML = "<b>Zaino</b><br>";
 y.innerHTML = "Torna indietro";
 
 
@@ -115,14 +160,12 @@ a.appendChild(divRow);
 // a.appendChild(card4);
 
 vis--;
-// case YES  
+
 y.addEventListener("click", function() {
  a.remove();
 }
 );
-x.addEventListener("click", function() {
-a.remove();
-})
+
 };
 
 // il problema sono gli alert modificati che non intervengono più sul
@@ -154,23 +197,13 @@ a.remove();
 // 
 
 
-
-// let inserireCarte = (valore)=>{
-
-
-
-// };
-
 ManoGiocatore.addEventListener('click', () => {
 ManoGioc('Zaino');
 
 console.log('funziono');
 });
 
-// let movimento= document.querySelector('#movimento');
-// let difesa= document.querySelector('#difesa');
-// let rifornimenti= document.querySelector('#rifornimenti');
-// let abilità= document.querySelector('#abilità');
+
 
 
 

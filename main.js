@@ -428,7 +428,7 @@ Mappa.forEach((casella) => {
         let Rifornimenti = rifornimenti.value*2 +1;
         console.log(dado,'dado');
         console.log(Rifornimenti,'Rifornimenti');
-        if(Rifornimenti>=dado){
+        if(Rifornimenti>=dado && totaleCarte<4){
             totaleCarte ++;
             console.log(totaleCarte,'totalecarte');
           let categ = Math.floor(Math.random() * 10);
@@ -452,7 +452,7 @@ Mappa.forEach((casella) => {
                 console.log(armaScelta,'arma');
                 console.log(carte,'carte');
           }})
-        }else{
+            }else{
             let dadoEquip=  Math.floor(Math.random() * 6);
             equipaggiamenti.forEach(equip => {
               if(dadoEquip == equip.value){
@@ -463,6 +463,9 @@ Mappa.forEach((casella) => {
           }})
             
           }
+        }else if(Rifornimenti>=dado && totaleCarte>3){
+            alert('Hai lo zaino pieno, non puoi raccogliere altri oggetti');  
+            
         }else{
           console.log('tiro sfortunato')
          };
