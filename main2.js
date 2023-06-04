@@ -89,16 +89,19 @@ divRow.cssText ="width:59vw; height:300px; border:1px solid #bbb; border-radius:
 divRow.classList.add('row')
 y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";    
 carte.forEach((card)=>{
-let carta = document.createElement('div');
+ 
+  let carta = document.createElement('div');
   carta.classList.add('col-3')
   carta.style.cssText ="height:250px;width:175px;clear:both;margin-left:19px;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
   divRow.appendChild(carta);
+
 
   let Nome = document.createElement('h3');
   Nome.style.cssText ="height:5vh;padding:auto;color:white;";
   Nome.innerHTML= card.name;
   carta.appendChild(Nome);
   carta.classList.add(card.classe);
+
   if(card.array=='1'){
 
     let valoreResistenza = document.createElement('p');
@@ -106,17 +109,7 @@ let carta = document.createElement('div');
     valoreResistenza.innerHTML='Resistenza + '+ card.Resist; 
     carta.appendChild(valoreResistenza); 
 
-    let usa= document.createElement('button');
-    usa.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;color:black;background-color:#5a4c38;right:0px;";
-    usa.innerHTML='Usa';
-    usa.classList.add('btn'); 
-    carta.appendChild(usa); 
 
-    let getta= document.createElement('button');
-    getta.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;color:black;background-color:red;left:0px";
-    getta.innerHTML='Getta'; 
-    getta.classList.add('btn');
-    carta.appendChild(getta); 
   }else{
     let valoreResistenza = document.createElement('p');
     valoreResistenza.style.cssText ="height:6vh;padding:auto;color:white;padding-top:10px;justify-content:center;";
@@ -132,19 +125,30 @@ let carta = document.createElement('div');
     valoredifesa.style.cssText ="height:6vh;padding:auto;color:white;padding-top:10px;justify-content:center;";
     valoredifesa.innerHTML='Difesa aumentata di '+ card.Dif; 
     carta.appendChild(valoredifesa); 
-
-    let usa= document.createElement('button');
-    usa.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;background-color:#5a4c38;color:black;right:0px;";
-    usa.classList.add('btn');
-    usa.innerHTML='Usa'; 
-    carta.appendChild(usa); 
-
-    let getta= document.createElement('button');
-    getta.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;background-color:red;color:black;left:0px";
-    getta.classList.add('btn');
-    getta.innerHTML='Getta'; 
-    carta.appendChild(getta); 
   }
+  let usa= document.createElement('button');
+  usa.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;background-color:#5a4c38;color:black;right:0px;";
+  usa.classList.add('btn');
+  usa.innerHTML='Usa'; 
+  carta.appendChild(usa); 
+ 
+
+  let getta= document.createElement('button');
+  getta.style.cssText ="margin-top:20px;height:6vh;border:solid 2px;border-color:black;background-color:red;color:black;left:0px";
+  getta.classList.add('btn');
+  getta.innerHTML='Getta'; 
+  carta.appendChild(getta); 
+  getta.addEventListener("click", function(){
+    for( let i = 0; i < carte.length; i++){ 
+      if ( carte[i] === card) {
+        carte.splice(i, 1); 
+      }
+   }
+    divRow.removeChild(carta);
+    totaleCarte = totaleCarte - 1;
+    console.log('totaleCarte',totaleCarte);
+    console.log('carte',carte);
+  })
 
 })
 a.innerHTML = "<b>Zaino</b><br>";
@@ -154,10 +158,7 @@ y.innerHTML = "Torna indietro";
 document.body.appendChild(a);
 a.appendChild(y);
 a.appendChild(divRow);
-// a.appendChild(card1);
-// a.appendChild(card2);
-// a.appendChild(card3);
-// a.appendChild(card4);
+
 
 vis--;
 
@@ -167,10 +168,20 @@ y.addEventListener("click", function() {
 );
 
 };
+  // ButtonUsa.addEventListener('click', ()=>{
 
-// il problema sono gli alert modificati che non intervengono più sul
+
+  // })
+  
+ 
+
+
+
+
+
+// il problema erano gli alert modificati che non intervengono più sul
 // bloccare il codice se non vengono rispettati i parametri.
-// cercare soluzione o chiedere. 
+ 
 
 
 // rifornimenti dev'essere implementato nella funzione mappa.
@@ -180,14 +191,13 @@ y.addEventListener("click", function() {
 // i valori dell'oggetto con il value uguale al tiro di dado, se la categ è oggetto allora viene lanciato un ulteriore dado da 5
 // se la categ è equipaggiamento allora viene lanciato un ulteriore dado da 6.
 // a seconda del numero uscito deve prendere le caratteristiche dell'oggetto nell'array e pusharle in un altro array vuoto
-// aumentando di uno il countdown carteMassime(se supera 4 deve far partire un confirm che ti avvisa che hai troppe carte
-// e ti chiede quale vuoi tenere tra quelle che già hai e la nuova).
+// aumentando di uno il countdown carteMassime(se supera 3 il giocatore).
 // I mostri sconfitti rilasciano sempre 1 oggetto(questo è da implementare nella 
 // funzione dado). 
 
 // Per visualizzare le carte creiamo una funzione sul bottone gioca una carta
 // che crea un div con all'interno le carte in possesso del giocatore e un bottone per toglierlo. 
-// forse necessario local storage?
+
 
 // al click sul div prende le caratteristiche dell'oggetto e svuota il div e aggiunge i valori 
 // della carta alle statistiche. se è un arma svuota il div e trasferisce i valori della carta 

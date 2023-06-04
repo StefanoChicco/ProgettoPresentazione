@@ -16,8 +16,12 @@ let NomeNemico= document.querySelector('#NomeNemico');
 let ResistN=document.querySelector('#ResistN');
 let cardNemici=document.querySelector('#cardNemici');
 let ManoGiocatore=document.querySelector('#manoGiocatore');
+let ButtonUsa=document.querySelector('#usa');
+let ButtonGetta=document.querySelector('#getta');
+
 let Mappa= document.querySelectorAll('section');
 let Statistiche= document.querySelectorAll('option');
+
 let divmovimento=document.createElement('div');
 let divdifesa=document.createElement('div');
 let divrifornimenti=document.createElement('div');
@@ -254,9 +258,6 @@ if(resist==false){
 
 //    funzioni difesa
 
-// provare a fare una classlist per ogni valore e agire sulla classlist per i valori booleani per evitare l'alert al
-// primo click.
-
 difesa.addEventListener('click', ()=>{
 
      if(resist==false || comb==false){
@@ -433,6 +434,7 @@ Mappa.forEach((casella) => {
             
           let categ = Math.floor(Math.random() * 10);
           console.log(categ,'dado categorie')
+          console.log(carte);
           if(categ<4){
             let dadoOggetti=  Math.floor(Math.random() * 5);
             oggetti.forEach(oggetto => {
