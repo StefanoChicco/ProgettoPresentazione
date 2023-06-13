@@ -42,7 +42,7 @@ margin-right: 200px;
     }
     
 
-/* statistiche */
+/* statistiche statistiche statistiche statistiche statistiche statistiche statistiche statistiche statistiche*/
 
 .Bottoni{
     margin: 20px;
@@ -61,7 +61,7 @@ margin-right: 200px;
  
  }
 
-/* parte centrale */
+/* parte centrale parte centrale parte centrale parte centrale parte centrale parte centrale parte centrale */
 
 .main1{
    background-image: url(./media/tavolo.jpg);
@@ -103,8 +103,9 @@ padding: 0%;
         background-size: cover;
         background-repeat: no-repeat;
         height: 25vh;
-        width: 20vh;
-        margin: 5px;
+        width: 30vh;
+        margin-top:3px;
+        margin-bottom:3px;
         border: solid 3px;
         border-color: black;
         border-radius: 20px;
@@ -140,7 +141,7 @@ padding: 0%;
     background-repeat: no-repeat;
     }
     
-/* parte schede armi ed equipaggiamento */
+/* parte schede armi ed equipaggiamento parte schede armi ed equipaggiamento parte schede armi ed equipaggiamento */
 
 .main2{
     
@@ -180,7 +181,7 @@ padding: 0%;
     border-radius: 20px;
 }
 
-/* classi js bottoni speciali */
+/* classi js bottoni speciali classi js bottoni speciali classi js bottoni speciali classi js bottoni speciali */
 
 .divCombattivita{
 height: 35px;
@@ -216,13 +217,20 @@ border-top-right-radius: 5px;
     border-top-right-radius: 5px;
     
     }
-/* classi nemici */
+/* classi nemici classi nemici classi nemici classi nemici classi nemici classi nemici classi nemici classi nemici */
 
 .cinghiale{
         height:35px;
         background-image: url(/media/cinghiale.png);
         background-size: contain;
         background-repeat: no-repeat;       
+}
+
+.cinghiale2{
+    background-image: url(/media/cinghiale2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;    
+    background-position: center;   
 }
 
 .cervo{
@@ -232,11 +240,26 @@ border-top-right-radius: 5px;
     background-repeat: no-repeat;
 }
 
+.cervo2{
+    
+    background-image: url(/media/cervo2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
 .drago{
     height:35px;
     background-image: url(/media/drago.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.drago2{
+    background-image: url(/media/drago2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
 }
 
 .ghoul{
@@ -246,11 +269,27 @@ border-top-right-radius: 5px;
     background-repeat: no-repeat;
 }
 
+.ghoul2{
+    background-image: url(/media/ghoul2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
 .lupo{
     height:35px;
     background-image: url(/media/lupo.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.lupo2{
+  
+    background-image: url(/media/lupo2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+
 }
 
 .lupoMannaro{
@@ -260,11 +299,27 @@ border-top-right-radius: 5px;
     background-repeat: no-repeat;
 }
 
+.lupoMannaro2{
+    
+    background-image: url(/media/lupoMannaro2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .minotauro{
     height:35px;
     background-image: url(/media/minotauro.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.minotauro2{
+    
+    background-image: url(/media/minotauro2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .orso{
@@ -274,11 +329,26 @@ border-top-right-radius: 5px;
     background-repeat: no-repeat;
 }
 
+.orso2{
+   
+    background-image: url(/media/orso2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .pantera{
     height:35px;
     background-image: url(/media/pantera.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.pantera2{
+    background-image: url(/media/pantera2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .ragnoGigante{
@@ -288,11 +358,26 @@ border-top-right-radius: 5px;
     background-repeat: no-repeat;
 }
 
+.ragnoGigante2{
+    background-image: url(/media/ragnoGigante2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .ratto{
     height:35px;
     background-image: url(/media/ratto.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.ratto2{
+    
+    background-image: url(/media/ratto2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
 }
 
 .succubus{
@@ -302,6 +387,14 @@ border-top-right-radius: 5px;
     background-repeat: no-repeat;
 }
 
+.succubus2{
+   
+    background-image: url(/media/succubus2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
 .tigre{
     height:35px;
     background-image: url(/media/tigre.png);
@@ -309,11 +402,28 @@ border-top-right-radius: 5px;
     background-repeat: no-repeat;
 }
 
+.tigre2{
+    
+    background-image: url(/media/tigre2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
 .zombie{
     height:35px;
     background-image: url(/media/zombie.png);
     background-size: contain;
     background-repeat: no-repeat;
+    
+}
+
+.zombie2{
+ 
+    background-image: url(/media/zombie2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
 }
 
 .nuvola{
@@ -323,7 +433,8 @@ border-top-right-radius: 5px;
     background-repeat: no-repeat;
 }
 
-/* classi oggetti,armi,ecc... */
+
+/* classi oggetti,armi,ecc... classi oggetti,armi,ecc... classi oggetti,armi,ecc... classi oggetti,armi,ecc... */
 
 .bende{
     background-image: url(/media/bende.png);

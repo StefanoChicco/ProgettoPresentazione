@@ -15,9 +15,14 @@ let ResistenzaNemico= document.querySelector('#ResistenzaNemico');
 let NomeNemico= document.querySelector('#NomeNemico');
 let ResistN=document.querySelector('#ResistN');
 let cardNemici=document.querySelector('#cardNemici');
+let schedaNemici=document.querySelector('#schedaNemici');
 let ManoGiocatore=document.querySelector('#manoGiocatore');
 let ButtonUsa=document.querySelector('#usa');
 let ButtonGetta=document.querySelector('#getta');
+let slotArma1=document.querySelector('#arma1');
+let slotArma2=document.querySelector('#arma2');
+let slotEquip1=document.querySelector('#slot1');
+let slotEquip2=document.querySelector('#slot2');
 
 let Mappa= document.querySelectorAll('section');
 let Statistiche= document.querySelectorAll('option');
@@ -28,37 +33,46 @@ let divrifornimenti=document.createElement('div');
 let divabilità=document.createElement('div');
 
     
-    // valori iniziali giocatore: posizione, resistenza, combattività, count nemici sconfitti.
+    // valori iniziali giocatore: posizione, resistenza, combattività, count nemici sconfitti, vitamassima, modificatori
+    // resistenza,combattività,difesa.
 
     let giocatore={Y:1, X:8};
     let resistGiocatore= 0;
     let combatGiocatore= 0;
     let nemiciMorti=0;
-
+    let vitaMassima=0;
+    let sommaResistenza = 0;
+    let sommaDifesa = 0;
+    let sommaCombattività = 0;
+    
+    
+   
+    
+    
     // valori nemici
     let nemici =[
-    {classe:'cervo' , name:'Cervo', Y:2 , X:10 , Resist: 15 ,Combat:10},
-    {classe:'cinghiale' , name:'Cinghiale', Y:6, X:9 , Resist:20 , Combat:18},
-    {classe:'drago' , name:'Drago',Y:6, X:2,Resist:60,Combat:45},
-    {classe:'ghoul' , name:'Ghoul' ,Y:5, X:12 , Resist:22 , Combat:19},
-    {classe:'lupo' , name:'Lupo', Y:11, X:3,Resist:18 , Combat:23},
-    {classe:'lupoMannaro' , name:'Lupo Mannnaro', Y:12, X:5,Resist:40, Combat:33},
-    {classe:'minotauro' , name:'Minotauro' , Y:7, X:11 , Resist:50 , Combat:38},
-    {classe:'orso' , name:'Orso' , Y:2, X:5 , Resist:33 , Combat:30},
-    {classe:'pantera' , name:'Pantera' , Y:9, X:8 , Resist:25 , Combat:26},
-    {classe:'ragnoGigante' , name:'Ragno Gigante' , Y:5, X:6 , Resist:28 , Combat:26},
-    {classe:'ratto' , name:'Ratto' , Y:2, X:8 , Resist:7 , Combat:8},
-    {classe:'succubus' , name:'Succubus' , Y:10, X:11 , Resist:37 , Combat:30},
-    {classe:'tigre' , name:'Tigre' , Y:3, X:2 , Resist:33 , Combat:35},
-    {classe:'zombie' , name:'Zombie' , Y:8 , X:5 , Resist:15 , Combat:14}];
+    {classe2:'cervo2',classe:'cervo' , name:'Cervo', Y:2 , X:10 , Resist: 15 ,Combat:10},
+    {classe2:'cinghiale2',classe:'cinghiale' , name:'Cinghiale', Y:6, X:9 , Resist:20 , Combat:18},
+    {classe2:'drago2',classe:'drago' , name:'Drago',Y:6, X:2,Resist:60,Combat:45},
+    {classe2:'ghoul2',classe:'ghoul' , name:'Ghoul' ,Y:5, X:12 , Resist:22 , Combat:19},
+    {classe2:'lupo2',classe:'lupo' , name:'Lupo', Y:11, X:3,Resist:18 , Combat:23},
+    {classe2:'lupoMannaro2',classe:'lupoMannaro' , name:'Lupo Mannnaro', Y:12, X:5,Resist:40, Combat:33},
+    {classe2:'minotauro2',classe:'minotauro' , name:'Minotauro' , Y:7, X:11 , Resist:50 , Combat:38},
+    {classe2:'orso2',classe:'orso' , name:'Orso' , Y:2, X:5 , Resist:33 , Combat:30},
+    {classe2:'pantera2',classe:'pantera' , name:'Pantera' , Y:9, X:8 , Resist:25 , Combat:26},
+    {classe2:'ragnoGigante2',classe:'ragnoGigante' , name:'Ragno Gigante' , Y:5, X:6 , Resist:28 , Combat:26},
+    {classe2:'ratto2',classe:'ratto' , name:'Ratto' , Y:2, X:8 , Resist:7 , Combat:8},
+    {classe2:'succubus2',classe:'succubus' , name:'Succubus' , Y:10, X:11 , Resist:37 , Combat:30},
+    {classe2:'tigre2',classe:'tigre' , name:'Tigre' , Y:3, X:2 , Resist:33 , Combat:35},
+    {classe2:'zombie2',classe:'zombie' , name:'Zombie' , Y:8 , X:5 , Resist:15 , Combat:14}];
 
 // Array per paragone dado/combattività
 
 //  -14 o inferiore
-    let tabella1=[{N:0,G:100},{N:0,G:100},{N:0,G:8},{N:0,G:8},{N:1,G:7},
+    let tabella1=[{N:0,G:20},{N:0,G:18},{N:0,G:16},{N:0,G:14},{N:1,G:7},
                 {N:2,G:6},{N:3,G:5},{N:4,G:4},{N:5,G:3},{N:6,G:0}];
 // -11 o inferiore
-    let tabella2=[{N:0,G:100},{N:0,G:8},{N:0,G:7},{N:1,G:7},{N:2,G:6},
+    let tabella2=[{N:0,G:12},{N:0,G:10},{N:0,G:8},{N:1,G:7},{N:2,G:6},
                 {N:3,G:6},{N:4,G:5},{N:5,G:4},{N:6,G:3},{N:7,G:0}];
 // -8 o inferiore
     let tabella3=[{N:0,G:8},{N:0,G:7},{N:1,G:6},{N:2,G:6},{N:3,G:5},
@@ -96,6 +110,13 @@ let comb= false;
 let map= false;
 let combat= false;
 
+// valori booleani slot armi e equipaggiamento
+
+let Arma1=false;
+let Arma2=false;
+let Equip1=false;
+let Equip2=false;
+
 // valori boleani abilità
 
 let arteGuerra= false;
@@ -106,7 +127,7 @@ let scudoPsico= false;
 // funzione dado combattimento
 let confronto =(valore1 , valore2)=>{
 
-    let sottrazione=valore1-valore2;
+    let sottrazione=(valore1)-valore2;
     return sottrazione;
 }
 
@@ -114,14 +135,16 @@ let confronto =(valore1 , valore2)=>{
 
 dado.addEventListener('click', ()=>{
     if(combat==true){
-  
         tiro = Math.floor(Math.random() * 10); 
         alert(tiro);
+        let difValue=Number(difesa.value);
+        let DifTot=difValue + sommaDifesa;
+        let combatTot= combatGiocatore + sommaCombattività;
         tiroDado=tiro;
         nemici.forEach(nemico => {
         if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
   
-            let scontro = confronto(combatGiocatore , nemico.Combat);
+            let scontro = confronto(combatTot , nemico.Combat);
             let combattimento=(valore, valore2)=>{
             let Difesa= valore[tiroDado].G - valore2;
             if(Difesa<0){
@@ -129,11 +152,12 @@ dado.addEventListener('click', ()=>{
             } 
                 let vitaN = nemico.Resist - valore[tiroDado].N;  
                 let vitaG = resistGiocatore - Difesa; 
+                let vitaDopata= vitaMassima + sommaResistenza ;
                 nemico.Resist=vitaN;
                 resistGiocatore=vitaG;
                 
                 let div = document.getElementById('resistenza');                          
-                div.innerHTML = vitaG +'/' + vitaMassima;
+                div.innerHTML = vitaG +'/' + vitaDopata ;
                 
                 let p = document.getElementById('ResistN');      
                 p.innerText = vitaN + '/';
@@ -147,56 +171,80 @@ dado.addEventListener('click', ()=>{
                         nemico.Y=100;
                         nemiciMorti=nemiciMorti +1 ;
                         cardNemici.innerHTML ='';
+                        
                             Mappa.forEach(section => {
                             section.classList.remove(nemico.classe);
                             section.classList.remove('nuvola')
                             cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
                         });
+                        schedaNemici.classList.remove(nemico.classe2);
                     }
             }
             
                 if(scontro < -13) {
-                    let battaglia1 = combattimento(tabella1,difesa.value);
+                    let battaglia1 = combattimento(tabella1,DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia1;
   
                 }else if(scontro>-14 && scontro< -10){
-                    let battaglia2 = combattimento(tabella2,difesa.value);
+                    let battaglia2 = combattimento(tabella2,DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia2;
                     
                 }else if(scontro>-11 && scontro< -7){
-                    let battaglia3 = combattimento(tabella3,difesa.value);
+                    let battaglia3 = combattimento(tabella3,DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia3;
                     
                 }else if(scontro>-8 && scontro< -4){                
-                    let battaglia4 = combattimento(tabella4,difesa.value);
+                    let battaglia4 = combattimento(tabella4,DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia4;
                     
                 }else if(scontro>-5 && scontro< -1){
-                    let battaglia5 = combattimento(tabella5,difesa.value);
+                    let battaglia5 = combattimento(tabella5,DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia5;
                     
                 }else if(scontro>-2 && scontro< 2){                
-                    let battaglia6 = combattimento(tabella6,difesa.value);
+                    let battaglia6 = combattimento(tabella6,DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia6;
                     
                 }else if(scontro> 1 && scontro< 5){              
-                    let battaglia7 = combattimento(tabella7,difesa.value);
+                    let battaglia7 = combattimento(tabella7,DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia7;
   
                 }else if(scontro > 4 && scontro< 7){                   
-                    let battaglia8 = combattimento(tabella8,difesa.value);
+                    let battaglia8 = combattimento(tabella8,DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia8;
                     
                 }else if(scontro > 6 && scontro< 10){                   
-                    let battaglia9 = combattimento(tabella9,difesa.value);
+                    let battaglia9 = combattimento(tabella9,DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia9;
                     
                 }else if(scontro > 9 && scontro< 13){   
-                    let battaglia10 = combattimento(tabella10, difesa.value);
+                    let battaglia10 = combattimento(tabella10, DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia10;
   
                 }else if(scontro>12){
-                    let battaglia11 = combattimento(tabella11, difesa.value);
+                    let battaglia11 = combattimento(tabella11, DifTot);
+                    console.log('DifTot',DifTot);
+                    console.log('combatTot', combatTot)
                     return battaglia11;
   
                 }
@@ -219,11 +267,11 @@ resistenza.addEventListener('click', ()=>{
 
     if(resist==false){
         tiro = Math.ceil(Math.random() * 10);
-        valoreResistenza = tiro + 20; 
-        resistGiocatore=valoreResistenza;
-        vitaMassima= resistGiocatore ;
+         valoreResistenza = tiro + 20; 
+         resistGiocatore=valoreResistenza;
+         vitaMassima=resistGiocatore;
         let button = document.getElementById('resistenza');                 
-            button.innerHTML = valoreResistenza;
+            button.innerHTML = vitaMassima;
         
 
         resist=true;
@@ -242,7 +290,7 @@ if(resist==false){
     
     }else if(comb==false){
         tiro = Math.ceil(Math.random() * 10);
-        valoreCombattività = tiro + 15;   
+        let valoreCombattività = tiro + 15;   
         combatGiocatore = valoreCombattività;
    
    
@@ -476,7 +524,8 @@ Mappa.forEach((casella) => {
                 combat=true; 
     
                 cardNemici.innerHTML =''; 
-                
+                schedaNemici.classList.add(nemico.classe2)
+
                 let div = document.createElement('div');
     
                 div.classList.add('col-12', 'col-md-6', 'my-2');
@@ -508,4 +557,4 @@ Mappa.forEach((casella) => {
     });
     
 
-
+    
