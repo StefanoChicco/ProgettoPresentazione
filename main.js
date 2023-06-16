@@ -415,7 +415,7 @@ turno.addEventListener('click', ()=>{
      divrifornimenti.parentNode.replaceChild(rifornimenti, divrifornimenti);
   
 
-     if(nemiciMorti>3 && nemiciMorti<8){
+     if(nemiciMorti>3){
         Medicina.removeAttribute("hidden");
                       
         }else if(nemiciMorti>7){
