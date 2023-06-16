@@ -46,16 +46,12 @@ let totaleCarte = 0;
   // Alert Modificati
 let vis = 10000;
 
-//ALERT
+// ALERT    
 window.alert = function (message) {
-//Creazione dell'elemento
 var a = document.createElement('div');
-//regole di stile CSS
-a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow:-1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000; z-index:"+ vis+ ";";a.innerHTML = "<b></b><br>"+message;document.body.appendChild(a);
+a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow:-1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000; z-index:"+ vis+ ";";a.innerHTML = "<b></b><br>"+message;document.body.appendChild(a);vis--;
 
-vis--;
 
-//Rimozione dell'elemento al click
 a.addEventListener("click", function() {
 a.remove();
 })
@@ -65,10 +61,10 @@ a.remove();
 window.confirm = function(message) {
 let a = document.createElement('div');
 let y = document.createElement('button');  
-//regole di stile CSS
+
 a.style.cssText = "width:50vw; height:300px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgSkull.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:"+ vis+ ";";
 
-//buttons style
+
 y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";    
 a.innerHTML = "<b>Sei Morto!</b><br>"+message;
 y.innerHTML = "Nuova Partita";
@@ -77,12 +73,21 @@ document.body.appendChild(a);
 a.appendChild(y);
 
 vis--;
-// case YES  
+
 y.addEventListener("click", function() {
    a.remove();
    document.location.href = '/index.html';
 }
 )};
+      
+    // Per visualizzare le carte creiamo una funzione sul bottone gioca una carta
+    // che crea un div con all'interno le carte in possesso del giocatore e un bottone per toglierlo. 
+      
+    // al click sul div prende le caratteristiche dell'oggetto e svuota il div e aggiunge i valori 
+    // della carta alle statistiche. se è un arma svuota il div e trasferisce i valori della carta 
+    // nello slot arma e se equipaggiamento negli slot equipaggiamento.
+    // nella carta messa negli slot dev'essere presente un bottone per rimuoverla dallo slot che svuoti il div
+    // e cambi il booleano per permettere di inserire un altra carta al suo interno.
 
 window.ManoGioc = function(message){
 let a = document.createElement('div');
@@ -195,19 +200,19 @@ carte.forEach((card)=>{
        oggettoResistenza.push(oggetto.Resist);
         
      })
-     //  let sommaDifesa = 0;
+   
      sommaDifesa=0;
      for(let i = 0; i < oggettoDifesa.length; i++){
         sommaDifesa = sommaDifesa + oggettoDifesa[i];    
      };
      
-    //  let sommaCombattività = 0;
+   
      sommaCombattività=0;
      for(let i = 0; i < oggettoCombattività.length; i++){     
          sommaCombattività= sommaCombattività + oggettoCombattività[i];    
      };
      
-    //  let sommaResistenza = 0;
+
      sommaResistenza=0;
      for(let i = 0; i < oggettoResistenza.length; i++){    
         sommaResistenza= sommaResistenza + oggettoResistenza[i];
@@ -299,7 +304,7 @@ carte.forEach((card)=>{
       combatDopata=combatGiocatore + sommaCombattività;
       button.innerHTML = resistGiocatore + '/'+ vitaDopata;
       button2.innerHTML = combatDopata;
-    console.log('carteGiocate',carteGiocate);
+      console.log('carteGiocate',carteGiocate);
     
     
   })
@@ -762,96 +767,10 @@ y.addEventListener("click", function() {
 );
 
 };
-  // ButtonUsa.addEventListener('click', ()=>{
-
-
-  // })
-  
  
-
-
-
-
-
-// il problema erano gli alert modificati che non intervengono più sul
-// bloccare il codice se non vengono rispettati i parametri.
- 
-
-
-// rifornimenti dev'essere implementato nella funzione mappa.
-// al click su di una casella viene lanciato un dado da 1 a 10; se rientra nel rage di numeri allora si tira un altro dado da 100 e 
-// se il numero uscito è compreso tra 0 e 3 allora è un oggetto,tra 4 e 6 è un arma, tra 7 e 9 è un equipaggiamento.
-// Se la categ è arma allora viene lanciato un ulteriore dado da 7 e verrano presi
-// i valori dell'oggetto con il value uguale al tiro di dado, se la categ è oggetto allora viene lanciato un ulteriore dado da 5
-// se la categ è equipaggiamento allora viene lanciato un ulteriore dado da 6.
-// a seconda del numero uscito deve prendere le caratteristiche dell'oggetto nell'array e pusharle in un altro array vuoto
-// aumentando di uno il countdown carteMassime(se supera 3 il giocatore).
-// I mostri sconfitti rilasciano sempre 1 oggetto(questo è da implementare nella 
-// funzione dado). 
-
-// Per visualizzare le carte creiamo una funzione sul bottone gioca una carta
-// che crea un div con all'interno le carte in possesso del giocatore e un bottone per toglierlo. 
-
-
-// al click sul div prende le caratteristiche dell'oggetto e svuota il div e aggiunge i valori 
-// della carta alle statistiche. se è un arma svuota il div e trasferisce i valori della carta 
-// nello slot arma e se equipaggiamento negli slot equipaggiamento.
-// nella carta messa negli slot dev'essere presente un bottone per rimuoverla dallo slot che svuoti il div
-// e cambi il booleano per permettere di inserire un altra carta al suo interno.
-
-// passare i valori delle carte in altri array di appoggio. come
-// 
-
-
-
 ManoGiocatore.addEventListener('click', () => {
 ManoGioc('Zaino');
 
-// svuota gli array di appoggio 
-
-// oggettoDifesa.length=0;
-// oggettoCombattività.length=0;
-// oggettoResistenza.length=0;
-
-// carteGiocate.forEach((oggetto)=>{
-
-//   oggettoDifesa.push(oggetto.Dif);
-//   oggettoCombattività.push(oggetto.Combat);
-//   oggettoResistenza.push(oggetto.Resist);
-
-// })
-// let sommaDifesa = 0;
-
-// for(let i = 0; i < oggettoDifesa.length; i++){
-
-//    sommaDifesa = sommaDifesa + oggettoDifesa[i];
-  
-// };
-
-// let sommaCombattività = 0;
-
-// for(let i = 0; i < oggettoCombattività.length; i++){
-
-//     sommaCombattività= sommaCombattività + oggettoCombattività[i];
-    
-// };
-
-// let sommaResistenza = 0;
-
-// for(let i = 0; i < oggettoResistenza.length; i++){
-
-//    sommaResistenza= sommaResistenza + oggettoResistenza[i];
-   
-  
-
-// };
-
-
-// let numbers = [];
-
-// let sommaFinale = numbers.reduce( (acc , el)=> acc + el );
-
-// console.log('sommafinale',sommaFinale);
 
 console.log('oggettoDifesa',oggettoDifesa);
 console.log('oggettoCombattività',oggettoCombattività);
@@ -862,3 +781,6 @@ console.log('sommaDifesa',sommaDifesa);
 console.log('carte giocate', carteGiocate);
 
 });
+
+
+ 

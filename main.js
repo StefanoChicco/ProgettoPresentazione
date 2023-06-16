@@ -131,7 +131,12 @@ let confronto =(valore1 , valore2)=>{
     return sottrazione;
 }
 
-
+// Dado serve unicamente per i combattimenti contro i nemici. 
+// se il giocatore si trova in combattimento(avendo spostato la pedina su quella di un nemico) allora crea un numero
+// randomico tra 0 e 9 che servirà a capire il quantitativo di danni causati al giocatore dal nemico e viceversa.
+// Per farlo prende i valori N e G dall'array tabella che viene scelto dal risultato tra la sottrazione della
+//  combattività totale del giocatore e quella del nemico. Il tiro del dado serve per scegliere l'oggetto all'interno 
+// dell'array e portarlo nella funzione.
 
 dado.addEventListener('click', ()=>{
     if(combat==true){
@@ -145,8 +150,8 @@ dado.addEventListener('click', ()=>{
         if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
   
             let scontro = confronto(combatTot , nemico.Combat);
-            let combattimento=(valore, valore2)=>{
-            let Difesa= valore[tiroDado].G - valore2;
+            let combattimento=(valore)=>{
+            let Difesa= valore[tiroDado].G - DifTot;
             if(Difesa<0){
               Difesa=0;
             } 
@@ -182,67 +187,67 @@ dado.addEventListener('click', ()=>{
             }
             
                 if(scontro < -13) {
-                    let battaglia1 = combattimento(tabella1,DifTot);
+                    let battaglia1 = combattimento(tabella1);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia1;
   
                 }else if(scontro>-14 && scontro< -10){
-                    let battaglia2 = combattimento(tabella2,DifTot);
+                    let battaglia2 = combattimento(tabella2);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia2;
                     
                 }else if(scontro>-11 && scontro< -7){
-                    let battaglia3 = combattimento(tabella3,DifTot);
+                    let battaglia3 = combattimento(tabella3);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia3;
                     
                 }else if(scontro>-8 && scontro< -4){                
-                    let battaglia4 = combattimento(tabella4,DifTot);
+                    let battaglia4 = combattimento(tabella4);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia4;
                     
                 }else if(scontro>-5 && scontro< -1){
-                    let battaglia5 = combattimento(tabella5,DifTot);
+                    let battaglia5 = combattimento(tabella5);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia5;
                     
                 }else if(scontro>-2 && scontro< 2){                
-                    let battaglia6 = combattimento(tabella6,DifTot);
+                    let battaglia6 = combattimento(tabella6);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia6;
                     
                 }else if(scontro> 1 && scontro< 5){              
-                    let battaglia7 = combattimento(tabella7,DifTot);
+                    let battaglia7 = combattimento(tabella7);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia7;
   
                 }else if(scontro > 4 && scontro< 7){                   
-                    let battaglia8 = combattimento(tabella8,DifTot);
+                    let battaglia8 = combattimento(tabella8);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia8;
                     
                 }else if(scontro > 6 && scontro< 10){                   
-                    let battaglia9 = combattimento(tabella9,DifTot);
+                    let battaglia9 = combattimento(tabella9);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia9;
                     
                 }else if(scontro > 9 && scontro< 13){   
-                    let battaglia10 = combattimento(tabella10, DifTot);
+                    let battaglia10 = combattimento(tabella10);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia10;
   
                 }else if(scontro>12){
-                    let battaglia11 = combattimento(tabella11, DifTot);
+                    let battaglia11 = combattimento(tabella11);
                     console.log('DifTot',DifTot);
                     console.log('combatTot', combatTot)
                     return battaglia11;
@@ -255,34 +260,38 @@ dado.addEventListener('click', ()=>{
     }
     
   });
-let counterStamina=(valore1, valore2, valore3, valore4)=>{
-    let sottrazione= valore1 - valore2 - valore3 - valore4;      
-           return sottrazione;
-}
+
 
 
 // funzioni resistenza
-
+// Al click sul bottone resistenza viene creato un numero randomico tra 1 e 10 al quale viene addizionato 20
+// e vengono riempite due variabili (una già esistente, vitaMassima viene creata)  con il numero ValoreResistenza
+// e viene rimpiazzata la scritta tira con il valore di vitaMassima mentre il booleano resist diventa true.
+// in caso il giocatore riprovasse a ricliccare nuovamente il bottone verrebbe trollato dall'alert
 resistenza.addEventListener('click', ()=>{
 
     if(resist==false){
         tiro = Math.ceil(Math.random() * 10);
          valoreResistenza = tiro + 20; 
          resistGiocatore=valoreResistenza;
-         vitaMassima=resistGiocatore;
+         vitaMassima=valoreResistenza;
         let button = document.getElementById('resistenza');                 
             button.innerHTML = vitaMassima;
         
 
         resist=true;
     }else if(resist==true){
-        alert('Mò TE LO TIENI!');
+        alert('EHH!!! VOOLEVVIII!!! Mò TE LO TIENI!');
     
 }
 });
 
 // funzioni combattività
 
+// Al click sul bottone combattività viene creato un numero randomico tra 1 e 10 al quale viene addizionato 15
+// e viene riempita la variabile combatGiocatore con il numero valoreCombattività.
+// Viene rimpiazzata la scritta tira con valoreCombattività mentre il booleano comb diventa true.
+// in caso il giocatore riprovasse a ricliccare nuovamente il bottone verrebbe trollato dall'alert
 combattività.addEventListener('click', ()=>{
   
 if(resist==false){
@@ -299,21 +308,21 @@ if(resist==false){
    
    comb=true;
     }else{
-    alert('Mò TE LO TIENI!');
+    alert('EHH!!! VOOLEVVIII!!! Mò TE LO TIENI!');
 
 }
 });
 
-//    funzioni difesa
+// funzioni difesa
+// per le funzioni difesa, movimento, rifornimenti, abilità  al click su quei select se il giocatroe non ha ancora
+// tirato per La resistenza o la combattività fanno partire un alert che lo informa.
 
 difesa.addEventListener('click', ()=>{
 
      if(resist==false || comb==false){
             alert('prima tira per la resistenza e la combattività');
         
-        }else if(combat==true){
-            alert('Sei in combattimento, non puoi cambiare le statistiche')
-        };          
+        }          
            
 });
 
@@ -324,9 +333,7 @@ movimento.addEventListener('click', ()=>{
      if(resist==false || comb==false){
         alert('prima tira per la resistenza e la combattività')
         
-    }else if(combat==true){
-        alert('Sei in combattimento, non puoi cambiare le statistiche')
-    };
+    }
    
    });
 
@@ -336,9 +343,7 @@ rifornimenti.addEventListener('click', ()=>{
 
         if(resist==false || comb==false){
             alert('prima tira per la resistenza e la combattività')         
-        }else if(combat==true){
-            alert('Sei in combattimento, non puoi cambiare le statistiche')
-        };
+        }
        
     }); 
 
@@ -348,16 +353,23 @@ abilità.addEventListener('click', ()=>{
 
     if(resist==false || comb==false){
         alert("prima tira per la resistenza e la combattività")
-
-    }else if(combat==true){
-        alert('Sei in combattimento, non puoi cambiare le abilità')
-    };
+    }
    
 });
 
+let counterStamina=(valore1, valore2, valore3, valore4)=>{
+    let sottrazione= valore1 - valore2 - valore3 - valore4;      
+           return sottrazione;
+}
+
+// al click su qualunque punto della pagina viene creata una variabile che sottrae al numero massimo di punti stamina
+// (5) i valori di difesa,movimento e rifornimenti; poi per ogni option delle statistiche grazie ad una query 
+// selector all trasforma la stringe dell'option in un numero e se il numero dell'option è maggiore dei puntiStamina
+// rimanenti aggiunge l'attributo hidden per nasconderlo al giocatore in modo da non porterlo selezionare;
+// altrimenti rimuove l'attributo hidden agli option che lo hanno per tornare a mostrarli.
 document.addEventListener('click', ()=>{
-    let PuntiStamina= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
-    if( PuntiStamina>=0){
+        let PuntiStamina= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
+   
         Statistiche.forEach(option => {
             let number=parseInt(option.value);
             if(number>PuntiStamina){
@@ -377,27 +389,35 @@ document.addEventListener('click', ()=>{
         p.innerText = `${PuntiStamina}`;
         
         puntiStamina.appendChild(p);
-    }  
+      
         
            
 });
 
 
 // funzione Turno
-
+// Al click sul bottone "Inizia Turno" la funzione controlla che non ci si trovi in combattimento tramite il booleano
+// combat, se l'esito è negativo svuota la sezione dedicata alle caratteristiche dei nemici e rende 
+// il booleano map false per sbloccare la pedina del giocatore; inoltre ritrasforma i div delle caratteristiche nei select iniziali.
+// Se il giocatore è impegnato in un combattimento fa partire un alert per avvisarlo di terminare il combattimento.
 turno.addEventListener('click', ()=>{
-    if(combat==false){
+    if(resist==false && combat==false || comb==false && combat==false ){
+
+        alert('prima tira per la resistenza e la combattività');
+
+    }else if(combat==false && map==false){
+
+    alert('prima devi muoverti sulla mappa');
+
+    }else if(combat==false){
      cardNemici.innerHTML ='';
-     move=false;
-     shield=false;
-     item=false;
-     abilities=false;
      map=false;
-   
+
      divdifesa.parentNode.replaceChild(difesa, divdifesa);
      divmovimento.parentNode.replaceChild(movimento, divmovimento);
      divrifornimenti.parentNode.replaceChild(rifornimenti, divrifornimenti);
      divabilità.parentNode.replaceChild(abilità, divabilità);
+
     }else{
 
         alert('finisci questo scontro');
@@ -420,6 +440,7 @@ let mappamentoX = (valore1 , valore2)=>{
     }
 
 };
+
 let mappamentoY = (valore1 , valore2)=>{
 
     let sottrazione=valore1 - valore2;
@@ -477,6 +498,14 @@ Mappa.forEach((casella) => {
         let Rifornimenti = rifornimenti.value*2 +1;
         console.log(dado,'dado');
         console.log(Rifornimenti,'Rifornimenti');
+
+    // al click su di una casella viene lanciato un dado da 1 a 10; se rientra nel rage di numeri allora si tira un altro dado da 100 e 
+    // se il numero uscito è compreso tra 0 e 3 allora è un oggetto,tra 4 e 6 è un arma, tra 7 e 9 è un equipaggiamento.
+    // Se la categ è arma allora viene lanciato un ulteriore dado da 7 e verrano presi
+    // i valori dell'oggetto con il value uguale al tiro di dado, se la categ è oggetto allora viene lanciato un ulteriore dado da 5
+    // se la categ è equipaggiamento allora viene lanciato un ulteriore dado da 6.
+    // a seconda del numero uscito deve prendere le caratteristiche dell'oggetto nell'array e pusharle in array vuoto(carte)
+    // aumentando di uno il countdown carteMassime(se supera 4 il giocatore).
         if(Rifornimenti>=dado && totaleCarte<4){
             totaleCarte ++;
             
@@ -558,3 +587,5 @@ Mappa.forEach((casella) => {
     
 
     
+    
+ 
