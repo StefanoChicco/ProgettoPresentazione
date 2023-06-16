@@ -415,10 +415,12 @@ turno.addEventListener('click', ()=>{
      divrifornimenti.parentNode.replaceChild(rifornimenti, divrifornimenti);
   
 
-     if(nemiciMorti>3){
-        Medicina.removeAttribute("hidden");
+        if(nemiciMorti>3){
+            Medicina.removeAttribute("hidden");
                       
-        }else if(nemiciMorti>7){
+        }
+         
+        if(nemiciMorti>7){
             arteguerra.removeAttribute("hidden");
             
         }
