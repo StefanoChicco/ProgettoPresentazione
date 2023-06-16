@@ -548,7 +548,7 @@ Mappa.forEach((casella) => {
           console.log('tiro sfortunato')
          };
         
-        if(nemiciMorti>0){
+        if(nemiciMorti>3){
             let incrementoSalute =resistGiocatore + 2;
             resistGiocatore=incrementoSalute;
             let vitaMax= vitaMassima + sommaResistenza ;
