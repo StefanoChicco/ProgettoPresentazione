@@ -148,6 +148,136 @@ carte.forEach((card)=>{
   Carta.appendChild(usa); 
   usa.addEventListener("click", function(){
     
+    let carteInserite=(valore1,valore2)=>{
+      for( let i = 0; i < carte.length; i++){ 
+        // === al posto di == importante per evitare che elimini le carte doppie
+        if ( carte[i] === card) { 
+          carte.splice(i, 1); 
+          carteGiocate.push(card);
+        
+
+        }
+     }
+     oggettoDifesa.splice(0,oggettoDifesa.length);
+     oggettoCombattività.splice(0,oggettoCombattività.length);
+     oggettoResistenza.splice(0,oggettoResistenza.length);
+    
+ 
+     carteGiocate.forEach((oggetto)=>{
+
+       oggettoDifesa.push(oggetto.Dif);
+       oggettoCombattività.push(oggetto.Combat);
+       oggettoResistenza.push(oggetto.Resist);
+        
+     })
+   
+     sommaDifesa=0;
+     for(let i = 0; i < oggettoDifesa.length; i++){
+        sommaDifesa = sommaDifesa + oggettoDifesa[i];    
+     };
+     
+   
+     sommaCombattività=0;
+     for(let i = 0; i < oggettoCombattività.length; i++){     
+         sommaCombattività= sommaCombattività + oggettoCombattività[i];    
+     };
+     
+
+     sommaResistenza=0;
+     for(let i = 0; i < oggettoResistenza.length; i++){    
+        sommaResistenza= sommaResistenza + oggettoResistenza[i];
+     };
+     
+      divRow.removeChild(Carta);
+      totaleCarte = totaleCarte - 1;
+
+      let carta = document.createElement('div');
+      carta.classList.add('col-12')
+      carta.style.cssText ="height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
+      valore1.appendChild(carta);
+    
+      let Nome = document.createElement('h3');
+      Nome.style.cssText ="height:4vh;padding:auto;color:white;";
+      Nome.innerHTML= card.name;
+      carta.appendChild(Nome);
+      carta.classList.add(card.classe);
+
+      let valoreResistenza = document.createElement('p');
+      valoreResistenza.style.cssText ="height:3vh;padding:auto;color:white;padding-top:2px;";
+      valoreResistenza.innerHTML='Resistenza + '+ card.Resist; 
+      carta.appendChild(valoreResistenza);
+      
+      let valorecombattività = document.createElement('p');
+      valorecombattività.style.cssText ="height:3vh;padding:auto;color:white;padding-top:2px;";
+      valorecombattività.innerHTML='Combattività + '+ card.Combat; 
+      carta.appendChild(valorecombattività); 
+  
+      let valoredifesa = document.createElement('p');
+      valoredifesa.style.cssText ="height:3vh;padding:auto;color:white;padding-top:2px;";
+      valoredifesa.innerHTML='Difesa + '+ card.Dif; 
+      carta.appendChild(valoredifesa); 
+    
+      let button = document.getElementById('resistenza');
+      let button2 = document.getElementById('combattività');  
+      let vitaDopata= vitaMassima + sommaResistenza ;
+      let combatDopata= combatGiocatore + sommaCombattività;
+      button.innerHTML = resistGiocatore + '/'+ vitaDopata;
+      button2.innerHTML = combatDopata;
+
+      // pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta
+
+      let getta= document.createElement('button');
+      getta.style.cssText ="margin-top:-10px;height:5vh;border:solid 2px;border-color:black;background-color:red;color:black;left:0px";
+      getta.classList.add('btn');
+      getta.innerHTML='Getta'; 
+      carta.appendChild(getta); 
+      getta.addEventListener("click", function(){
+      for( let i = 0; i < carteGiocate.length; i++){ 
+      // === al posto di == importante per evitare che elimini le carte doppie
+        if ( carteGiocate[i] === card) { 
+          carteGiocate.splice(i, 1); 
+        }
+      }
+    valore1.removeChild(carta);
+    let button = document.getElementById('resistenza');
+    let button2 = document.getElementById('combattività');  
+    valore2=false;
+    oggettoDifesa.splice(0,oggettoDifesa.length);
+    oggettoCombattività.splice(0,oggettoCombattività.length);
+    oggettoResistenza.splice(0,oggettoResistenza.length);
+    carteGiocate.forEach((oggetto)=>{
+
+      oggettoDifesa.push(oggetto.Dif);
+      oggettoCombattività.push(oggetto.Combat);
+      oggettoResistenza.push(oggetto.Resist);
+       
+    })
+    
+      sommaDifesa=0;
+      for(let i = 0; i < oggettoDifesa.length; i++){
+         sommaDifesa = sommaDifesa + oggettoDifesa[i]; 
+         
+      };
+    sommaCombattività=0;
+      for(let i = 0; i < oggettoCombattività.length; i++){     
+          sommaCombattività= sommaCombattività + oggettoCombattività[i];    
+      };
+    
+      sommaResistenza=0;
+      for(let i = 0; i < oggettoResistenza.length; i++){    
+         sommaResistenza= sommaResistenza + oggettoResistenza[i];
+      };
+      vitaDopata= vitaMassima + sommaResistenza ;
+      combatDopata=combatGiocatore + sommaCombattività;
+      button.innerHTML = resistGiocatore + '/'+ vitaDopata;
+      button2.innerHTML = combatDopata;
+      console.log('carteGiocate',carteGiocate);
+    
+  })
+
+      valore2=true;
+     
+}
    
     console.log('totaleCarte',totaleCarte);
     console.log('carte',carte);
@@ -176,552 +306,25 @@ carte.forEach((card)=>{
     }else if(card.array=='2' && Arma1===true && Arma2===true){
       alert('Stai già utilizzando due armi. Gettane una per usarne un altra.');
 
-      // parte della Arma1 parte della Arma1 parte della Arma1 parte della Arma1 parte della Arma1 parte della Arma1
+      
     }else if(card.array=='2' &&  Arma1==false){
-     
-      for( let i = 0; i < carte.length; i++){ 
-        // === al posto di == importante per evitare che elimini le carte doppie
-        if ( carte[i] === card) { 
-          carte.splice(i, 1); 
-          carteGiocate.push(card);
-        
-
-        }
-     }
-     oggettoDifesa.splice(0,oggettoDifesa.length);
-     oggettoCombattività.splice(0,oggettoCombattività.length);
-     oggettoResistenza.splice(0,oggettoResistenza.length);
-    
- 
-     carteGiocate.forEach((oggetto)=>{
-
-       oggettoDifesa.push(oggetto.Dif);
-       oggettoCombattività.push(oggetto.Combat);
-       oggettoResistenza.push(oggetto.Resist);
-        
-     })
+    let cartaArma1= carteInserite(slotArma1,Arma1);
+    return cartaArma1;
    
-     sommaDifesa=0;
-     for(let i = 0; i < oggettoDifesa.length; i++){
-        sommaDifesa = sommaDifesa + oggettoDifesa[i];    
-     };
-     
-   
-     sommaCombattività=0;
-     for(let i = 0; i < oggettoCombattività.length; i++){     
-         sommaCombattività= sommaCombattività + oggettoCombattività[i];    
-     };
-     
-
-     sommaResistenza=0;
-     for(let i = 0; i < oggettoResistenza.length; i++){    
-        sommaResistenza= sommaResistenza + oggettoResistenza[i];
-     };
-     
-      divRow.removeChild(Carta);
-      totaleCarte = totaleCarte - 1;
-
-      let carta = document.createElement('div');
-      carta.classList.add('col-12')
-      carta.style.cssText ="height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
-      slotArma1.appendChild(carta);
-    
-      let Nome = document.createElement('h3');
-      Nome.style.cssText ="height:4vh;padding:auto;color:white;";
-      Nome.innerHTML= card.name;
-      carta.appendChild(Nome);
-      carta.classList.add(card.classe);
-
-      let valoreResistenza = document.createElement('p');
-      valoreResistenza.style.cssText ="height:3vh;padding:auto;color:white;padding-top:2px;";
-      valoreResistenza.innerHTML='Resistenza + '+ card.Resist; 
-      carta.appendChild(valoreResistenza);
-      
-      let valorecombattività = document.createElement('p');
-      valorecombattività.style.cssText ="height:3vh;padding:auto;color:white;padding-top:2px;";
-      valorecombattività.innerHTML='Combattività + '+ card.Combat; 
-      carta.appendChild(valorecombattività); 
-  
-      let valoredifesa = document.createElement('p');
-      valoredifesa.style.cssText ="height:3vh;padding:auto;color:white;padding-top:2px;";
-      valoredifesa.innerHTML='Difesa + '+ card.Dif; 
-      carta.appendChild(valoredifesa); 
-    
-      let button = document.getElementById('resistenza');
-      let button2 = document.getElementById('combattività');  
-      let vitaDopata= vitaMassima + sommaResistenza ;
-      let combatDopata= combatGiocatore + sommaCombattività;
-      button.innerHTML = resistGiocatore + '/'+ vitaDopata;
-      button2.innerHTML = combatDopata;
-
-      // pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta
-
-      let getta= document.createElement('button');
-      getta.style.cssText ="margin-top:-10px;height:5vh;border:solid 2px;border-color:black;background-color:red;color:black;left:0px";
-      getta.classList.add('btn');
-      getta.innerHTML='Getta'; 
-      carta.appendChild(getta); 
-      getta.addEventListener("click", function(){
-      for( let i = 0; i < carteGiocate.length; i++){ 
-      // === al posto di == importante per evitare che elimini le carte doppie
-      if ( carteGiocate[i] === card) { 
-        carteGiocate.splice(i, 1); 
-      }
-      }
-    slotArma1.removeChild(carta);
-    let button = document.getElementById('resistenza');
-    let button2 = document.getElementById('combattività');  
-    Arma1=false;
-    oggettoDifesa.splice(0,oggettoDifesa.length);
-    oggettoCombattività.splice(0,oggettoCombattività.length);
-    oggettoResistenza.splice(0,oggettoResistenza.length);
-    carteGiocate.forEach((oggetto)=>{
-
-      oggettoDifesa.push(oggetto.Dif);
-      oggettoCombattività.push(oggetto.Combat);
-      oggettoResistenza.push(oggetto.Resist);
-       
-    })
-    
-      sommaDifesa=0;
-      for(let i = 0; i < oggettoDifesa.length; i++){
-         sommaDifesa = sommaDifesa + oggettoDifesa[i]; 
-         
-      };
-      
-    
-      sommaCombattività=0;
-      for(let i = 0; i < oggettoCombattività.length; i++){     
-          sommaCombattività= sommaCombattività + oggettoCombattività[i];    
-      };
-      
-     
-      sommaResistenza=0;
-      for(let i = 0; i < oggettoResistenza.length; i++){    
-         sommaResistenza= sommaResistenza + oggettoResistenza[i];
-      };
-      vitaDopata= vitaMassima + sommaResistenza ;
-      combatDopata=combatGiocatore + sommaCombattività;
-      button.innerHTML = resistGiocatore + '/'+ vitaDopata;
-      button2.innerHTML = combatDopata;
-      console.log('carteGiocate',carteGiocate);
-    
-    
-  })
-
-      
-
-      Arma1=true;
-     
-    
-    // parte della Arma2 parte della Arma2 parte della Arma2 parte della Arma2 parte della Arma2 parte della Arma2 
     }else if(card.array=='2' &&  Arma1==true){
-      for( let i = 0; i < carte.length; i++){ 
-        // === al posto di == importante per evitare che elimini le carte doppie
-        if ( carte[i] === card) { 
-          carte.splice(i, 1); 
-          carteGiocate.push(card);
-         
-        }
-     }
-      oggettoDifesa.splice(0,oggettoDifesa.length);
-     oggettoCombattività.splice(0,oggettoCombattività.length);
-     oggettoResistenza.splice(0,oggettoResistenza.length);
- 
-     carteGiocate.forEach((oggetto)=>{
-
-       oggettoDifesa.push(oggetto.Dif);
-       oggettoCombattività.push(oggetto.Combat);
-       oggettoResistenza.push(oggetto.Resist);
-        
-     })
-  //  let sommaDifesa = 0;
-  sommaDifesa=0;
-  for(let i = 0; i < oggettoDifesa.length; i++){
-     sommaDifesa = sommaDifesa + oggettoDifesa[i];    
-  };
-  
- //  let sommaCombattività = 0;
-  sommaCombattività=0;
-  for(let i = 0; i < oggettoCombattività.length; i++){     
-      sommaCombattività= sommaCombattività + oggettoCombattività[i];    
-  };
-  
- //  let sommaResistenza = 0;
-  sommaResistenza=0;
-  for(let i = 0; i < oggettoResistenza.length; i++){    
-     sommaResistenza= sommaResistenza + oggettoResistenza[i];
-  };
-      
-      divRow.removeChild(Carta);
-      totaleCarte = totaleCarte - 1;
-
-      let carta = document.createElement('div');
-      carta.classList.add('col-12')
-      carta.style.cssText ="height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
-      slotArma2.appendChild(carta);
-    
-      let Nome = document.createElement('h3');
-      Nome.style.cssText ="height:4vh;padding:auto;color:white;";
-      Nome.innerHTML= card.name;
-      carta.appendChild(Nome);
-      carta.classList.add(card.classe);
-
-      let valoreResistenza = document.createElement('p');
-      valoreResistenza.style.cssText ="height:3vh;color:white;padding-top:2px;";
-      valoreResistenza.innerHTML='Resistenza + '+ card.Resist; 
-      carta.appendChild(valoreResistenza);
-      
-      let valorecombattività = document.createElement('p');
-      valorecombattività.style.cssText ="height:3vh;color:white;padding-top:2px;";
-      valorecombattività.innerHTML='Combattività + '+ card.Combat; 
-      carta.appendChild(valorecombattività); 
-  
-      let valoredifesa = document.createElement('p');
-      valoredifesa.style.cssText ="height:3vh;color:white;padding-top:2px;";
-      valoredifesa.innerHTML='Difesa + '+ card.Dif; 
-      carta.appendChild(valoredifesa); 
-
-      
-      let button = document.getElementById('resistenza');
-      let button2 = document.getElementById('combattività');  
-      let vitaDopata= vitaMassima + sommaResistenza ;
-      let combatDopata= combatGiocatore + sommaCombattività;
-      button.innerHTML = resistGiocatore + '/'+ vitaDopata;
-      button2.innerHTML = combatDopata;
-
-// pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta
-      let getta= document.createElement('button');
-      getta.style.cssText ="margin-top:-10px;height:5vh;border:solid 2px;border-color:black;background-color:red;color:black;left:0px";
-      getta.classList.add('btn');
-      getta.innerHTML='Getta'; 
-      carta.appendChild(getta); 
-      getta.addEventListener("click", function(){
-      for( let i = 0; i < carteGiocate.length; i++){ 
-      // === al posto di == importante per evitare che elimini le carte doppie
-      if ( carteGiocate[i] === card) { 
-        carteGiocate.splice(i, 1); 
-      }
-      }
-
-    slotArma2.removeChild(carta);
-    let button = document.getElementById('resistenza');
-    let button2 = document.getElementById('combattività');  
-    Arma2=false;
-    oggettoDifesa.splice(0,oggettoDifesa.length);
-    oggettoCombattività.splice(0,oggettoCombattività.length);
-    oggettoResistenza.splice(0,oggettoResistenza.length);
-    carteGiocate.forEach((oggetto)=>{
-
-      oggettoDifesa.push(oggetto.Dif);
-      oggettoCombattività.push(oggetto.Combat);
-      oggettoResistenza.push(oggetto.Resist);
-       
-    })
-    sommaDifesa=0;
-      for(let i = 0; i < oggettoDifesa.length; i++){
-         sommaDifesa = sommaDifesa + oggettoDifesa[i];    
-      };
-      
-    
-      sommaCombattività=0;
-      for(let i = 0; i < oggettoCombattività.length; i++){     
-          sommaCombattività= sommaCombattività + oggettoCombattività[i];    
-      };
-      
-     
-      sommaResistenza=0;
-      for(let i = 0; i < oggettoResistenza.length; i++){    
-         sommaResistenza= sommaResistenza + oggettoResistenza[i];
-      };
-      vitaDopata= vitaMassima + sommaResistenza ;
-      combatDopata=combatGiocatore + sommaCombattività;
-      button.innerHTML = resistGiocatore + '/'+ vitaDopata;
-      button2.innerHTML = combatDopata;
-
-    console.log('carteGiocate',carteGiocate);
-    
-    
-  })
-
-      
-
-      Arma2=true;
-      
+      let cartaArma2= carteInserite(slotArma2,Arma2);
+      return cartaArma2;
      
     }else if(card.array=='3' && Equip1===true && Equip2===true){
       alert('Stai già utilizzando due oggetti. Gettane uno per usarne un altro.');
 
-
-      // parte della Equip1 parte della Equip1 parte della Equip1 parte della Equip1 parte della Equip1 parte della Equip1
     }else if(card.array=='3' &&  Equip1==false){
-     
-      for( let i = 0; i < carte.length; i++){ 
-        // === al posto di == importante per evitare che elimini le carte doppie
-        if ( carte[i] === card) { 
-          carte.splice(i, 1); 
-          carteGiocate.push(card);
-      
-        }
-     }
-     oggettoDifesa.splice(0,oggettoDifesa.length);
-     oggettoCombattività.splice(0,oggettoCombattività.length);
-     oggettoResistenza.splice(0,oggettoResistenza.length);
- 
-     carteGiocate.forEach((oggetto)=>{
-
-       oggettoDifesa.push(oggetto.Dif);
-       oggettoCombattività.push(oggetto.Combat);
-       oggettoResistenza.push(oggetto.Resist);
-        
-     })
-    //  let sommaDifesa = 0;
-    sommaDifesa=0;
-    for(let i = 0; i < oggettoDifesa.length; i++){
-       sommaDifesa = sommaDifesa + oggettoDifesa[i];    
-    };
-    
-   //  let sommaCombattività = 0;
-    sommaCombattività=0;
-    for(let i = 0; i < oggettoCombattività.length; i++){     
-        sommaCombattività= sommaCombattività + oggettoCombattività[i];    
-    };
-    
-   //  let sommaResistenza = 0;
-    sommaResistenza=0;
-    for(let i = 0; i < oggettoResistenza.length; i++){    
-       sommaResistenza= sommaResistenza + oggettoResistenza[i];
-    };
-      
-      divRow.removeChild(Carta);
-      totaleCarte = totaleCarte - 1;
-
-      let carta = document.createElement('div');
-      carta.classList.add('col-12')
-      carta.style.cssText ="height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
-      slotEquip1.appendChild(carta);
-    
-      let Nome = document.createElement('h3');
-      Nome.style.cssText ="height:4vh;padding:auto;color:white;";
-      Nome.innerHTML= card.name;
-      carta.appendChild(Nome);
-      carta.classList.add(card.classe);
-
-      let valoreResistenza = document.createElement('p');
-      valoreResistenza.style.cssText ="height:3vh;padding:auto;color:white;padding-top:2px;";
-      valoreResistenza.innerHTML='Resistenza + '+ card.Resist; 
-      carta.appendChild(valoreResistenza);
-      
-      let valorecombattività = document.createElement('p');
-      valorecombattività.style.cssText ="height:3vh;padding:auto;color:white;padding-top:2px;";
-      valorecombattività.innerHTML='Combattività + '+ card.Combat; 
-      carta.appendChild(valorecombattività); 
-  
-      let valoredifesa = document.createElement('p');
-      valoredifesa.style.cssText ="height:3vh;padding:auto;color:white;padding-top:2px;";
-      valoredifesa.innerHTML='Difesa + '+ card.Dif; 
-      carta.appendChild(valoredifesa); 
-
-      let button = document.getElementById('resistenza');
-      let button2 = document.getElementById('combattività');  
-      let vitaDopata= vitaMassima + sommaResistenza ;
-      let combatDopata= combatGiocatore + sommaCombattività;
-      button.innerHTML = resistGiocatore + '/'+ vitaDopata;
-      button2.innerHTML = combatDopata;
-
-      // pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta
-
-      let getta= document.createElement('button');
-      getta.style.cssText ="margin-top:-10px;height:5vh;border:solid 2px;border-color:black;background-color:red;color:black;left:0px";
-      getta.classList.add('btn');
-      getta.innerHTML='Getta'; 
-      carta.appendChild(getta); 
-      getta.addEventListener("click", function(){
-      for( let i = 0; i < carteGiocate.length; i++){ 
-      // === al posto di == importante per evitare che elimini le carte doppie
-      if ( carteGiocate[i] === card) { 
-        carteGiocate.splice(i, 1); 
-      }
-      }
-    slotEquip1.removeChild(carta);
-    let button = document.getElementById('resistenza');
-    let button2 = document.getElementById('combattività');  
-  
-    oggettoDifesa.splice(0,oggettoDifesa.length);
-    oggettoCombattività.splice(0,oggettoCombattività.length);
-    oggettoResistenza.splice(0,oggettoResistenza.length);
-    carteGiocate.forEach((oggetto)=>{
-
-      oggettoDifesa.push(oggetto.Dif);
-      oggettoCombattività.push(oggetto.Combat);
-      oggettoResistenza.push(oggetto.Resist);
-       
-    })
-    sommaDifesa=0;
-    for(let i = 0; i < oggettoDifesa.length; i++){
-       sommaDifesa = sommaDifesa + oggettoDifesa[i];    
-    };
-    
-  
-    sommaCombattività=0;
-    for(let i = 0; i < oggettoCombattività.length; i++){     
-        sommaCombattività= sommaCombattività + oggettoCombattività[i];    
-    };
-    
-   
-    sommaResistenza=0;
-    for(let i = 0; i < oggettoResistenza.length; i++){    
-       sommaResistenza= sommaResistenza + oggettoResistenza[i];
-    };
-    vitaDopata= vitaMassima + sommaResistenza ;
-    combatDopata=combatGiocatore + sommaCombattività;
-    button.innerHTML = resistGiocatore + '/'+ vitaDopata;
-    button2.innerHTML = combatDopata;
-    
-    Equip1=false;
-
-    console.log('carteGiocate',carteGiocate);
-    
-  })
-
-      Equip1=true;
-
-      // parte della Equip2 parte della Equip2 parte della Equip2 parte della Equip2 parte della Equip2 parte della Equip2
+     let cartaEquip1= carteInserite(slotEquip1,Equip1);
+     return cartaEquip1;
     
     }else if(card.array=='3' &&  Equip1==true){
-      for( let i = 0; i < carte.length; i++){ 
-        // === al posto di == importante per evitare che elimini le carte doppie
-        if ( carte[i] === card) { 
-          carte.splice(i, 1); 
-          carteGiocate.push(card);
-         
-        }
-     }
-     oggettoDifesa.splice(0,oggettoDifesa.length);
-     oggettoCombattività.splice(0,oggettoCombattività.length);
-     oggettoResistenza.splice(0,oggettoResistenza.length);
-
-     carteGiocate.forEach((oggetto)=>{
-
-       oggettoDifesa.push(oggetto.Dif);
-       oggettoCombattività.push(oggetto.Combat);
-       oggettoResistenza.push(oggetto.Resist);
-        
-     })
-    //  let sommaDifesa = 0;
-     sommaDifesa=0;
-     for(let i = 0; i < oggettoDifesa.length; i++){
-        sommaDifesa = sommaDifesa + oggettoDifesa[i];    
-     };
-     
-    //  let sommaCombattività = 0;
-    
-     sommaCombattività=0;
-     for(let i = 0; i < oggettoCombattività.length; i++){     
-         sommaCombattività= sommaCombattività + oggettoCombattività[i];    
-     };
-     
-    //  let sommaResistenza = 0;
-     sommaResistenza=0;
-     for(let i = 0; i < oggettoResistenza.length; i++){    
-        sommaResistenza= sommaResistenza + oggettoResistenza[i];
-     };
-    
-      divRow.removeChild(Carta);
-      totaleCarte = totaleCarte - 1;
-
-      let carta = document.createElement('div');
-      carta.classList.add('col-12')
-      carta.style.cssText ="height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
-      slotEquip2.appendChild(carta);
-    
-      let Nome = document.createElement('h3');
-      Nome.style.cssText ="height:4vh;padding:auto;color:white;";
-      Nome.innerHTML= card.name;
-      carta.appendChild(Nome);
-      carta.classList.add(card.classe);
-
-      let valoreResistenza = document.createElement('p');
-      valoreResistenza.style.cssText ="height:3vh;color:white;padding-top:2px;";
-      valoreResistenza.innerHTML='Resistenza + '+ card.Resist; 
-      carta.appendChild(valoreResistenza);
-      
-      let valorecombattività = document.createElement('p');
-      valorecombattività.style.cssText ="height:3vh;color:white;padding-top:2px;";
-      valorecombattività.innerHTML='Combattività + '+ card.Combat; 
-      carta.appendChild(valorecombattività); 
-  
-      let valoredifesa = document.createElement('p');
-      valoredifesa.style.cssText ="height:3vh;color:white;padding-top:2px;";
-      valoredifesa.innerHTML='Difesa + '+ card.Dif; 
-      carta.appendChild(valoredifesa); 
-
-      
-      let button = document.getElementById('resistenza');
-      let button2 = document.getElementById('combattività');  
-      let vitaDopata= vitaMassima + sommaResistenza ;
-      let combatDopata= combatGiocatore + sommaCombattività;
-      button.innerHTML = resistGiocatore + '/'+ vitaDopata;
-      button2.innerHTML = combatDopata;
-
-// pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta
-      let getta= document.createElement('button');
-      getta.style.cssText ="margin-top:-10px;height:5vh;border:solid 2px;border-color:black;background-color:red;color:black;left:0px";
-      getta.classList.add('btn');
-      getta.innerHTML='Getta'; 
-      carta.appendChild(getta); 
-      getta.addEventListener("click", function(){
-      for( let i = 0; i < carteGiocate.length; i++){ 
-      // === al posto di == importante per evitare che elimini le carte doppie
-      if ( carteGiocate[i] === card) { 
-        carteGiocate.splice(i, 1); 
-      }
-      }
-    slotEquip2.removeChild(carta);
-    let button = document.getElementById('resistenza');
-    let button2 = document.getElementById('combattività');  
-    oggettoDifesa.splice(0,oggettoDifesa.length);
-    oggettoCombattività.splice(0,oggettoCombattività.length);
-    oggettoResistenza.splice(0,oggettoResistenza.length);
-    carteGiocate.forEach((oggetto)=>{
-
-      oggettoDifesa.push(oggetto.Dif);
-      oggettoCombattività.push(oggetto.Combat);
-      oggettoResistenza.push(oggetto.Resist);
-       
-    })
-    sommaDifesa=0;
-    for(let i = 0; i < oggettoDifesa.length; i++){
-       sommaDifesa = sommaDifesa + oggettoDifesa[i];    
-    };
-    
-  
-    sommaCombattività=0;
-    for(let i = 0; i < oggettoCombattività.length; i++){     
-        sommaCombattività= sommaCombattività + oggettoCombattività[i];    
-    };
-    
-   
-    sommaResistenza=0;
-    for(let i = 0; i < oggettoResistenza.length; i++){    
-       sommaResistenza= sommaResistenza + oggettoResistenza[i];
-    };
-    vitaDopata= vitaMassima + sommaResistenza ;
-    combatDopata=combatGiocatore + sommaCombattività;
-    button.innerHTML = resistGiocatore + '/'+ vitaDopata;
-    button2.innerHTML = combatDopata;
-    
-
-    Equip2=false;
-
-    console.log('carteGiocate',carteGiocate);
-    
-    
-  })
-
-      
-      Equip2=true;
-      
+      let cartaEquip2= carteInserite(slotEquip2,Equip2);
+      return cartaEquip2;
      
     }
   })

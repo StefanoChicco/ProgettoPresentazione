@@ -386,7 +386,7 @@ document.addEventListener('click', ()=>{
         
         p.classList.add('text-terzo');
         
-        p.innerText = `${PuntiStamina}`;
+        p.innerText = PuntiStamina;
         
         puntiStamina.appendChild(p);
       
