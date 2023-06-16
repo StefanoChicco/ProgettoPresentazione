@@ -188,6 +188,7 @@ carte.forEach((card)=>{
 
         }
      }
+    //  serve a svuotare tutti gli array di appoggio
      oggettoDifesa.splice(0,oggettoDifesa.length);
      oggettoCombattività.splice(0,oggettoCombattività.length);
      oggettoResistenza.splice(0,oggettoResistenza.length);

@@ -61,6 +61,22 @@ margin-right: 200px;
  
  }
 
+.abilità{
+
+background-color: #7D6A4D;
+height: auto;
+width:auto;
+font-size: 12px;
+justify-content: center;
+margin: 1rem;
+padding: 10px;
+color: black;
+border: solid 2px;
+border-color: #5a4c38;
+border-radius: 8px;
+
+
+}
 /* parte centrale parte centrale parte centrale parte centrale parte centrale parte centrale parte centrale */
 
 .main1{
@@ -140,7 +156,8 @@ padding: 0%;
     background-size: contain;
     background-repeat: no-repeat;
     }
-    
+
+
 /* parte schede armi ed equipaggiamento parte schede armi ed equipaggiamento parte schede armi ed equipaggiamento */
 
 .main2{

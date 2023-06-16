@@ -8,8 +8,9 @@ let divResistenza= document.querySelector('#divResistenza');
 let movimento= document.querySelector('#movimento');
 let difesa= document.querySelector('#difesa');
 let rifornimenti= document.querySelector('#rifornimenti');
-let abilità= document.querySelector('#abilità');
 let turno= document.querySelector('#turno');
+let arteguerra= document.querySelector('#ArteGuerra');
+let Medicina= document.querySelector('#Medicina');
 let CombattivitàNemico= document.querySelector('#CombattivitàNemico');
 let ResistenzaNemico= document.querySelector('#ResistenzaNemico');
 let NomeNemico= document.querySelector('#NomeNemico');
@@ -121,8 +122,6 @@ let Equip2=false;
 
 let arteGuerra= false;
 let medicina= false;
-let raggioPsico= false;
-let scudoPsico= false;
 
 // funzione dado combattimento
 let confronto =(valore1 , valore2)=>{
@@ -174,7 +173,7 @@ dado.addEventListener('click', ()=>{
                         combat=false;
                         nemico.X=100;
                         nemico.Y=100;
-                        nemiciMorti=nemiciMorti +1 ;
+                        nemiciMorti= nemiciMorti +1;
                         cardNemici.innerHTML ='';
                         
                             Mappa.forEach(section => {
@@ -183,6 +182,13 @@ dado.addEventListener('click', ()=>{
                             cardNemici.innerHTML = `<div class="statisticheNemici text-terzo fs-3">Hai sconfitto ${nemico.name}</div>`;
                         });
                         schedaNemici.classList.remove(nemico.classe2);
+                        if(nemiciMorti>7 && arteGuerra==false){
+                            let CombattivitàAumentata= combatGiocatore + 5;
+                            combatGiocatore=CombattivitàAumentata;
+                            let combGuerra = document.getElementById('combattività');
+                            combGuerra.innerHTML = combatGiocatore + sommaCombattività;
+                            arteGuerra=true;
+                        }
                     }
             }
             
@@ -349,13 +355,6 @@ rifornimenti.addEventListener('click', ()=>{
 
     // funzione abilità
 
-abilità.addEventListener('click', ()=>{
-
-    if(resist==false || comb==false){
-        alert("prima tira per la resistenza e la combattività")
-    }
-   
-});
 
 let counterStamina=(valore1, valore2, valore3, valore4)=>{
     let sottrazione= valore1 - valore2 - valore3 - valore4;      
@@ -389,9 +388,7 @@ document.addEventListener('click', ()=>{
         p.innerText = PuntiStamina;
         
         puntiStamina.appendChild(p);
-      
-        
-           
+             
 });
 
 
@@ -416,7 +413,16 @@ turno.addEventListener('click', ()=>{
      divdifesa.parentNode.replaceChild(difesa, divdifesa);
      divmovimento.parentNode.replaceChild(movimento, divmovimento);
      divrifornimenti.parentNode.replaceChild(rifornimenti, divrifornimenti);
-     divabilità.parentNode.replaceChild(abilità, divabilità);
+  
+
+     if(nemiciMorti>3 && nemiciMorti<8){
+        Medicina.removeAttribute("hidden");
+                      
+        }else if(nemiciMorti>7){
+            arteguerra.removeAttribute("hidden");
+            
+        }
+
 
     }else{
 
@@ -454,6 +460,10 @@ let mappamentoY = (valore1 , valore2)=>{
 
 };
 
+
+
+
+
 Mappa.forEach((casella) => {
     casella.addEventListener('click', () => {
     let x=casella.dataset.x;
@@ -470,20 +480,13 @@ Mappa.forEach((casella) => {
         giocatore.X= casella.dataset.x;
         giocatore.Y= casella.dataset.y;
         map=true;
-        let abilitàLettura = abilità.data-x;
-        if(abilitàLettura==0){
-          abilitàLettura = 'Arte della Guerra';
-        }else if(abilitàLettura==1){
-          abilitàLettura='Medicina';
-        }else if(abilitàLettura==2){
-          abilitàLettura= 'Raggio Psichico';
-        }else{
-          abilitàLettura= 'Scudo Psichico';
-        }
+
+       
+
         difesa.parentNode.replaceChild(divdifesa, difesa);
         movimento.parentNode.replaceChild(divmovimento, movimento);
         rifornimenti.parentNode.replaceChild(divrifornimenti, rifornimenti);
-        abilità.parentNode.replaceChild(divabilità, abilità);
+       
     
         divdifesa.innerText = difesa.value;
         divdifesa.classList.add('divStatistiche');
@@ -491,8 +494,7 @@ Mappa.forEach((casella) => {
         divmovimento.classList.add('divStatisticheCorte');
         divrifornimenti.innerText = rifornimenti.value;
         divrifornimenti.classList.add('divStatisticheCorte');
-        divabilità.innerText = abilitàLettura;
-        divabilità.classList.add('divStatistiche');
+        
     
         let dado = Math.floor(Math.random() * 10); 
         let Rifornimenti = rifornimenti.value*2 +1;
@@ -545,7 +547,21 @@ Mappa.forEach((casella) => {
         }else{
           console.log('tiro sfortunato')
          };
-         
+        
+        if(nemiciMorti>0){
+            let incrementoSalute =resistGiocatore + 2;
+            resistGiocatore=incrementoSalute;
+            let vitaMax= vitaMassima + sommaResistenza ;
+            let div = document.getElementById('resistenza');                         
+            div.innerHTML = resistGiocatore +'/' + vitaMax;
+            if(resistGiocatore>=vitaMax){
+                incrementoSalute=vitaMax;
+                resistGiocatore=incrementoSalute;
+                let div = document.getElementById('resistenza');                         
+                div.innerHTML = resistGiocatore +'/' + vitaMax;
+            }
+
+        }
     
         nemici.forEach(nemico => {
             if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
@@ -584,6 +600,7 @@ Mappa.forEach((casella) => {
     }
     });
     });
+    
     
 
     
