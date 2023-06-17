@@ -1,6 +1,7 @@
 let dado = document.querySelector('#Dado');
 let stamina=document.querySelector('#Stamina');
 let puntiStamina=document.querySelector('#puntiStamina');
+let nemiciSconfitti=document.querySelector('#nemiciSconfitti');
 let combattività= document.querySelector('#combattività');
 let resistenza= document.querySelector('#resistenza');
 let divCombattivita= document.querySelector('#divCombattivita');
@@ -14,7 +15,6 @@ let Medicina= document.querySelector('#Medicina');
 let CombattivitàNemico= document.querySelector('#CombattivitàNemico');
 let ResistenzaNemico= document.querySelector('#ResistenzaNemico');
 let NomeNemico= document.querySelector('#NomeNemico');
-let ResistN=document.querySelector('#ResistN');
 let cardNemici=document.querySelector('#cardNemici');
 let schedaNemici=document.querySelector('#schedaNemici');
 let ManoGiocatore=document.querySelector('#manoGiocatore');
@@ -45,10 +45,7 @@ let divabilità=document.createElement('div');
     let sommaResistenza = 0;
     let sommaDifesa = 0;
     let sommaCombattività = 0;
-    
-    
-   
-    
+    let turni=0;
     
     // valori nemici
     let nemici =[
@@ -123,6 +120,13 @@ let Equip2=false;
 let arteGuerra= false;
 let medicina= false;
 
+// valori booleani turni
+
+ let faseTurni1=false;
+ let faseTurni2=false;
+ let faseTurni3=false;
+ let faseTurni4=false;
+
 // funzione dado combattimento
 let confronto =(valore1 , valore2)=>{
 
@@ -174,6 +178,7 @@ dado.addEventListener('click', ()=>{
                         nemico.X=100;
                         nemico.Y=100;
                         nemiciMorti= nemiciMorti +1;
+                        nemiciSconfitti.innerHTML =nemiciMorti;
                         cardNemici.innerHTML ='';
                         
                             Mappa.forEach(section => {
@@ -188,6 +193,9 @@ dado.addEventListener('click', ()=>{
                             let combGuerra = document.getElementById('combattività');
                             combGuerra.innerHTML = combatGiocatore + sommaCombattività;
                             arteGuerra=true;
+                        }
+                        if(nemici[2].X==100 && nemici[2].Y==100){
+                            vittoria('Complimenti!! Hai vinto la partita!')
                         }
                     }
             }
@@ -266,8 +274,6 @@ dado.addEventListener('click', ()=>{
     }
     
   });
-
-
 
 // funzioni resistenza
 // Al click sul bottone resistenza viene creato un numero randomico tra 1 e 10 al quale viene addizionato 20
@@ -409,7 +415,7 @@ turno.addEventListener('click', ()=>{
     }else if(combat==false){
      cardNemici.innerHTML ='';
      map=false;
-
+     turni=turni+1;   
      divdifesa.parentNode.replaceChild(difesa, divdifesa);
      divmovimento.parentNode.replaceChild(movimento, divmovimento);
      divrifornimenti.parentNode.replaceChild(rifornimenti, divrifornimenti);
@@ -424,7 +430,6 @@ turno.addEventListener('click', ()=>{
             arteguerra.removeAttribute("hidden");
             
         }
-
 
     }else{
 
@@ -462,10 +467,6 @@ let mappamentoY = (valore1 , valore2)=>{
 
 };
 
-
-
-
-
 Mappa.forEach((casella) => {
     casella.addEventListener('click', () => {
     let x=casella.dataset.x;
@@ -483,20 +484,16 @@ Mappa.forEach((casella) => {
         giocatore.Y= casella.dataset.y;
         map=true;
 
-       
-
         difesa.parentNode.replaceChild(divdifesa, difesa);
         movimento.parentNode.replaceChild(divmovimento, movimento);
-        rifornimenti.parentNode.replaceChild(divrifornimenti, rifornimenti);
-       
+        rifornimenti.parentNode.replaceChild(divrifornimenti, rifornimenti);       
     
         divdifesa.innerText = difesa.value;
         divdifesa.classList.add('divStatistiche');
         divmovimento.innerText = movimento.value;
         divmovimento.classList.add('divStatisticheCorte');
         divrifornimenti.innerText = rifornimenti.value;
-        divrifornimenti.classList.add('divStatisticheCorte');
-        
+        divrifornimenti.classList.add('divStatisticheCorte');     
     
         let dado = Math.floor(Math.random() * 10); 
         let Rifornimenti = rifornimenti.value*2 +1;
@@ -566,6 +563,32 @@ Mappa.forEach((casella) => {
         }
     
         nemici.forEach(nemico => {
+            if(turni>4 && faseTurni1==false){
+                
+                for (let i = 0; i < nemici.length; i++){
+                    let CombattivitàNemico= nemici[i].Combat+5;
+                faseTurni1=true;
+                    nemici[i].Combat = CombattivitàNemico;
+                  }
+            }else if(turni>9 && faseTurni2==false){
+                for (let i = 0; i < nemici.length; i++){
+                    let CombattivitàNemico= nemici[i].Combat+3;
+                faseTurni2=true;
+                    nemici[i].Combat = CombattivitàNemico;
+                  }
+            }else if(turni>14 && faseTurni3==false){
+                for (let i = 0; i < nemici.length; i++){
+                    let CombattivitàNemico= nemici[i].Combat+3;
+                faseTurni3=true;
+                    nemici[i].Combat = CombattivitàNemico;
+                  }
+            }else if(turni>19 && faseTurni4==false){
+                for (let i = 0; i < nemici.length; i++){
+                    let CombattivitàNemico= nemici[i].Combat+4;
+                faseTurni4=true;
+                    nemici[i].Combat = CombattivitàNemico;
+                  }
+            };
             if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
                 casella.classList.add('nuvola'); 
                 combat=true; 
@@ -589,6 +612,7 @@ Mappa.forEach((casella) => {
                 cardNemici.appendChild(div);
     
             };
+        
         });
        
     }else if(map==true){

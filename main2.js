@@ -57,6 +57,20 @@ a.remove();
 })
 };
 
+// vittoria    
+window.vittoria = function (message) {
+  var a = document.createElement('div');
+  a.style.cssText = "width:50vw; height:500px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/guerriero.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto;font-size:40px; font-family: \"Arial\", sans-serif; color:black; text-shadow:-1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000; z-index:"+ vis+ ";";a.innerHTML = "<b></b><br>"+message;document.body.appendChild(a);vis--;
+  
+  
+  a.addEventListener("click", function() {
+  a.remove();
+ 
+    document.location.href = '/index.html';
+
+  })
+  };
+
 //CONFIRM
 window.confirm = function(message) {
 let a = document.createElement('div');
@@ -780,7 +794,9 @@ console.log('sommaResistenza',sommaResistenza);
 console.log('sommaCombattività',sommaCombattività);
 console.log('sommaDifesa',sommaDifesa);
 console.log('carte giocate', carteGiocate);
-
+console.log('turni',turni);
+console.log('faseTurni1',faseTurni1);
+console.log('faseTurni2',faseTurni2);
 });
 
 

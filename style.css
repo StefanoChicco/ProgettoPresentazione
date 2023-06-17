@@ -5,7 +5,7 @@
     color: #7C6582;
 }
 .text-terzo{
-    color: #5a4c38;
+    color: rgb(90, 76, 56);
 }
 .bg-primario{
     background-color: #00AAB4;
@@ -30,14 +30,16 @@ background-position: center;
 }
 
 .sottotitoli{
-color:#5a4c38;
+color:black;
 font-size: medium;
 margin-right: 200px;
+
 }
 
 .sottotitoli2{
-    color:#5a4c38;
+    color:black;
     font-size: medium;
+  
     margin: 0%;
     }
     
@@ -234,6 +236,10 @@ border-top-right-radius: 5px;
     border-top-right-radius: 5px;
     
     }
+
+
+
+    
 /* classi nemici classi nemici classi nemici classi nemici classi nemici classi nemici classi nemici classi nemici */
 
 .cinghiale{
@@ -449,6 +455,12 @@ border-top-right-radius: 5px;
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+
+
+
+
+
 
 
 /* classi oggetti,armi,ecc... classi oggetti,armi,ecc... classi oggetti,armi,ecc... classi oggetti,armi,ecc... */
