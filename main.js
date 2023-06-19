@@ -1,4 +1,5 @@
 let dado = document.querySelector('#Dado');
+let Risuldado = document.querySelector('#risultatoDado');
 let stamina=document.querySelector('#Stamina');
 let puntiStamina=document.querySelector('#puntiStamina');
 let nemiciSconfitti=document.querySelector('#nemiciSconfitti');
@@ -144,7 +145,7 @@ let confronto =(valore1 , valore2)=>{
 dado.addEventListener('click', ()=>{
     if(combat==true){
         tiro = Math.floor(Math.random() * 10); 
-        alert(tiro);
+        Risuldado.innerHTML=tiro;
         let difValue=Number(difesa.value);
         let DifTot=difValue + sommaDifesa;
         let combatTot= combatGiocatore + sommaCombattività;
@@ -419,7 +420,7 @@ turno.addEventListener('click', ()=>{
      divdifesa.parentNode.replaceChild(difesa, divdifesa);
      divmovimento.parentNode.replaceChild(movimento, divmovimento);
      divrifornimenti.parentNode.replaceChild(rifornimenti, divrifornimenti);
-  
+     Risuldado.innerHTML='';
 
         if(nemiciMorti>3){
             Medicina.removeAttribute("hidden");
