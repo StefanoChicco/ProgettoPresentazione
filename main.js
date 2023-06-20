@@ -1,3 +1,5 @@
+let Tutorial=document.querySelector('#tutorial');
+let Carosello=document.querySelector('#carosello');
 let Musica=document.querySelector('#musica');
 let stamina=document.querySelector('#Stamina');
 let puntiStamina=document.querySelector('#puntiStamina');
@@ -35,6 +37,8 @@ let divdifesa=document.createElement('div');
 let divrifornimenti=document.createElement('div');
 let divabilità=document.createElement('div');
 
+// la musica di gioco è definita mentre le altre no, perchè altrimenti all'evento non viene bloccata ma continua.
+let musicUnder=new Audio('/audio/musicaSottofondo.mp3');
     
     // valori iniziali giocatore: posizione, resistenza, combattività, count nemici sconfitti, vitamassima, modificatori
     // resistenza,combattività,difesa.
@@ -103,9 +107,9 @@ let divabilità=document.createElement('div');
                 {N:12,G:1},{N:14,G:0},{N:16,G:0},{N:18,G:0},{N:20,G:0}];
 
 
-// valore booleano musica di sottofondo.
+// valore booleano musica di sottofondo e tutorial.
 let musicaOnOff=false;  
-
+let caroselloBoolean=false;
 // valori booleani statistiche, movimento, combattimento.
 
 let resist= false;
@@ -131,6 +135,38 @@ let medicina= false;
  let faseTurni2=false;
  let faseTurni3=false;
  let faseTurni4=false;
+
+ Musica.addEventListener('click',()=>{
+    
+    musicUnder.play();
+    musicUnder.volume=0.7;
+    musicUnder.loop=true;
+    if(musicaOnOff==false){
+    Musica.innerHTML='Musica On';
+    musicaOnOff=true;
+    }else if(musicaOnOff==true){
+    
+    musicUnder.pause();
+    musicUnder.currentTime = 0;
+    Musica.innerHTML='Musica Off';
+    musicaOnOff=false;
+    }
+})
+
+Tutorial.addEventListener('click',()=>{
+    if(caroselloBoolean==false){
+    Carosello.removeAttribute("hidden");
+    caroselloBoolean=true;
+    }else{
+        Carosello.setAttribute("hidden", "hidden");
+        caroselloBoolean=false;
+    }
+
+})
+Tutorial.addEventListener("mouseover", ()=>{
+    Tutorial.style.cursor = "pointer"; 
+  });
+  
 
 // funzioni resistenza
 // Al click sul bottone resistenza viene creato un numero randomico tra 1 e 10 al quale viene addizionato 20
@@ -660,24 +696,7 @@ Mappa.forEach((casella) => {
     });
     });
     
-    Musica.addEventListener('click',()=>{
-        let audio=new Audio('/audio/musicaSottofondo.mp3');
-        audio.play();
-        audio.volume=0.7;
-        audio.loop=true;
-        if(musicaOnOff==false){
-        Musica.innerHTML='Musica On';
-        musicaOnOff=true;
-        }else if(musicaOnOff==true){
-        
-        audio.pause();
-        audio.currentTime = 0;
-        Musica.innerHTML='Musica Off';
-        musicaOnOff=false;
-        }
 
-
-    })
 
     
     

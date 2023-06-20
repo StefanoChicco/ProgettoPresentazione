@@ -28,7 +28,22 @@ background-repeat: no-repeat;
 background-position: center;
 
 }
+#carosello{
 
+    height: 95vh;
+    width: 200vh;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+
+}
+
+.sfondoGioco{
+
+background-image: url(/media/tavolo.jpg);
+background-position: center;
+
+}
 .sottotitoli{
 color:black;
 font-size: medium;
