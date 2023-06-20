@@ -180,7 +180,8 @@ carte.forEach((card)=>{
     let vitaDopata= vitaMassima + sommaResistenza ;
     let div = document.getElementById('resistenza');                         
     div.innerHTML = resistGiocatore +'/' + vitaDopata;
-      
+    let audio=new Audio("/audio/medicina.mp3");
+    audio.play();
       if(SaluteIncr>vitaDopata){
         SaluteIncr=vitaDopata;
         resistGiocatore=SaluteIncr;
@@ -268,7 +269,8 @@ carte.forEach((card)=>{
       let combatDopata= combatGiocatore + sommaCombattività;
       button.innerHTML = resistGiocatore + '/'+ vitaDopata;
       button2.innerHTML = combatDopata;
-
+      let audio=new Audio("/audio/armaSlot.mp3");
+      audio.play();
       // pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta
 
       let getta= document.createElement('button');
@@ -277,6 +279,8 @@ carte.forEach((card)=>{
       getta.innerHTML='Getta'; 
       carta.appendChild(getta); 
       getta.addEventListener("click", function(){
+        let audio=new Audio("/audio/gettare.mp3");
+    audio.play();
       for( let i = 0; i < carteGiocate.length; i++){ 
       // === al posto di == importante per evitare che elimini le carte doppie
       if ( carteGiocate[i] === card) { 
@@ -404,6 +408,8 @@ carte.forEach((card)=>{
       let combatDopata= combatGiocatore + sommaCombattività;
       button.innerHTML = resistGiocatore + '/'+ vitaDopata;
       button2.innerHTML = combatDopata;
+      let audio=new Audio("/audio/armaSlot.mp3");
+      audio.play();
 
 // pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta
       let getta= document.createElement('button');
@@ -412,6 +418,8 @@ carte.forEach((card)=>{
       getta.innerHTML='Getta'; 
       carta.appendChild(getta); 
       getta.addEventListener("click", function(){
+        let audio=new Audio("/audio/gettare.mp3");
+    audio.play();
       for( let i = 0; i < carteGiocate.length; i++){ 
       // === al posto di == importante per evitare che elimini le carte doppie
       if ( carteGiocate[i] === card) { 
@@ -543,6 +551,8 @@ carte.forEach((card)=>{
       let combatDopata= combatGiocatore + sommaCombattività;
       button.innerHTML = resistGiocatore + '/'+ vitaDopata;
       button2.innerHTML = combatDopata;
+      let audio=new Audio("/audio/equipSlot.mp3");
+      audio.play();
 
       // pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta
 
@@ -552,12 +562,15 @@ carte.forEach((card)=>{
       getta.innerHTML='Getta'; 
       carta.appendChild(getta); 
       getta.addEventListener("click", function(){
+        let audio=new Audio("/audio/gettare.mp3");
+    audio.play();
       for( let i = 0; i < carteGiocate.length; i++){ 
       // === al posto di == importante per evitare che elimini le carte doppie
       if ( carteGiocate[i] === card) { 
         carteGiocate.splice(i, 1); 
       }
       }
+      
     slotEquip1.removeChild(carta);
     let button = document.getElementById('resistenza');
     let button2 = document.getElementById('combattività');  
@@ -678,7 +691,8 @@ carte.forEach((card)=>{
       let combatDopata= combatGiocatore + sommaCombattività;
       button.innerHTML = resistGiocatore + '/'+ vitaDopata;
       button2.innerHTML = combatDopata;
-
+      let audio=new Audio("/audio/equipSlot.mp3");
+      audio.play();
 // pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta pulsante getta
       let getta= document.createElement('button');
       getta.style.cssText ="margin-top:-10px;height:5vh;border:solid 2px;border-color:black;background-color:red;color:black;left:0px";
@@ -686,53 +700,55 @@ carte.forEach((card)=>{
       getta.innerHTML='Getta'; 
       carta.appendChild(getta); 
       getta.addEventListener("click", function(){
+        let audio=new Audio("/audio/gettare.mp3");
+    audio.play();
       for( let i = 0; i < carteGiocate.length; i++){ 
       // === al posto di == importante per evitare che elimini le carte doppie
       if ( carteGiocate[i] === card) { 
         carteGiocate.splice(i, 1); 
       }
       }
-    slotEquip2.removeChild(carta);
-    let button = document.getElementById('resistenza');
-    let button2 = document.getElementById('combattività');  
-    oggettoDifesa.splice(0,oggettoDifesa.length);
-    oggettoCombattività.splice(0,oggettoCombattività.length);
-    oggettoResistenza.splice(0,oggettoResistenza.length);
-    carteGiocate.forEach((oggetto)=>{
+        slotEquip2.removeChild(carta);
+        let button = document.getElementById('resistenza');
+        let button2 = document.getElementById('combattività');  
+        oggettoDifesa.splice(0,oggettoDifesa.length);
+        oggettoCombattività.splice(0,oggettoCombattività.length);
+        oggettoResistenza.splice(0,oggettoResistenza.length);
+        carteGiocate.forEach((oggetto)=>{
 
-      oggettoDifesa.push(oggetto.Dif);
-      oggettoCombattività.push(oggetto.Combat);
-      oggettoResistenza.push(oggetto.Resist);
-       
-    })
-    sommaDifesa=0;
-    for(let i = 0; i < oggettoDifesa.length; i++){
-       sommaDifesa = sommaDifesa + oggettoDifesa[i];    
-    };
-    
-  
-    sommaCombattività=0;
-    for(let i = 0; i < oggettoCombattività.length; i++){     
-        sommaCombattività= sommaCombattività + oggettoCombattività[i];    
-    };
-    
-   
-    sommaResistenza=0;
-    for(let i = 0; i < oggettoResistenza.length; i++){    
-       sommaResistenza= sommaResistenza + oggettoResistenza[i];
-    };
-    vitaDopata= vitaMassima + sommaResistenza ;
-    combatDopata=combatGiocatore + sommaCombattività;
-    button.innerHTML = resistGiocatore + '/'+ vitaDopata;
-    button2.innerHTML = combatDopata;
-    
+          oggettoDifesa.push(oggetto.Dif);
+          oggettoCombattività.push(oggetto.Combat);
+          oggettoResistenza.push(oggetto.Resist);
+          
+        })
+        sommaDifesa=0;
+        for(let i = 0; i < oggettoDifesa.length; i++){
+          sommaDifesa = sommaDifesa + oggettoDifesa[i];    
+        };
+        
+      
+        sommaCombattività=0;
+        for(let i = 0; i < oggettoCombattività.length; i++){     
+            sommaCombattività= sommaCombattività + oggettoCombattività[i];    
+        };
+        
+      
+        sommaResistenza=0;
+        for(let i = 0; i < oggettoResistenza.length; i++){    
+          sommaResistenza= sommaResistenza + oggettoResistenza[i];
+        };
+        vitaDopata= vitaMassima + sommaResistenza ;
+        combatDopata=combatGiocatore + sommaCombattività;
+        button.innerHTML = resistGiocatore + '/'+ vitaDopata;
+        button2.innerHTML = combatDopata;
+        
 
-    Equip2=false;
+        Equip2=false;
 
-    console.log('carteGiocate',carteGiocate);
-    
-    
-  })
+        console.log('carteGiocate',carteGiocate);
+        
+        
+      })
 
       
       Equip2=true;
@@ -758,9 +774,9 @@ carte.forEach((card)=>{
    }
     divRow.removeChild(Carta);
     totaleCarte = totaleCarte - 1;
-
-    console.log('totaleCarte',totaleCarte);
-    console.log('carte',carte);
+    let audio=new Audio("/audio/gettare.mp3");
+    audio.play();
+    
     
   })
 
@@ -776,7 +792,10 @@ a.appendChild(divRow);
 
 vis--;
 
+// pulsante torna indietro zaino pulsante torna indietro zaino pulsante torna indietro zaino
 y.addEventListener("click", function() {
+  let audio=new Audio("/audio/zaino.mp3");
+audio.play();
  a.remove();
 }
 );
@@ -785,18 +804,9 @@ y.addEventListener("click", function() {
  
 ManoGiocatore.addEventListener('click', () => {
 ManoGioc('Zaino');
+let audio=new Audio("/audio/zaino.mp3");
+audio.play();
 
-
-console.log('oggettoDifesa',oggettoDifesa);
-console.log('oggettoCombattività',oggettoCombattività);
-console.log('oggettoResistenza',oggettoResistenza);
-console.log('sommaResistenza',sommaResistenza);
-console.log('sommaCombattività',sommaCombattività);
-console.log('sommaDifesa',sommaDifesa);
-console.log('carte giocate', carteGiocate);
-console.log('turni',turni);
-console.log('faseTurni1',faseTurni1);
-console.log('faseTurni2',faseTurni2);
 });
 
 

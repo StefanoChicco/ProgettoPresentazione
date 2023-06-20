@@ -1,5 +1,4 @@
-let dado = document.querySelector('#Dado');
-let Risuldado = document.querySelector('#risultatoDado');
+let Musica=document.querySelector('#musica');
 let stamina=document.querySelector('#Stamina');
 let puntiStamina=document.querySelector('#puntiStamina');
 let nemiciSconfitti=document.querySelector('#nemiciSconfitti');
@@ -10,6 +9,8 @@ let divResistenza= document.querySelector('#divResistenza');
 let movimento= document.querySelector('#movimento');
 let difesa= document.querySelector('#difesa');
 let rifornimenti= document.querySelector('#rifornimenti');
+let dado = document.querySelector('#Dado');
+let Risuldado = document.querySelector('#risultatoDado');
 let turno= document.querySelector('#turno');
 let arteguerra= document.querySelector('#ArteGuerra');
 let Medicina= document.querySelector('#Medicina');
@@ -50,20 +51,20 @@ let divabilità=document.createElement('div');
     
     // valori nemici
     let nemici =[
-    {classe2:'cervo2',classe:'cervo' , name:'Cervo', Y:2 , X:10 , Resist: 15 ,Combat:10},
-    {classe2:'cinghiale2',classe:'cinghiale' , name:'Cinghiale', Y:6, X:9 , Resist:20 , Combat:18},
-    {classe2:'drago2',classe:'drago' , name:'Drago',Y:6, X:2,Resist:60,Combat:45},
-    {classe2:'ghoul2',classe:'ghoul' , name:'Ghoul' ,Y:5, X:12 , Resist:22 , Combat:19},
-    {classe2:'lupo2',classe:'lupo' , name:'Lupo', Y:11, X:3,Resist:18 , Combat:23},
-    {classe2:'lupoMannaro2',classe:'lupoMannaro' , name:'Lupo Mannnaro', Y:12, X:5,Resist:40, Combat:33},
-    {classe2:'minotauro2',classe:'minotauro' , name:'Minotauro' , Y:7, X:11 , Resist:50 , Combat:38},
-    {classe2:'orso2',classe:'orso' , name:'Orso' , Y:2, X:5 , Resist:33 , Combat:30},
-    {classe2:'pantera2',classe:'pantera' , name:'Pantera' , Y:9, X:8 , Resist:25 , Combat:26},
-    {classe2:'ragnoGigante2',classe:'ragnoGigante' , name:'Ragno Gigante' , Y:5, X:6 , Resist:28 , Combat:26},
-    {classe2:'ratto2',classe:'ratto' , name:'Ratto' , Y:2, X:8 , Resist:7 , Combat:8},
-    {classe2:'succubus2',classe:'succubus' , name:'Succubus' , Y:10, X:11 , Resist:37 , Combat:30},
-    {classe2:'tigre2',classe:'tigre' , name:'Tigre' , Y:3, X:2 , Resist:33 , Combat:35},
-    {classe2:'zombie2',classe:'zombie' , name:'Zombie' , Y:8 , X:5 , Resist:15 , Combat:14}];
+    {audio:"/audio/cervoRoar.mp3",classe2:'cervo2',classe:'cervo' , name:'Cervo', Y:2 , X:10 , Resist: 15 ,Combat:10},
+    {audio:"/audio/cinghialeRoar.mp3",classe2:'cinghiale2',classe:'cinghiale' , name:'Cinghiale', Y:6, X:9 , Resist:20 , Combat:18},
+    {audio:"/audio/dragonRoarHigh.mp3",classe2:'drago2',classe:'drago' , name:'Drago',Y:6, X:2,Resist:60,Combat:45},
+    {audio:"/audio/ghoulRoar.mp3",classe2:'ghoul2',classe:'ghoul' , name:'Ghoul' ,Y:5, X:12 , Resist:22 , Combat:19},
+    {audio:"/audio/lupoGrowl.mp3",classe2:'lupo2',classe:'lupo' , name:'Lupo', Y:11, X:3,Resist:18 , Combat:23},
+    {audio:"/audio/lupoMannaroRoar.mp3",classe2:'lupoMannaro2',classe:'lupoMannaro' , name:'Lupo Mannnaro', Y:12, X:5,Resist:40, Combat:33},
+    {audio:"/audio/minotauro.mp3",classe2:'minotauro2',classe:'minotauro' , name:'Minotauro' , Y:7, X:11 , Resist:50 , Combat:38},
+    {audio:"/audio/orsoRoar.mp3",classe2:'orso2',classe:'orso' , name:'Orso' , Y:2, X:5 , Resist:33 , Combat:30},
+    {audio:"/audio/panteraRoar.mp3",classe2:'pantera2',classe:'pantera' , name:'Pantera' , Y:9, X:8 , Resist:25 , Combat:26},
+    {audio:"/audio/ragnoGiganteRoar.mp3",classe2:'ragnoGigante2',classe:'ragnoGigante' , name:'Ragno Gigante' , Y:5, X:6 , Resist:28 , Combat:26},
+    {audio:"/audio/rattoSquit.mp3",classe2:'ratto2',classe:'ratto' , name:'Ratto' , Y:2, X:8 , Resist:7 , Combat:8},
+    {audio:"/audio/demonicWoman.mp3",classe2:'succubus2',classe:'succubus' , name:'Succubus' , Y:10, X:11 , Resist:37 , Combat:30},
+    {audio:"/audio/tigreRoar.mp3",classe2:'tigre2',classe:'tigre' , name:'Tigre' , Y:3, X:2 , Resist:33 , Combat:35},
+    {audio:"/audio/zombieScream.mp3",classe2:'zombie2',classe:'zombie' , name:'Zombie' , Y:8 , X:5 , Resist:15 , Combat:14}];
 
 // Array per paragone dado/combattività
 
@@ -101,7 +102,10 @@ let divabilità=document.createElement('div');
     let tabella11=[{N:7,G:4},{N:8,G:3},{N:9,G:2},{N:10,G:2},{N:11,G:2},
                 {N:12,G:1},{N:14,G:0},{N:16,G:0},{N:18,G:0},{N:20,G:0}];
 
-      
+
+// valore booleano musica di sottofondo.
+let musicaOnOff=false;  
+
 // valori booleani statistiche, movimento, combattimento.
 
 let resist= false;
@@ -128,6 +132,140 @@ let medicina= false;
  let faseTurni3=false;
  let faseTurni4=false;
 
+// funzioni resistenza
+// Al click sul bottone resistenza viene creato un numero randomico tra 1 e 10 al quale viene addizionato 20
+// e vengono riempite due variabili (una già esistente, vitaMassima viene creata)  con il numero ValoreResistenza
+// e viene rimpiazzata la scritta tira con il valore di vitaMassima mentre il booleano resist diventa true.
+// in caso il giocatore riprovasse a ricliccare nuovamente il bottone verrebbe trollato dall'alert
+resistenza.addEventListener('click', ()=>{
+
+    if(resist==false){
+        let audio=new Audio("/audio/tiroStatistiche.mp3");
+        audio.play();
+        tiro = Math.ceil(Math.random() * 10);
+         valoreResistenza = tiro + 20; 
+         resistGiocatore=valoreResistenza;
+         vitaMassima=valoreResistenza;
+        let button = document.getElementById('resistenza');                 
+            button.innerHTML = vitaMassima;
+        
+
+        resist=true;
+    }else if(resist==true){
+        let audio=new Audio("/audio/nonono.mp3");
+        audio.play();
+        alert('EHH!!! VOOLEVVIII!!! Mò TE LO TIENI!');
+    
+}
+});
+
+// funzioni combattività
+
+// Al click sul bottone combattività viene creato un numero randomico tra 1 e 10 al quale viene addizionato 15
+// e viene riempita la variabile combatGiocatore con il numero valoreCombattività.
+// Viene rimpiazzata la scritta tira con valoreCombattività mentre il booleano comb diventa true.
+// in caso il giocatore riprovasse a ricliccare nuovamente il bottone verrebbe trollato dall'alert
+combattività.addEventListener('click', ()=>{
+  
+if(resist==false){
+    alert('prima tira per la resistenza')
+    
+    }else if(comb==false){
+        let audio=new Audio("/audio/tiroStatistiche.mp3");
+        audio.play();
+        tiro = Math.ceil(Math.random() * 10);
+        let valoreCombattività = tiro + 15;   
+        combatGiocatore = valoreCombattività;
+   
+   
+   let button = document.getElementById('combattività');      
+   button.innerHTML = valoreCombattività;
+   
+   comb=true;
+    }else{
+        let audio=new Audio("/audio/nonono.mp3");
+        audio.play();
+    alert('EHH!!! VOOLEVVIII!!! Mò TE LO TIENI!');
+
+}
+});
+
+// funzioni difesa
+// per le funzioni difesa, movimento, rifornimenti, abilità  al click su quei select se il giocatroe non ha ancora
+// tirato per La resistenza o la combattività fanno partire un alert che lo informa.
+
+difesa.addEventListener('click', ()=>{
+    let audio=new Audio("/audio/difesa.mp3");
+    audio.play();
+     if(resist==false || comb==false){
+            alert('prima tira per la resistenza e la combattività');
+        
+        }          
+           
+});
+
+//  funzioni movimento
+
+movimento.addEventListener('click', ()=>{
+    let audio=new Audio("/audio/movimento.mp3");
+    audio.play();
+     if(resist==false || comb==false){
+        alert('prima tira per la resistenza e la combattività')
+        
+    }
+   
+   });
+
+    // funzione rifornimenti
+
+rifornimenti.addEventListener('click', ()=>{
+    let audio=new Audio("/audio/rifornimenti.mp3");
+    audio.play();
+        if(resist==false || comb==false){
+            alert('prima tira per la resistenza e la combattività')         
+        }
+       
+    }); 
+
+    // funzione abilità
+
+
+let counterStamina=(valore1, valore2, valore3, valore4)=>{
+    let sottrazione= valore1 - valore2 - valore3 - valore4;      
+           return sottrazione;
+}
+
+// al click su qualunque punto della pagina viene creata una variabile che sottrae al numero massimo di punti stamina
+// (5) i valori di difesa,movimento e rifornimenti; poi per ogni option delle statistiche grazie ad una query 
+// selector all trasforma la stringe dell'option in un numero e se il numero dell'option è maggiore dei puntiStamina
+// rimanenti aggiunge l'attributo hidden per nasconderlo al giocatore in modo da non porterlo selezionare;
+// altrimenti rimuove l'attributo hidden agli option che lo hanno per tornare a mostrarli.
+document.addEventListener('click', ()=>{
+        let PuntiStamina= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
+   
+        Statistiche.forEach(option => {
+            let number=parseInt(option.value);
+            if(number>PuntiStamina){
+                option.setAttribute("hidden", "hidden");          
+            }else{
+                option.removeAttribute("hidden");
+                
+            }
+        });
+    
+        puntiStamina.innerText =''; 
+        
+        let p = document.createElement('p');
+        
+        p.classList.add('text-terzo');
+        
+        p.innerText = PuntiStamina;
+        
+        puntiStamina.appendChild(p);
+             
+});
+
+
 // funzione dado combattimento
 let confronto =(valore1 , valore2)=>{
 
@@ -144,6 +282,8 @@ let confronto =(valore1 , valore2)=>{
 
 dado.addEventListener('click', ()=>{
     if(combat==true){
+        let audio=new Audio("/audio/dadoAudio.mp3");
+                audio.play();
         tiro = Math.floor(Math.random() * 10); 
         Risuldado.innerHTML=tiro;
         let difValue=Number(difesa.value);
@@ -152,7 +292,7 @@ dado.addEventListener('click', ()=>{
         tiroDado=tiro;
         nemici.forEach(nemico => {
         if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
-  
+
             let scontro = confronto(combatTot , nemico.Combat);
             let combattimento=(valore)=>{
             let Difesa= valore[tiroDado].G - DifTot;
@@ -172,9 +312,14 @@ dado.addEventListener('click', ()=>{
                 p.innerText = vitaN + '/';
                 
                     if(vitaG<1){
-                       
+                        let audio=new Audio("/audio/morte.mp3");
+                        audio.play();
+                        let audio2=new Audio("/audio/morteMusica.mp3");
+                        audio2.play();
                         confirm('Sei morto, Game over!');
                     }else if(vitaN<1){
+                        let audio=new Audio("/audio/nemicoSconfitto.mp3");
+                        audio.play();
                         combat=false;
                         nemico.X=100;
                         nemico.Y=100;
@@ -196,6 +341,8 @@ dado.addEventListener('click', ()=>{
                             arteGuerra=true;
                         }
                         if(nemici[2].X==100 && nemici[2].Y==100){
+                            let audio=new Audio("/audio/vittoria.mp3");
+                        audio.play();
                             vittoria('Complimenti!! Hai vinto la partita!')
                         }
                     }
@@ -271,133 +418,12 @@ dado.addEventListener('click', ()=>{
             }    
         });   
     }else{
+        let audio=new Audio("/audio/nonono.mp3");
+        audio.play();
         alert('Non sei in combattimento');
     }
     
   });
-
-// funzioni resistenza
-// Al click sul bottone resistenza viene creato un numero randomico tra 1 e 10 al quale viene addizionato 20
-// e vengono riempite due variabili (una già esistente, vitaMassima viene creata)  con il numero ValoreResistenza
-// e viene rimpiazzata la scritta tira con il valore di vitaMassima mentre il booleano resist diventa true.
-// in caso il giocatore riprovasse a ricliccare nuovamente il bottone verrebbe trollato dall'alert
-resistenza.addEventListener('click', ()=>{
-
-    if(resist==false){
-        tiro = Math.ceil(Math.random() * 10);
-         valoreResistenza = tiro + 20; 
-         resistGiocatore=valoreResistenza;
-         vitaMassima=valoreResistenza;
-        let button = document.getElementById('resistenza');                 
-            button.innerHTML = vitaMassima;
-        
-
-        resist=true;
-    }else if(resist==true){
-        alert('EHH!!! VOOLEVVIII!!! Mò TE LO TIENI!');
-    
-}
-});
-
-// funzioni combattività
-
-// Al click sul bottone combattività viene creato un numero randomico tra 1 e 10 al quale viene addizionato 15
-// e viene riempita la variabile combatGiocatore con il numero valoreCombattività.
-// Viene rimpiazzata la scritta tira con valoreCombattività mentre il booleano comb diventa true.
-// in caso il giocatore riprovasse a ricliccare nuovamente il bottone verrebbe trollato dall'alert
-combattività.addEventListener('click', ()=>{
-  
-if(resist==false){
-    alert('prima tira per la resistenza')
-    
-    }else if(comb==false){
-        tiro = Math.ceil(Math.random() * 10);
-        let valoreCombattività = tiro + 15;   
-        combatGiocatore = valoreCombattività;
-   
-   
-   let button = document.getElementById('combattività');      
-   button.innerHTML = valoreCombattività;
-   
-   comb=true;
-    }else{
-    alert('EHH!!! VOOLEVVIII!!! Mò TE LO TIENI!');
-
-}
-});
-
-// funzioni difesa
-// per le funzioni difesa, movimento, rifornimenti, abilità  al click su quei select se il giocatroe non ha ancora
-// tirato per La resistenza o la combattività fanno partire un alert che lo informa.
-
-difesa.addEventListener('click', ()=>{
-
-     if(resist==false || comb==false){
-            alert('prima tira per la resistenza e la combattività');
-        
-        }          
-           
-});
-
-//  funzioni movimento
-
-movimento.addEventListener('click', ()=>{
-   
-     if(resist==false || comb==false){
-        alert('prima tira per la resistenza e la combattività')
-        
-    }
-   
-   });
-
-    // funzione rifornimenti
-
-rifornimenti.addEventListener('click', ()=>{
-
-        if(resist==false || comb==false){
-            alert('prima tira per la resistenza e la combattività')         
-        }
-       
-    }); 
-
-    // funzione abilità
-
-
-let counterStamina=(valore1, valore2, valore3, valore4)=>{
-    let sottrazione= valore1 - valore2 - valore3 - valore4;      
-           return sottrazione;
-}
-
-// al click su qualunque punto della pagina viene creata una variabile che sottrae al numero massimo di punti stamina
-// (5) i valori di difesa,movimento e rifornimenti; poi per ogni option delle statistiche grazie ad una query 
-// selector all trasforma la stringe dell'option in un numero e se il numero dell'option è maggiore dei puntiStamina
-// rimanenti aggiunge l'attributo hidden per nasconderlo al giocatore in modo da non porterlo selezionare;
-// altrimenti rimuove l'attributo hidden agli option che lo hanno per tornare a mostrarli.
-document.addEventListener('click', ()=>{
-        let PuntiStamina= counterStamina(5, difesa.value, movimento.value, rifornimenti.value);
-   
-        Statistiche.forEach(option => {
-            let number=parseInt(option.value);
-            if(number>PuntiStamina){
-                option.setAttribute("hidden", "hidden");          
-            }else{
-                option.removeAttribute("hidden");
-                
-            }
-        });
-    
-        puntiStamina.innerText =''; 
-        
-        let p = document.createElement('p');
-        
-        p.classList.add('text-terzo');
-        
-        p.innerText = PuntiStamina;
-        
-        puntiStamina.appendChild(p);
-             
-});
-
 
 // funzione Turno
 // Al click sul bottone "Inizia Turno" la funzione controlla che non ci si trovi in combattimento tramite il booleano
@@ -414,6 +440,8 @@ turno.addEventListener('click', ()=>{
     alert('prima devi muoverti sulla mappa');
 
     }else if(combat==false){
+        let audio=new Audio("/audio/nuovoTurno.mp3");
+        audio.play();
      cardNemici.innerHTML ='';
      map=false;
      turni=turni+1;   
@@ -484,7 +512,8 @@ Mappa.forEach((casella) => {
         giocatore.X= casella.dataset.x;
         giocatore.Y= casella.dataset.y;
         map=true;
-
+        let audio=new Audio("/audio/passiGiocatore.mp3");
+        audio.play();
         difesa.parentNode.replaceChild(divdifesa, difesa);
         movimento.parentNode.replaceChild(divmovimento, movimento);
         rifornimenti.parentNode.replaceChild(divrifornimenti, rifornimenti);       
@@ -564,6 +593,7 @@ Mappa.forEach((casella) => {
         }
     
         nemici.forEach(nemico => {
+
             if(turni>4 && faseTurni1==false){
                 
                 for (let i = 0; i < nemici.length; i++){
@@ -593,7 +623,9 @@ Mappa.forEach((casella) => {
             if(giocatore.X==nemico.X && giocatore.Y==nemico.Y){
                 casella.classList.add('nuvola'); 
                 combat=true; 
-    
+                let audio=new Audio(nemico.audio);
+                audio.play();
+                
                 cardNemici.innerHTML =''; 
                 schedaNemici.classList.add(nemico.classe2)
 
@@ -628,7 +660,24 @@ Mappa.forEach((casella) => {
     });
     });
     
-    
+    Musica.addEventListener('click',()=>{
+        let audio=new Audio('/audio/musicaSottofondo.mp3');
+        audio.play();
+        audio.volume=0.7;
+        audio.loop=true;
+        if(musicaOnOff==false){
+        Musica.innerHTML='Musica On';
+        musicaOnOff=true;
+        }else if(musicaOnOff==true){
+        
+        audio.pause();
+        audio.currentTime = 0;
+        Musica.innerHTML='Musica Off';
+        musicaOnOff=false;
+        }
+
+
+    })
 
     
     
