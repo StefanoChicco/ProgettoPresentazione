@@ -20,6 +20,7 @@
     color: black;
    
 }
+
 #Navbar{
 
 background-image: url(./media/lone\ wolf.jpg);
@@ -635,4 +636,22 @@ border-top-right-radius: 5px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+@media screen and (max-width:600px){
+    #Navbar{
+
+        background-image: url(./media/lone\ wolf.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        }
+    #NuovaPartita{
+    color:black!important;
+    }
+    #tutorial{
+    color:black!important;
+    }
+
+
 }
