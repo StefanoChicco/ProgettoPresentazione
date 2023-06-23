@@ -1,404 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">   
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body class="sfondoGioco">
 
   <!-- navbar -->
 
-    <nav class="navbar navbar-expand-lg bg-terzo">
-        <div id="Navbar" class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a id="NuovaPartita" class="nav-link text-white" aria-current="page" href="/index.html">Nuova partita</a>
-              </li>            
-              <li class="nav-item">
-                <a id="tutorial" class="nav-link text-white" aria-current="page">Tutorial</a>
-              </li>
-              <li class="nav-item">
-                <button id="musica" class="btn btn-dark">Musica Off</button>
-              </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg bg-terzo">
+    <div id="Navbar" class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a id="NuovaPartita" class="nav-link text-white" aria-current="page" href="/index.html">Nuova partita</a>
+          </li>
+          <li class="nav-item">
+            <a id="tutorial" class="nav-link text-white" aria-current="page">Tutorial</a>
+          </li>
+          <li class="nav-item">
+            <button id="musica" class="btn btn-dark">Musica Off</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- caratteristiche -->
+  <div hidden id="carosello">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+          aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+          aria-label="Slide 6"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6"
+          aria-label="Slide 7"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7"
+          aria-label="Slide 8"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="8"
+          aria-label="Slide 9"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="9"
+          aria-label="Slide 10"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="10"
+          aria-label="Slide 11"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="11"
+          aria-label="Slide 12"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="12"
+          aria-label="Slide 13"></button>
+
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/Tutorial/tutorial1mod.png" class="d-block w-100" alt="prima pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial2mod.png" class="d-block w-100" alt="seconda pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial3mod.png" class="d-block w-100" alt="terza pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial4mod.png" class="d-block w-100" alt="quarta pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial5mod.png" class="d-block w-100" alt="quinta pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial6mod.png" class="d-block w-100" alt="sesta pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial7mod.png" class="d-block w-100" alt="settima pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial8mod.png" class="d-block w-100" alt="ottava pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial9mod.png" class="d-block w-100" alt="nove pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial10mod.png" class="d-block w-100" alt="decima pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial11mod.png" class="d-block w-100" alt="undicesima pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial12mod.png" class="d-block w-100" alt="dodicesima pagina di tutorial">
+        </div>
+        <div class="carousel-item">
+          <img src="/Tutorial/tutorial13mod.png" class="d-block w-100" alt="tredicesima pagina di tutorial">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-3 text-center justify-content-center main">
+        <h2 class="titoli">Caratteristiche</h2>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-4">
+              <h3 id="Stamina" class="sottotitoli">Punti Stamina</h3>
+              <div class="d-flex">
+                <p class="sottotitoli2 ms-5" id="puntiStamina">5</p>
+                <p class="sottotitoli2">/5</p>
+              </div>
+            </div>
+            <div class="col-4">
+              <h3 class="sottotitoli">Nemici Sconfitti</h3>
+              <div class="d-flex justify-content-center">
+                <p class="sottotitoli2" id="nemiciSconfitti">0</p>
+              </div>
+            </div>
           </div>
         </div>
-    </nav>
+        <div id="divResistenza" class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Resistenza</span>
+          <button id="resistenza" type="button" class="btn bg-primario text-red btn-lg">Tira</button>
+        </div>
+        <div id="divCombattivita" class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Combattività</span>
+          <button id="combattività" type="button" class="btn bg-primario text-red btn-lg">Tira</button>
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="inputGroupSelect01">Difesa</label>
+          <select id="difesa" class="form-select" name="difesa">
 
-<!-- caratteristiche -->
-<div hidden id="carosello">
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 8"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="8" aria-label="Slide 9"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="9" aria-label="Slide 10"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="10" aria-label="Slide 11"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="11" aria-label="Slide 12"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="12" aria-label="Slide 13"></button>
+            <option selected value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="inputGroupSelect01">Movimento</label>
+          <select id="movimento" class="form-select" name="movimento">
 
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="/Tutorial/tutorial1mod.png" class="d-block w-100" alt="prima pagina di tutorial">        
+            <option selected value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="inputGroupSelect01">Rifornimenti</label>
+          <select id="rifornimenti" class="form-select" name="rifornimenti">
+
+            <option selected value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+
+        <div class="Bottoni d-flex justify-content-center">
+          <button id="Dado" type="button" class="btn bg-primario btn-sm">Dado combattimento</button>
+          <div id="risultatoDado" class="risulDado bg-primario"></div>
+        </div>
+        <div class="Bottoni">
+          <button id="turno" type="button" class="btn bg-primario btn-lg">Inizia turno</button>
+        </div>
+        <div class="bottoni d-flex justify-content-center">
+          <div hidden id="Medicina" class="abilità">Medicina</div>
+          <div hidden id="ArteGuerra" class="abilità">Arte della Guerra</div>
+        </div>
       </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial2mod.png" class="d-block w-100" alt="seconda pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial3mod.png" class="d-block w-100" alt="terza pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial4mod.png" class="d-block w-100" alt="quarta pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial5mod.png" class="d-block w-100" alt="quinta pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial6mod.png" class="d-block w-100" alt="sesta pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial7mod.png" class="d-block w-100" alt="settima pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial8mod.png" class="d-block w-100" alt="ottava pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial9mod.png" class="d-block w-100" alt="nove pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial10mod.png" class="d-block w-100" alt="decima pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial11mod.png" class="d-block w-100" alt="undicesima pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial12mod.png" class="d-block w-100" alt="dodicesima pagina di tutorial">
-      </div>
-      <div class="carousel-item">
-        <img src="/Tutorial/tutorial13mod.png" class="d-block w-100" alt="tredicesima pagina di tutorial">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>  
-</div>
-    <div class="container-fluid">
-        <div class="row"> 
-            <div class="col-12 col-md-3 text-center justify-content-center main">
-                <h2 class="titoli">Caratteristiche</h2>
-                <div class="container-fluid">
-                  <div class="row"> 
-                    <div class="col-4">
-                      <h3 id="Stamina" class="sottotitoli">Punti Stamina</h3>
-                      <div class="d-flex">
-                        <p class="sottotitoli2 ms-5" id="puntiStamina">5</p>
-                        <p class="sottotitoli2">/5</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <h3 class="sottotitoli">Nemici Sconfitti</h3>
-                      <div class="d-flex justify-content-center">
-                        <p class="sottotitoli2" id="nemiciSconfitti">0</p>                       
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="divResistenza" class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Resistenza</span>
-                  <button id="resistenza" type="button" class="btn bg-primario text-red btn-lg">Tira</button>                  
-                </div>
-                <div id="divCombattivita" class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Combattività</span>                
-                  <button id="combattività" type="button" class="btn bg-primario text-red btn-lg">Tira</button>
-                </div>
-                  <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Difesa</label>
-                    <select id="difesa" class="form-select" name="difesa">
-                     
-                      <option selected value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                    </select>
-                  </div>
-                  <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Movimento</label>
-                    <select id="movimento" class="form-select" name="movimento">
-                      
-                      <option selected value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  </div>
-                  <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Rifornimenti</label>
-                    <select id="rifornimenti" class="form-select" name="rifornimenti">
-                      
-                      <option selected value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>      
-                    </select>
-                  </div>
-                  
-                  <div class="Bottoni d-flex justify-content-center">
-                    <button id="Dado" type="button" class="btn bg-primario btn-sm">Dado combattimento</button>
-                    <div id="risultatoDado" class="risulDado bg-primario"></div>
-                  </div>
-                  <div class="Bottoni">
-                    <button id="turno" type="button" class="btn bg-primario btn-lg">Inizia turno</button>
-                  </div>
-                  <div class="bottoni d-flex justify-content-center">
-                    <div hidden id="Medicina" class="abilità">Medicina</div>
-                   <div hidden id="ArteGuerra" class="abilità">Arte della Guerra</div>
-                  </div>
+
+      <!--parte centrale mappa-->
+
+      <div class="col-12 col-md-6 main1 text-center">
+
+        <div id="Mappa" class="mappa container-fluid">
+          <div class="row">
+            <div class="col-1 container-fluid p-0">
+              <section id="A-1" data-x="1" data-y="1" class="caselle text-center "></section>
+              <section id="A-2" data-x="2" data-y="1" class="caselle text-center"></section>
+              <section id="A-3" data-x="3" data-y="1" class="caselle text-center"></section>
+              <section id="A-4" data-x="4" data-y="1" class="caselle text-center"></section>
+              <section id="A-5" data-x="5" data-y="1" class="caselle text-center"></section>
+              <section id="A-6" data-x="6" data-y="1" class="caselle text-center"></section>
+              <section id="A-7" data-x="7" data-y="1" class="caselle text-center"></section>
+              <section id="A-8" data-x="8" data-y="1" class="caselle text-center giocatore"></section>
+              <section id="A-9" data-x="9" data-y="1" class="caselle text-center"></section>
+              <section id="A-10" data-x="10" data-y="1" class="caselle text-center"></section>
+              <section id="A-11" data-x="11" data-y="1" class="caselle text-center"></section>
+              <section id="A-12" data-x="12" data-y="1" class="caselle text-center"></section>
             </div>
-
-            <!--parte centrale mappa-->
-            
-            <div class="col-12 col-md-6 main1 text-center">
-                
-              <div id="Mappa" class="mappa container-fluid">
-                <div class="row">
-                  <div class="col-1 container-fluid p-0">
-                   <section id="A-1" data-x="1" data-y="1" class="caselle text-center "></section>
-                   <section id="A-2" data-x="2" data-y="1" class="caselle text-center"></section>
-                   <section id="A-3" data-x="3" data-y="1" class="caselle text-center"></section>
-                   <section id="A-4" data-x="4" data-y="1" class="caselle text-center"></section>
-                   <section id="A-5" data-x="5" data-y="1" class="caselle text-center"></section>
-                   <section id="A-6" data-x="6" data-y="1" class="caselle text-center"></section>
-                   <section id="A-7" data-x="7" data-y="1" class="caselle text-center"></section>
-                   <section id="A-8" data-x="8" data-y="1" class="caselle text-center giocatore"></section>
-                   <section id="A-9" data-x="9" data-y="1" class="caselle text-center"></section>
-                   <section id="A-10" data-x="10" data-y="1" class="caselle text-center"></section>
-                   <section id="A-11" data-x="11" data-y="1" class="caselle text-center"></section>
-                   <section id="A-12" data-x="12" data-y="1" class="caselle text-center"></section>
-                  </div>
-                  <div class="col-1 container-fluid p-0">
-                  <section id="B-1" data-x="1" data-y="2" class="caselle text-center "></section>
-                   <section id="B-2" data-x="2" data-y="2" class="caselle text-center"></section>
-                   <section id="B-3" data-x="3" data-y="2" class="caselle text-center"></section>
-                   <section id="B-4" data-x="4" data-y="2" class="caselle text-center"></section>
-                   <section id="B-5" data-x="5" data-y="2" class="caselle text-center orso"></section>
-                   <section id="B-6" data-x="6" data-y="2" class="caselle text-center"></section>
-                   <section id="B-7" data-x="7" data-y="2" class="caselle text-center"></section>
-                   <section id="B-8" data-x="8" data-y="2" class="caselle text-center ratto"></section>
-                   <section id="B-9" data-x="9" data-y="2" class="caselle text-center"></section>
-                   <section id="B-10" data-x="10" data-y="2" class="caselle text-center cervo"></section>
-                   <section id="B-11" data-x="11" data-y="2" class="caselle text-center"></section>
-                   <section id="B-12" data-x="12" data-y="2" class="caselle text-center"></section>
-                   </div>
-                   <div class="col-1 container-fluid p-0">
-                   <section id="C-1" data-x="1" data-y="3" class="caselle text-center "></section>
-                   <section id="C-2" data-x="2" data-y="3" class="caselle text-center tigre"></section>
-                   <section id="C-3" data-x="3" data-y="3" class="caselle text-center"></section>
-                   <section id="C-4" data-x="4" data-y="3" class="caselle text-center"></section>
-                   <section id="C-5" data-x="5" data-y="3" class="caselle text-center"></section>
-                   <section id="C-6" data-x="6" data-y="3" class="caselle text-center"></section>
-                   <section id="C-7" data-x="7" data-y="3" class="caselle text-center"></section>
-                   <section id="C-8" data-x="8" data-y="3" class="caselle text-center"></section>
-                   <section id="C-9" data-x="9" data-y="3" class="caselle text-center"></section>
-                   <section id="C-10" data-x="10" data-y="3" class="caselle text-center"></section>
-                   <section id="C-11" data-x="11" data-y="3" class="caselle text-center"></section>
-                   <section id="C-12" data-x="12" data-y="3" class="caselle text-center"></section>
-                   </div>
-                   <div class="col-1 container-fluid p-0">
-                    <section id="D-1" data-x="1" data-y="4" class="caselle text-center"></section>
-                    <section id="D-2" data-x="2" data-y="4" class="caselle text-center"></section>
-                    <section id="D-3" data-x="3" data-y="4" class="caselle text-center"></section>
-                    <section id="D-4" data-x="4" data-y="4" class="caselle text-center"></section>
-                    <section id="D-5" data-x="5" data-y="4" class="caselle text-center"></section>
-                    <section id="D-6" data-x="6" data-y="4" class="caselle text-center"></section>
-                    <section id="D-7" data-x="7" data-y="4" class="caselle text-center"></section>
-                    <section id="D-8" data-x="8" data-y="4" class="caselle text-center"></section>
-                    <section id="D-9" data-x="9" data-y="4" class="caselle text-center"></section>
-                    <section id="D-10" data-x="10" data-y="4" class="caselle text-center"></section>
-                    <section id="D-11" data-x="11" data-y="4" class="caselle text-center"></section>
-                    <section id="D-12" data-x="12" data-y="4" class="caselle text-center"></section>
-                   </div>
-                   <div class="col-1 container-fluid p-0">
-                    <section id="E-1" data-x="1" data-y="5" class="caselle text-center"></section>
-                    <section id="E-2" data-x="2" data-y="5" class="caselle text-center"></section>
-                    <section id="E-3" data-x="3" data-y="5" class="caselle text-center"></section>
-                    <section id="E-4" data-x="4" data-y="5" class="caselle text-center"></section>
-                    <section id="E-5" data-x="5" data-y="5" class="caselle text-center"></section>
-                    <section id="E-6" data-x="6" data-y="5" class="caselle text-center ragnoGigante"></section>
-                    <section id="E-7" data-x="7" data-y="5" class="caselle text-center"></section>
-                    <section id="E-8" data-x="8" data-y="5" class="caselle text-center"></section>
-                    <section id="E-9" data-x="9" data-y="5" class="caselle text-center"></section>
-                    <section id="E-10" data-x="10" data-y="5" class="caselle text-center"></section>
-                    <section id="E-11" data-x="11" data-y="5" class="caselle text-center"></section>
-                    <section id="E-12" data-x="12" data-y="5" class="caselle text-center ghoul"></section>
-                   </div>
-                   <div class="col-1 container-fluid p-0">
-                    <section id="F-1" data-x="1" data-y="6" class="caselle text-center"></section>
-                    <section id="F-2" data-x="2" data-y="6" class="caselle text-center drago"></section>
-                    <section id="F-3" data-x="3" data-y="6" class="caselle text-center"></section>
-                    <section id="F-4" data-x="4" data-y="6" class="caselle text-center"></section>
-                    <section id="F-5" data-x="5" data-y="6" class="caselle text-center"></section>
-                    <section id="F-6" data-x="6" data-y="6" class="caselle text-center"></section>
-                    <section id="F-7" data-x="7" data-y="6" class="caselle text-center"></section>
-                    <section id="F-8" data-x="8" data-y="6" class="caselle text-center"></section>
-                    <section id="F-9" data-x="9" data-y="6" class="caselle text-center cinghiale"></section>
-                    <section id="F-10" data-x="10" data-y="6" class="caselle text-center"></section>
-                    <section id="F-11" data-x="11" data-y="6" class="caselle text-center"></section>
-                    <section id="F-12" data-x="12" data-y="6" class="caselle text-center"></section>
-                   </div>
-                   <div class="col-1 container-fluid p-0">
-                    <section id="G-1" data-x="1" data-y="7" class="caselle text-center"></section>
-                   <section id="G-2" data-x="2" data-y="7" class="caselle text-center"></section>
-                   <section id="G-3" data-x="3" data-y="7" class="caselle text-center"></section>
-                   <section id="G-4" data-x="4" data-y="7" class="caselle text-center"></section>
-                   <section id="G-5" data-x="5" data-y="7" class="caselle text-center"></section>
-                   <section id="G-6" data-x="6" data-y="7" class="caselle text-center"></section>
-                   <section id="G-7" data-x="7" data-y="7" class="caselle text-center"></section>
-                   <section id="G-8" data-x="8" data-y="7" class="caselle text-center"></section>
-                   <section id="G-9" data-x="9" data-y="7" class="caselle text-center"></section>
-                   <section id="G-10" data-x="10" data-y="7" class="caselle text-center"></section>
-                   <section id="G-11" data-x="11" data-y="7" class="caselle text-center minotauro"></section>
-                   <section id="G-12" data-x="12" data-y="7" class="caselle text-center"></section>
-                   </div> 
-                   <div class="col-1 container-fluid p-0">
-                    <section id="H-1" data-x="1" data-y="8" class="caselle text-center"></section>
-                   <section id="H-2" data-x="2" data-y="8" class="caselle text-center"></section>
-                   <section id="H-3" data-x="3" data-y="8" class="caselle text-center"></section>
-                   <section id="H-4" data-x="4" data-y="8" class="caselle text-center"></section>
-                   <section id="H-5" data-x="5" data-y="8" class="caselle text-center zombie"></section>
-                   <section id="H-6" data-x="6" data-y="8" class="caselle text-center"></section>
-                   <section id="H-7" data-x="7" data-y="8" class="caselle text-center"></section>
-                   <section id="H-8" data-x="8" data-y="8" class="caselle text-center"></section>
-                   <section id="H-9" data-x="9" data-y="8" class="caselle text-center"></section>
-                   <section id="H-10" data-x="10" data-y="8" class="caselle text-center"></section>
-                   <section id="H-11" data-x="11" data-y="8" class="caselle text-center"></section>
-                   <section id="H-12" data-x="12" data-y="8" class="caselle text-center"></section>
-                   </div>
-                   <div class="col-1 container-fluid p-0">
-                    <section id="I-1" data-x="1" data-y="9" class="caselle text-center"></section>
-                    <section id="I-2" data-x="2" data-y="9" class="caselle text-center"></section>
-                    <section id="I-3" data-x="3" data-y="9" class="caselle text-center"></section>
-                    <section id="I-4" data-x="4" data-y="9" class="caselle text-center"></section>
-                    <section id="I-5" data-x="5" data-y="9" class="caselle text-center"></section>
-                    <section id="I-6" data-x="6" data-y="9" class="caselle text-center"></section>
-                    <section id="I-7" data-x="7" data-y="9" class="caselle text-center"></section>
-                    <section id="I-8" data-x="8" data-y="9" class="caselle text-center pantera"></section>
-                    <section id="I-9" data-x="9" data-y="9" class="caselle text-center"></section>
-                    <section id="I-10" data-x="10" data-y="9" class="caselle text-center"></section>
-                    <section id="I-11" data-x="11" data-y="9" class="caselle text-center"></section>
-                    <section id="I-12" data-x="12" data-y="9" class="caselle text-center"></section>
-                   </div>
-                   <div class="col-1 container-fluid p-0">
-                    <section id="L-1" data-x="1" data-y="10" class="caselle text-center"></section>
-                   <section id="L-2" data-x="2" data-y="10" class="caselle text-center"></section>
-                   <section id="L-3" data-x="3" data-y="10" class="caselle text-center"></section>
-                   <section id="L-4" data-x="4" data-y="10" class="caselle text-center"></section>
-                   <section id="L-5" data-x="5" data-y="10" class="caselle text-center"></section>
-                   <section id="L-6" data-x="6" data-y="10" class="caselle text-center"></section>
-                   <section id="L-7" data-x="7" data-y="10" class="caselle text-center"></section>
-                   <section id="L-8" data-x="8" data-y="10" class="caselle text-center"></section>
-                   <section id="L-9" data-x="9" data-y="10" class="caselle text-center"></section>
-                   <section id="L-10" data-x="10" data-y="10" class="caselle text-center"></section>
-                   <section id="L-11" data-x="11" data-y="10" class="caselle text-center succubus"></section>
-                   <section id="L-12" data-x="12" data-y="10" class="caselle text-center"></section>
-                   </div>
-                   <div class="col-1 container-fluid p-0">
-                    <section id="M-1" data-x="1" data-y="11" class="caselle text-center"></section>
-                    <section id="M-2" data-x="2" data-y="11" class="caselle text-center"></section>
-                    <section id="M-3" data-x="3" data-y="11" class="caselle text-center lupo"></section>
-                    <section id="M-4" data-x="4" data-y="11" class="caselle text-center"></section>
-                    <section id="M-5" data-x="5" data-y="11" class="caselle text-center"></section>
-                    <section id="M-6" data-x="6" data-y="11" class="caselle text-center"></section>
-                    <section id="M-7" data-x="7" data-y="11" class="caselle text-center"></section>
-                    <section id="M-8" data-x="8" data-y="11" class="caselle text-center"></section>
-                    <section id="M-9" data-x="9" data-y="11" class="caselle text-center"></section>
-                    <section id="M-10" data-x="10" data-y="11" class="caselle text-center"></section>
-                    <section id="M-11" data-x="11" data-y="11" class="caselle text-center"></section>
-                    <section id="M-12" data-x="12" data-y="11" class="caselle text-center"></section>
-                   </div>
-                   <div class="col-1 container-fluid p-0">
-                    <section id="N-1" data-x="1" data-y="12" class="caselle text-center"></section>
-                    <section id="N-2" data-x="2" data-y="12" class="caselle text-center"></section>
-                    <section id="N-3" data-x="3" data-y="12" class="caselle text-center"></section>
-                    <section id="N-4" data-x="4" data-y="12" class="caselle text-center"></section>
-                    <section id="N-5" data-x="5" data-y="12" class="caselle text-center lupoMannaro"></section>
-                    <section id="N-6" data-x="6" data-y="12" class="caselle text-center"></section>
-                    <section id="N-7" data-x="7" data-y="12" class="caselle text-center"></section>
-                    <section id="N-8" data-x="8" data-y="12" class="caselle text-center"></section>
-                    <section id="N-9" data-x="9" data-y="12" class="caselle text-center"></section>
-                    <section id="N-10" data-x="10" data-y="12" class="caselle text-center"></section>
-                    <section id="N-11" data-x="11" data-y="12" class="caselle text-center"></section>
-                    <section id="N-12" data-x="12" data-y="12" class="caselle text-center"></section>
-                   </div>
-                </div>
-
-              </div>
-
-              <!--parte statistiche nemico-->
-
-              <div class="container-fluid parteNemici">
-                <div class="row" >
-                  <div class="col-12 col-md-5">
-                    <div id="schedaNemici" class="schedaNemici me-3"></div>
-                  </div>
-                  <div id="cardNemici" class="col-md-3"></div>
-                  
-                 
-                </div>
-
-              </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="B-1" data-x="1" data-y="2" class="caselle text-center "></section>
+              <section id="B-2" data-x="2" data-y="2" class="caselle text-center"></section>
+              <section id="B-3" data-x="3" data-y="2" class="caselle text-center"></section>
+              <section id="B-4" data-x="4" data-y="2" class="caselle text-center"></section>
+              <section id="B-5" data-x="5" data-y="2" class="caselle text-center orso"></section>
+              <section id="B-6" data-x="6" data-y="2" class="caselle text-center"></section>
+              <section id="B-7" data-x="7" data-y="2" class="caselle text-center"></section>
+              <section id="B-8" data-x="8" data-y="2" class="caselle text-center ratto"></section>
+              <section id="B-9" data-x="9" data-y="2" class="caselle text-center"></section>
+              <section id="B-10" data-x="10" data-y="2" class="caselle text-center cervo"></section>
+              <section id="B-11" data-x="11" data-y="2" class="caselle text-center"></section>
+              <section id="B-12" data-x="12" data-y="2" class="caselle text-center"></section>
             </div>
-
-              <!-- parte schede armi ed equipaggiamento -->
-
-            <div class="col-12 col-md-3 main2 text-center">
-              <h2 class="titoli">Armi</h2>
-              <div class="container d-flex justify-content-center">
-                <div id="arma1" class="row schedeArmi"></div>
-                <div id="arma2" class="row schedeArmi"></div> 
-              </div>
-                
-              <h2 class="titoli">Equipaggiamento</h2> 
-              <div class="container d-flex justify-content-center">
-                <div id="slot1" class="row schedeEquip"></div>
-                <div id="slot2" class="row schedeEquip"></div>                         
-              </div>
-
-              <h2 class="titoli">Mano Giocatore</h2>
-              <button id="manoGiocatore" type="button" class="btn bg-primario btn-sm mb-3">Gioca una carta</button>
+            <div class="col-1 container-fluid p-0">
+              <section id="C-1" data-x="1" data-y="3" class="caselle text-center "></section>
+              <section id="C-2" data-x="2" data-y="3" class="caselle text-center tigre"></section>
+              <section id="C-3" data-x="3" data-y="3" class="caselle text-center"></section>
+              <section id="C-4" data-x="4" data-y="3" class="caselle text-center"></section>
+              <section id="C-5" data-x="5" data-y="3" class="caselle text-center"></section>
+              <section id="C-6" data-x="6" data-y="3" class="caselle text-center"></section>
+              <section id="C-7" data-x="7" data-y="3" class="caselle text-center"></section>
+              <section id="C-8" data-x="8" data-y="3" class="caselle text-center"></section>
+              <section id="C-9" data-x="9" data-y="3" class="caselle text-center"></section>
+              <section id="C-10" data-x="10" data-y="3" class="caselle text-center"></section>
+              <section id="C-11" data-x="11" data-y="3" class="caselle text-center"></section>
+              <section id="C-12" data-x="12" data-y="3" class="caselle text-center"></section>
+            </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="D-1" data-x="1" data-y="4" class="caselle text-center"></section>
+              <section id="D-2" data-x="2" data-y="4" class="caselle text-center"></section>
+              <section id="D-3" data-x="3" data-y="4" class="caselle text-center"></section>
+              <section id="D-4" data-x="4" data-y="4" class="caselle text-center"></section>
+              <section id="D-5" data-x="5" data-y="4" class="caselle text-center"></section>
+              <section id="D-6" data-x="6" data-y="4" class="caselle text-center"></section>
+              <section id="D-7" data-x="7" data-y="4" class="caselle text-center"></section>
+              <section id="D-8" data-x="8" data-y="4" class="caselle text-center"></section>
+              <section id="D-9" data-x="9" data-y="4" class="caselle text-center"></section>
+              <section id="D-10" data-x="10" data-y="4" class="caselle text-center"></section>
+              <section id="D-11" data-x="11" data-y="4" class="caselle text-center"></section>
+              <section id="D-12" data-x="12" data-y="4" class="caselle text-center"></section>
+            </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="E-1" data-x="1" data-y="5" class="caselle text-center"></section>
+              <section id="E-2" data-x="2" data-y="5" class="caselle text-center"></section>
+              <section id="E-3" data-x="3" data-y="5" class="caselle text-center"></section>
+              <section id="E-4" data-x="4" data-y="5" class="caselle text-center"></section>
+              <section id="E-5" data-x="5" data-y="5" class="caselle text-center"></section>
+              <section id="E-6" data-x="6" data-y="5" class="caselle text-center ragnoGigante"></section>
+              <section id="E-7" data-x="7" data-y="5" class="caselle text-center"></section>
+              <section id="E-8" data-x="8" data-y="5" class="caselle text-center"></section>
+              <section id="E-9" data-x="9" data-y="5" class="caselle text-center"></section>
+              <section id="E-10" data-x="10" data-y="5" class="caselle text-center"></section>
+              <section id="E-11" data-x="11" data-y="5" class="caselle text-center"></section>
+              <section id="E-12" data-x="12" data-y="5" class="caselle text-center ghoul"></section>
+            </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="F-1" data-x="1" data-y="6" class="caselle text-center"></section>
+              <section id="F-2" data-x="2" data-y="6" class="caselle text-center drago"></section>
+              <section id="F-3" data-x="3" data-y="6" class="caselle text-center"></section>
+              <section id="F-4" data-x="4" data-y="6" class="caselle text-center"></section>
+              <section id="F-5" data-x="5" data-y="6" class="caselle text-center"></section>
+              <section id="F-6" data-x="6" data-y="6" class="caselle text-center"></section>
+              <section id="F-7" data-x="7" data-y="6" class="caselle text-center"></section>
+              <section id="F-8" data-x="8" data-y="6" class="caselle text-center"></section>
+              <section id="F-9" data-x="9" data-y="6" class="caselle text-center cinghiale"></section>
+              <section id="F-10" data-x="10" data-y="6" class="caselle text-center"></section>
+              <section id="F-11" data-x="11" data-y="6" class="caselle text-center"></section>
+              <section id="F-12" data-x="12" data-y="6" class="caselle text-center"></section>
+            </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="G-1" data-x="1" data-y="7" class="caselle text-center"></section>
+              <section id="G-2" data-x="2" data-y="7" class="caselle text-center"></section>
+              <section id="G-3" data-x="3" data-y="7" class="caselle text-center"></section>
+              <section id="G-4" data-x="4" data-y="7" class="caselle text-center"></section>
+              <section id="G-5" data-x="5" data-y="7" class="caselle text-center"></section>
+              <section id="G-6" data-x="6" data-y="7" class="caselle text-center"></section>
+              <section id="G-7" data-x="7" data-y="7" class="caselle text-center"></section>
+              <section id="G-8" data-x="8" data-y="7" class="caselle text-center"></section>
+              <section id="G-9" data-x="9" data-y="7" class="caselle text-center"></section>
+              <section id="G-10" data-x="10" data-y="7" class="caselle text-center"></section>
+              <section id="G-11" data-x="11" data-y="7" class="caselle text-center minotauro"></section>
+              <section id="G-12" data-x="12" data-y="7" class="caselle text-center"></section>
+            </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="H-1" data-x="1" data-y="8" class="caselle text-center"></section>
+              <section id="H-2" data-x="2" data-y="8" class="caselle text-center"></section>
+              <section id="H-3" data-x="3" data-y="8" class="caselle text-center"></section>
+              <section id="H-4" data-x="4" data-y="8" class="caselle text-center"></section>
+              <section id="H-5" data-x="5" data-y="8" class="caselle text-center zombie"></section>
+              <section id="H-6" data-x="6" data-y="8" class="caselle text-center"></section>
+              <section id="H-7" data-x="7" data-y="8" class="caselle text-center"></section>
+              <section id="H-8" data-x="8" data-y="8" class="caselle text-center"></section>
+              <section id="H-9" data-x="9" data-y="8" class="caselle text-center"></section>
+              <section id="H-10" data-x="10" data-y="8" class="caselle text-center"></section>
+              <section id="H-11" data-x="11" data-y="8" class="caselle text-center"></section>
+              <section id="H-12" data-x="12" data-y="8" class="caselle text-center"></section>
+            </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="I-1" data-x="1" data-y="9" class="caselle text-center"></section>
+              <section id="I-2" data-x="2" data-y="9" class="caselle text-center"></section>
+              <section id="I-3" data-x="3" data-y="9" class="caselle text-center"></section>
+              <section id="I-4" data-x="4" data-y="9" class="caselle text-center"></section>
+              <section id="I-5" data-x="5" data-y="9" class="caselle text-center"></section>
+              <section id="I-6" data-x="6" data-y="9" class="caselle text-center"></section>
+              <section id="I-7" data-x="7" data-y="9" class="caselle text-center"></section>
+              <section id="I-8" data-x="8" data-y="9" class="caselle text-center pantera"></section>
+              <section id="I-9" data-x="9" data-y="9" class="caselle text-center"></section>
+              <section id="I-10" data-x="10" data-y="9" class="caselle text-center"></section>
+              <section id="I-11" data-x="11" data-y="9" class="caselle text-center"></section>
+              <section id="I-12" data-x="12" data-y="9" class="caselle text-center"></section>
+            </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="L-1" data-x="1" data-y="10" class="caselle text-center"></section>
+              <section id="L-2" data-x="2" data-y="10" class="caselle text-center"></section>
+              <section id="L-3" data-x="3" data-y="10" class="caselle text-center"></section>
+              <section id="L-4" data-x="4" data-y="10" class="caselle text-center"></section>
+              <section id="L-5" data-x="5" data-y="10" class="caselle text-center"></section>
+              <section id="L-6" data-x="6" data-y="10" class="caselle text-center"></section>
+              <section id="L-7" data-x="7" data-y="10" class="caselle text-center"></section>
+              <section id="L-8" data-x="8" data-y="10" class="caselle text-center"></section>
+              <section id="L-9" data-x="9" data-y="10" class="caselle text-center"></section>
+              <section id="L-10" data-x="10" data-y="10" class="caselle text-center"></section>
+              <section id="L-11" data-x="11" data-y="10" class="caselle text-center succubus"></section>
+              <section id="L-12" data-x="12" data-y="10" class="caselle text-center"></section>
+            </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="M-1" data-x="1" data-y="11" class="caselle text-center"></section>
+              <section id="M-2" data-x="2" data-y="11" class="caselle text-center"></section>
+              <section id="M-3" data-x="3" data-y="11" class="caselle text-center lupo"></section>
+              <section id="M-4" data-x="4" data-y="11" class="caselle text-center"></section>
+              <section id="M-5" data-x="5" data-y="11" class="caselle text-center"></section>
+              <section id="M-6" data-x="6" data-y="11" class="caselle text-center"></section>
+              <section id="M-7" data-x="7" data-y="11" class="caselle text-center"></section>
+              <section id="M-8" data-x="8" data-y="11" class="caselle text-center"></section>
+              <section id="M-9" data-x="9" data-y="11" class="caselle text-center"></section>
+              <section id="M-10" data-x="10" data-y="11" class="caselle text-center"></section>
+              <section id="M-11" data-x="11" data-y="11" class="caselle text-center"></section>
+              <section id="M-12" data-x="12" data-y="11" class="caselle text-center"></section>
+            </div>
+            <div class="col-1 container-fluid p-0">
+              <section id="N-1" data-x="1" data-y="12" class="caselle text-center"></section>
+              <section id="N-2" data-x="2" data-y="12" class="caselle text-center"></section>
+              <section id="N-3" data-x="3" data-y="12" class="caselle text-center"></section>
+              <section id="N-4" data-x="4" data-y="12" class="caselle text-center"></section>
+              <section id="N-5" data-x="5" data-y="12" class="caselle text-center lupoMannaro"></section>
+              <section id="N-6" data-x="6" data-y="12" class="caselle text-center"></section>
+              <section id="N-7" data-x="7" data-y="12" class="caselle text-center"></section>
+              <section id="N-8" data-x="8" data-y="12" class="caselle text-center"></section>
+              <section id="N-9" data-x="9" data-y="12" class="caselle text-center"></section>
+              <section id="N-10" data-x="10" data-y="12" class="caselle text-center"></section>
+              <section id="N-11" data-x="11" data-y="12" class="caselle text-center"></section>
+              <section id="N-12" data-x="12" data-y="12" class="caselle text-center"></section>
             </div>
           </div>
-            
+
         </div>
+
+        <!--parte statistiche nemico-->
+
+        <div class="container-fluid parteNemici">
+          <div class="row">
+            <div class="col-12 col-md-5">
+              <div id="schedaNemici" class="schedaNemici me-3"></div>
+            </div>
+            <div id="cardNemici" class="col-md-3"></div>
+
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- parte schede armi ed equipaggiamento -->
+
+      <div class="col-12 col-md-3 main2 text-center">
+        <h2 class="titoli">Armi</h2>
+        <div class="container d-flex justify-content-center">
+          <div id="arma1" class="row schedeArmi"></div>
+          <div id="arma2" class="row schedeArmi"></div>
+        </div>
+
+        <h2 class="titoli">Equipaggiamento</h2>
+        <div class="container d-flex justify-content-center">
+          <div id="slot1" class="row schedeEquip"></div>
+          <div id="slot2" class="row schedeEquip"></div>
+        </div>
+
+        <h2 class="titoli">Mano Giocatore</h2>
+        <button id="manoGiocatore" type="button" class="btn bg-primario btn-sm mb-3">Gioca una carta</button>
+      </div>
     </div>
- 
 
-    
+  </div>
+  </div>
 
-    <script src="./main.js"></script> 
-    <script src="./main2.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>    
+
+
+
+  <script src="./main.js"></script>
+  <script src="./main2.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

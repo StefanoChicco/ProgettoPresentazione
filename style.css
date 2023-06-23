@@ -1,35 +1,42 @@
-.text-primario{
+.text-primario {
     color: #00AAB4;
 }
-.text-secondario{
+
+.text-secondario {
     color: #7C6582;
 }
-.text-terzo{
+
+.text-terzo {
     color: rgb(90, 76, 56);
 }
-.bg-primario{
+
+.bg-primario {
     background-color: #00AAB4;
 }
-.bg-secondario{
+
+.bg-secondario {
     background-color: #7C6582;
 }
-.bg-terzo{
+
+.bg-terzo {
     background-color: #7D6A4D;
 }
-.titoli{
+
+.titoli {
     color: black;
-   
-}
-
-#Navbar{
-
-background-image: url(./media/lone\ wolf.jpg);
-background-size: contain;
-background-repeat: no-repeat;
-background-position: center;
 
 }
-#carosello{
+
+#Navbar {
+
+    background-image: url(./media/lone\ wolf.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+#carosello {
 
     height: 95vh;
     width: 200vh;
@@ -39,34 +46,36 @@ background-position: center;
 
 }
 
-.sfondoGioco{
+.sfondoGioco {
 
-background-image: url(/media/tavolo.jpg);
-background-position: center;
-
-}
-.sottotitoli{
-color:black;
-font-size: medium;
-margin-right: 200px;
+    background-image: url(/media/tavolo.jpg);
+    background-position: center;
 
 }
 
-.sottotitoli2{
-    color:black;
+.sottotitoli {
+    color: black;
     font-size: medium;
-  
+    margin-right: 200px;
+
+}
+
+.sottotitoli2 {
+    color: black;
+    font-size: medium;
+
     margin: 0%;
-    }
-    
+}
+
 
 /* statistiche statistiche statistiche statistiche statistiche statistiche statistiche statistiche statistiche*/
 
-.Bottoni{
+.Bottoni {
     margin: 20px;
 }
-.main{
-    
+
+.main {
+
     color: red;
     background-image: url(./media/guerriero.jpg);
     background-repeat: no-repeat;
@@ -75,32 +84,32 @@ margin-right: 200px;
     border: solid 5px;
 
     border-color: black;
-     display:flex column;
- 
- }
+    display: flex column;
 
-.abilità{
+}
 
-background-color: #7D6A4D;
-height: auto;
-width:auto;
-font-size: 12px;
-justify-content: center;
-margin: 1rem;
-padding: 10px;
-color: black;
-border: solid 2px;
-border-color: #5a4c38;
-border-radius: 8px;
+.abilità {
+
+    background-color: #7D6A4D;
+    height: auto;
+    width: auto;
+    font-size: 12px;
+    justify-content: center;
+    margin: 1rem;
+    padding: 10px;
+    color: black;
+    border: solid 2px;
+    border-color: #5a4c38;
+    border-radius: 8px;
 
 
 }
 
-.risulDado{
+.risulDado {
 
-    
+
     height: 30px;
-    width:30px;
+    width: 30px;
     font-size: 14px;
     justify-content: center;
     align-items: center;
@@ -108,94 +117,98 @@ border-radius: 8px;
     padding: 5px;
     color: black;
     border-radius: 4px;
-    
-    
-    }
-/* parte centrale parte centrale parte centrale parte centrale parte centrale parte centrale parte centrale */
 
-.main1{
-   background-image: url(./media/tavolo.jpg);
-  background-position: center;
-   color: white;
-   border-top: solid 5px;
-   border-bottom:solid 5px ;
-   border-color: black;
-  
+
 }
 
-    .mappa{
-    
+/* parte centrale parte centrale parte centrale parte centrale parte centrale parte centrale parte centrale */
+
+.main1 {
+    background-image: url(./media/tavolo.jpg);
+    background-position: center;
+    color: white;
+    border-top: solid 5px;
+    border-bottom: solid 5px;
+    border-color: black;
+
+}
+
+.mappa {
+
     background-image: url(./media/mappa.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     margin-top: 10px;
     border: solid 3px;
-    border-color: black;  
+    border-color: black;
 
-    }
+}
 
-.caselle{
-height: 35px;
-width:auto;
-font-size: 12px;
-justify-content: center;
-border:solid 1px;
-border-color:black;
-margin: 0%;
-padding: 0%;
+.caselle {
+    height: 35px;
+    width: auto;
+    font-size: 12px;
+    justify-content: center;
+    border: solid 1px;
+    border-color: black;
+    margin: 0%;
+    padding: 0%;
 
 
 }
-    .schedaNemici{
-        background-image: url(./media/spade-incrociate.jpg);
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 25vh;
-        width: 30vh;
-        margin-top:3px;
-        margin-bottom:3px;
-        border: solid 3px;
-        border-color: black;
-        border-radius: 20px;
-    }
-    .statisticheNemici{
-        display: flex;
-      justify-content:start;
-      margin-top: 10px;
-      
 
-    }
-    .divNemico{
-        height: 100%;
-        width: 100%;  
-        color: black;  
-    }
+.schedaNemici {
+    background-image: url(./media/spade-incrociate.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 25vh;
+    width: 30vh;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border: solid 3px;
+    border-color: black;
+    border-radius: 20px;
+}
 
-    .parteNemici{
-        background-image: url(./media/teste\ mozzate.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: bottom; 
-        border-left: solid 5px;
-        border-right: solid 5px;
-        border-color: black;
-    }
+.statisticheNemici {
+    display: flex;
+    justify-content: start;
+    margin-top: 10px;
 
-    
-    .giocatore{
-    height:35px;
+
+}
+
+.divNemico {
+    height: 100%;
+    width: 100%;
+    color: black;
+}
+
+.parteNemici {
+    background-image: url(./media/teste\ mozzate.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    border-left: solid 5px;
+    border-right: solid 5px;
+    border-color: black;
+}
+
+
+.giocatore {
+    height: 35px;
     background-image: url(/media/giocatore\ -\ Copia.png);
     background-size: contain;
     background-repeat: no-repeat;
-    }
+}
 
 
 /* parte schede armi ed equipaggiamento parte schede armi ed equipaggiamento parte schede armi ed equipaggiamento */
 
-.main2{
-    
+.main2 {
+
     color: red;
     background-image: url(./media/spada-pegamena.png);
     background-repeat: no-repeat;
@@ -204,11 +217,11 @@ padding: 0%;
     border: solid 5px;
 
     border-color: black;
-     display:flex column;
- 
- }
+    display: flex column;
 
-.schedeArmi{
+}
+
+.schedeArmi {
     background-image: url(./media/scheda-arma-bg.jpg);
     background-position: center;
     background-size: contain;
@@ -219,7 +232,8 @@ padding: 0%;
     border-color: black;
     border-radius: 20px;
 }
-.schedeEquip{
+
+.schedeEquip {
     background-image: url(./media/scheda-equipaggiamento.jpg);
     background-position: center;
     background-size: cover;
@@ -234,256 +248,256 @@ padding: 0%;
 
 /* classi js bottoni speciali classi js bottoni speciali classi js bottoni speciali classi js bottoni speciali */
 
-.divCombattivita{
-height: 35px;
-width: 30px;
-background-color: white;
-border: solid 1px;
-border-color:gray ;
-border-radius: 5px;
-}
-
-.divStatistiche{
-width: 230px;
-height:40px;
-background-color: white;
-color:  #5a4c38 ;
-align-items: center;
-padding-left: 10px;
-display: flex;
-border-end-end-radius: 5px;
-border-top-right-radius: 5px;
-
-}
-
-.divStatisticheCorte{
-    width: 62%;
-    height:40px;
+.divCombattivita {
+    height: 35px;
+    width: 30px;
     background-color: white;
-    color:  #5a4c38 ;
+    border: solid 1px;
+    border-color: gray;
+    border-radius: 5px;
+}
+
+.divStatistiche {
+    width: 230px;
+    height: 40px;
+    background-color: white;
+    color: #5a4c38;
     align-items: center;
     padding-left: 10px;
     display: flex;
     border-end-end-radius: 5px;
     border-top-right-radius: 5px;
-    
-    }
+
+}
+
+.divStatisticheCorte {
+    width: 62%;
+    height: 40px;
+    background-color: white;
+    color: #5a4c38;
+    align-items: center;
+    padding-left: 10px;
+    display: flex;
+    border-end-end-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
 
 
 
-    
+
 /* classi nemici classi nemici classi nemici classi nemici classi nemici classi nemici classi nemici classi nemici */
 
-.cinghiale{
-        height:35px;
-        background-image: url(/media/cinghiale.png);
-        background-size: contain;
-        background-repeat: no-repeat;       
+.cinghiale {
+    height: 35px;
+    background-image: url(/media/cinghiale.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.cinghiale2{
+.cinghiale2 {
     background-image: url(/media/cinghiale2.jpg);
     background-size: contain;
-    background-repeat: no-repeat;    
-    background-position: center;   
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.cervo{
-    height:35px;
+.cervo {
+    height: 35px;
     background-image: url(/media/cervo.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.cervo2{
-    
+.cervo2 {
+
     background-image: url(/media/cervo2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
-.drago{
-    height:35px;
+.drago {
+    height: 35px;
     background-image: url(/media/drago.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.drago2{
+.drago2 {
     background-image: url(/media/drago2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
-.ghoul{
-    height:35px;
+.ghoul {
+    height: 35px;
     background-image: url(/media/ghoul.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.ghoul2{
+.ghoul2 {
     background-image: url(/media/ghoul2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
-.lupo{
-    height:35px;
+.lupo {
+    height: 35px;
     background-image: url(/media/lupo.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.lupo2{
-  
+.lupo2 {
+
     background-image: url(/media/lupo2.png);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 
 }
 
-.lupoMannaro{
-    height:35px;
+.lupoMannaro {
+    height: 35px;
     background-image: url(/media/lupoMannaro.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.lupoMannaro2{
-    
+.lupoMannaro2 {
+
     background-image: url(/media/lupoMannaro2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.minotauro{
-    height:35px;
+.minotauro {
+    height: 35px;
     background-image: url(/media/minotauro.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.minotauro2{
-    
+.minotauro2 {
+
     background-image: url(/media/minotauro2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.orso{
-    height:35px;
+.orso {
+    height: 35px;
     background-image: url(/media/orso.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.orso2{
-   
+.orso2 {
+
     background-image: url(/media/orso2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.pantera{
-    height:35px;
+.pantera {
+    height: 35px;
     background-image: url(/media/pantera.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.pantera2{
+.pantera2 {
     background-image: url(/media/pantera2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.ragnoGigante{
-    height:35px;
+.ragnoGigante {
+    height: 35px;
     background-image: url(/media/ragnoGigante.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.ragnoGigante2{
+.ragnoGigante2 {
     background-image: url(/media/ragnoGigante2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.ratto{
-    height:35px;
+.ratto {
+    height: 35px;
     background-image: url(/media/ratto.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.ratto2{
-    
+.ratto2 {
+
     background-image: url(/media/ratto2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
-.succubus{
-    height:35px;
+.succubus {
+    height: 35px;
     background-image: url(/media/succubus.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.succubus2{
-   
+.succubus2 {
+
     background-image: url(/media/succubus2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
-.tigre{
-    height:35px;
+.tigre {
+    height: 35px;
     background-image: url(/media/tigre.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.tigre2{
-    
+.tigre2 {
+
     background-image: url(/media/tigre2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
-.zombie{
-    height:35px;
+.zombie {
+    height: 35px;
     background-image: url(/media/zombie.png);
     background-size: contain;
     background-repeat: no-repeat;
-    
+
 }
 
-.zombie2{
- 
+.zombie2 {
+
     background-image: url(/media/zombie2.jpg);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
-.nuvola{
-    height:35px;
-    background-image: url(/media/nuvola.png)!important;
+.nuvola {
+    height: 35px;
+    background-image: url(/media/nuvola.png) !important;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -497,7 +511,7 @@ border-top-right-radius: 5px;
 
 /* classi oggetti,armi,ecc... classi oggetti,armi,ecc... classi oggetti,armi,ecc... classi oggetti,armi,ecc... */
 
-.bende{
+.bende {
     background-image: url(/media/bende.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -505,152 +519,154 @@ border-top-right-radius: 5px;
 
 }
 
-.pasto{
+.pasto {
     background-image: url(/media/pasto.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.pozSalute{
+.pozSalute {
     background-image: url(/media/pozione.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.impiastro{
+.impiastro {
     background-image: url(/media/impiastro.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.pozVigorilla{
+.pozVigorilla {
     background-image: url(/media/pozioneVigorilla.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.lancia{
+.lancia {
     background-image: url(/media/lancia.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.spada{
+.spada {
     background-image: url(/media/spada.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.scudo{
+.scudo {
     background-image: url(/media/scudo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.ascia{
+.ascia {
     background-image: url(/media/ascia.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.mazza{
+.mazza {
     background-image: url(/media/mazza.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.arco{
+.arco {
     background-image: url(/media/arco.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.pugnale{
+.pugnale {
     background-image: url(/media/pugnale.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.amuleto{
+.amuleto {
     background-image: url(/media/amuleto.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.anello{
+.anello {
     background-image: url(/media/anello.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.cintura{
+.cintura {
     background-image: url(/media/cintura.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.elmo{
+.elmo {
     background-image: url(/media/elmo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.armatura{
+.armatura {
     background-image: url(/media/armatura.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.mantello{
+.mantello {
     background-image: url(/media/mantello.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.spadaSole{
+.spadaSole {
     background-image: url(/media/spadadelsole.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.scudoShianthi{
+.scudoShianthi {
     background-image: url(/media/scudoShianti.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-@media screen and (max-width:600px){
-    #Navbar{
+@media screen and (max-width:600px) {
+    #Navbar {
 
         background-image: url(./media/lone\ wolf.jpg);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        }
-    #NuovaPartita{
-    color:black!important;
     }
-    #tutorial{
-    color:black!important;
+
+    #NuovaPartita {
+        color: black !important;
+    }
+
+    #tutorial {
+        color: black !important;
     }
 
 
