@@ -369,6 +369,9 @@ dado.addEventListener('click', ()=>{
                         nemiciMorti= nemiciMorti +1;
                         nemiciSconfitti.innerHTML =nemiciMorti;
                         cardNemici.innerHTML ='';
+                        divdifesa.parentNode.replaceChild(difesa, divdifesa);
+                        divmovimento.parentNode.replaceChild(movimento, divmovimento);
+                        divrifornimenti.parentNode.replaceChild(rifornimenti, divrifornimenti);
                         
                             Mappa.forEach(section => {
                             section.classList.remove(nemico.classe);
@@ -725,51 +728,6 @@ dado.addEventListener('click', ()=>{
     
   });
 
-// funzione Turno
-// Al click sul bottone "Inizia Turno" la funzione controlla che non ci si trovi in combattimento tramite il booleano
-// combat, se l'esito è negativo svuota la sezione dedicata alle caratteristiche dei nemici e rende 
-// il booleano map false per sbloccare la pedina del giocatore; inoltre ritrasforma i div delle caratteristiche nei select iniziali.
-// Se il giocatore è impegnato in un combattimento fa partire un alert per avvisarlo di terminare il combattimento.
-turno.addEventListener('click', ()=>{
-    if(resist==false && combat==false || comb==false && combat==false ){
-
-        alert('prima tira per la resistenza e la combattività');
-
-    }else if(combat==false && map==false){
-
-    alert('prima devi muoverti sulla mappa');
-
-    }else if(combat==false){
-        let audio=new Audio("/audio/nuovoTurno.mp3");
-        audio.play();
-     cardNemici.innerHTML ='';
-     map=false;
-     turni=turni+1;   
-     divdifesa.parentNode.replaceChild(difesa, divdifesa);
-     divmovimento.parentNode.replaceChild(movimento, divmovimento);
-     divrifornimenti.parentNode.replaceChild(rifornimenti, divrifornimenti);
-     Risuldado.innerHTML='';
-
-        if(nemiciMorti>3){
-            Medicina.removeAttribute("hidden");
-                      
-        }
-         
-        if(nemiciMorti>7){
-            arteguerra.removeAttribute("hidden");
-            
-        }
-
-        if(nemiciMorti>8){
-            Medicina.innerText='Medicina ++';
-        }
-    }else{
-
-        alert('finisci questo scontro');
-
-    };
-   
-}); 
 
 // funzioni mappamento per movimento giocatore
 
@@ -814,24 +772,29 @@ Mappa.forEach((casella) => {
         casella.classList.add('giocatore');  
         giocatore.X= casella.dataset.x;
         giocatore.Y= casella.dataset.y;
-        map=true;
         let audio=new Audio("/audio/passiGiocatore.mp3");
         audio.play();
-        difesa.parentNode.replaceChild(divdifesa, difesa);
-        movimento.parentNode.replaceChild(divmovimento, movimento);
-        rifornimenti.parentNode.replaceChild(divrifornimenti, rifornimenti);       
-    
-        divdifesa.innerText = difesa.value;
-        divdifesa.classList.add('divStatistiche');
-        divmovimento.innerText = movimento.value;
-        divmovimento.classList.add('divStatisticheCorte');
-        divrifornimenti.innerText = rifornimenti.value;
-        divrifornimenti.classList.add('divStatisticheCorte');     
+
+        cardNemici.innerHTML ='';
+        Risuldado.innerHTML='';
+        turni=turni+1; 
     
         let dado = Math.floor(Math.random() * 10); 
         let Rifornimenti = rifornimenti.value*2 +1;
-        console.log(dado,'dado');
-        console.log(Rifornimenti,'Rifornimenti');
+   
+        if(nemiciMorti>3){
+            Medicina.removeAttribute("hidden");
+                      
+        }
+         
+        if(nemiciMorti>7){
+            arteguerra.removeAttribute("hidden");
+            
+        }
+
+        if(nemiciMorti>8){
+            Medicina.innerText='Medicina ++';
+        }
 
     // al click su di una casella viene lanciato un dado da 1 a 10; se rientra nel rage di numeri allora si tira un altro dado da 100 e 
     // se il numero uscito è compreso tra 0 e 3 allora è un oggetto,tra 4 e 6 è un arma, tra 7 e 9 è un equipaggiamento.
@@ -958,17 +921,27 @@ Mappa.forEach((casella) => {
                 `;
     
                 cardNemici.appendChild(div);
-    
+
+                difesa.parentNode.replaceChild(divdifesa, difesa);
+                movimento.parentNode.replaceChild(divmovimento, movimento);
+                rifornimenti.parentNode.replaceChild(divrifornimenti, rifornimenti);       
+            
+                divdifesa.innerText = difesa.value;
+                divdifesa.classList.add('divStatistiche');
+                divmovimento.innerText = movimento.value;
+                divmovimento.classList.add('divStatisticheCorte');
+                divrifornimenti.innerText = rifornimenti.value;
+                divrifornimenti.classList.add('divStatisticheCorte');     
             };
         
         });
        
-    }else if(map==true){
-        alert('aspetta il prossimo turno');                 
     }else if(resist==false){
         alert("prima resistenza e combattività");
     }else if(comb==false){
       alert('prima combattività')
+    }else if(combat==true){  
+        alert('Non puoi fuggire dal combattimento');
     }else{
         alert('è troppo lontano, scegli un altra via');  
     }
