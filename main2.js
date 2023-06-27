@@ -49,7 +49,7 @@ let vis = 10000;
 // ALERT    
 window.alert = function (message) {
   var a = document.createElement('div');
-  a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow:-1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000; z-index:" + vis + ";";
+  a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:red;  z-index:" + vis + ";";
   a.innerHTML = "<b></b><br>" + message; document.body.appendChild(a); vis--;
 
   a.addEventListener("click", function () {
@@ -61,7 +61,7 @@ window.alert = function (message) {
 // vittoria    
 window.vittoria = function (message) {
   let a = document.createElement('div');
-  a.style.cssText = "width:50vw; height:500px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/guerriero.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto;font-size:40px; font-family: \"Arial\", sans-serif; color:black; text-shadow:-1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000; z-index:" + vis + ";";
+  a.style.cssText = "width:50vw; height:500px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/guerriero.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto;font-size:40px; font-family: \"Arial\", sans-serif; color:red;  z-index:" + vis + ";";
   a.innerHTML = "<b></b><br>" + message; document.body.appendChild(a); vis--;
 
   a.addEventListener("click", function () {
@@ -77,10 +77,10 @@ window.confirm = function (message) {
   let a = document.createElement('div');
   let y = document.createElement('button');
 
-  a.style.cssText = "width:50vw; height:300px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgSkull.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:" + vis + ";";
+  a.style.cssText = "width:50vw; height:300px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgSkull.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:red; z-index:" + vis + ";";
 
 
-  y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";
+  y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:red;";
   a.innerHTML = "<b>Sei Morto!</b><br>" + message;
   y.innerHTML = "Nuova Partita";
 
@@ -110,11 +110,11 @@ window.ManoGioc = function (message) {
   let y = document.createElement('button');
   let divRow = document.createElement('div');
 
-  a.style.cssText = "width:59vw; height:400px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgDark.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:200px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:" + vis + ";";
+  a.style.cssText = "width:59vw; height:400px; border:1px solid #bbb; border-radius:5px; padding:10px; background-image:url(/media/bgDark.jpg);background-size:cover;background-position:center; box-shadow:0px 0px 8px #0006; position:fixed; top:200px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:red;z-index:" + vis + ";";
   a.classList.add('container')
   divRow.cssText = "width:59vw; height:300px; border:1px solid #bbb; border-radius:5px; padding:10px; display:flex; background-color:transparent; box-shadow:0px 0px 8px #0006; font-family: \"Arial\", sans-serif; color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;z-index:" + vis + ";";
   divRow.classList.add('row')
-  y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;";
+  y.style.cssText = "height:30px; position:absolute; bottom:0; left:0; width:50%;clear:both;background-color:transparent;color:red;";
   carte.forEach((card) => {
 
     let Carta = document.createElement('div');
