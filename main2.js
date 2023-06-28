@@ -49,7 +49,7 @@ let vis = 10000;
 // ALERT    
 window.alert = function (message) {
   var a = document.createElement('div');
-  a.style.cssText = "width:30vw; height:100px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:red;  z-index:" + vis + ";";
+  a.style.cssText = "width:30vw; height:150px; border:1px solid #bbb; border-radius:5px; padding:10px;background-image:url(/media/bgDark.jpg); background-size:cover; box-shadow:0px 0px 8px #0006; position:fixed; top:20px; right:0; left:0; margin:auto; font-family: \"Arial\", sans-serif; color:red;  z-index:" + vis + ";";
   a.innerHTML = "<b></b><br>" + message; document.body.appendChild(a); vis--;
 
   a.addEventListener("click", function () {
@@ -95,6 +95,68 @@ window.confirm = function (message) {
   }
   )
 };
+
+
+// funzione per ottenere le armi dei boss anche se entrambi gli slot sono pieni.
+
+          let armiBoss=(valore,valore1)=>{
+            carteGiocate.push(valore);
+            oggettoDifesa.push(valore.Dif);
+            oggettoCombattività.push(valore.Combat);
+            oggettoResistenza.push(valore.Resist);
+
+            sommaDifesa = 0;
+            for (let i = 0; i < oggettoDifesa.length; i++) {
+              sommaDifesa = sommaDifesa + oggettoDifesa[i];
+            };
+
+            sommaCombattività = 0;
+            for (let i = 0; i < oggettoCombattività.length; i++) {
+              sommaCombattività = sommaCombattività + oggettoCombattività[i];
+            };
+
+            sommaResistenza = 0;
+            for (let i = 0; i < oggettoResistenza.length; i++) {
+              sommaResistenza = sommaResistenza + oggettoResistenza[i];
+            };
+
+            let cartaRara = document.createElement('div');
+            cartaRara.classList.add('col-12');
+            cartaRara.style.cssText = "height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
+            valore1.appendChild(cartaRara);
+
+            let Nome = document.createElement('p');
+            Nome.style.cssText = "height:11px;padding:2px;color:white;size:13px;";
+            Nome.innerHTML = valore.name;
+            cartaRara.appendChild(Nome);
+            cartaRara.classList.add(valore.classe);
+
+            let valoreResistenza = document.createElement('p');
+            valoreResistenza.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
+            valoreResistenza.innerHTML = 'Resistenza + ' + valore.Resist;
+            cartaRara.appendChild(valoreResistenza);
+
+            let valorecombattività = document.createElement('p');
+            valorecombattività.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
+            valorecombattività.innerHTML = 'Combattività + ' + valore.Combat;
+            cartaRara.appendChild(valorecombattività);
+
+            let valoredifesa = document.createElement('p');
+            valoredifesa.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
+            valoredifesa.innerHTML = 'Difesa + ' + valore.Dif;
+            cartaRara.appendChild(valoredifesa);
+
+            let button = document.getElementById('resistenza');
+            let button2 = document.getElementById('combattività');
+            let vitaDopata = vitaMassima + sommaResistenza;
+            let combatDopata = combatGiocatore + sommaCombattività;
+            button.innerHTML = resistGiocatore + '/' + vitaDopata;
+            button2.innerHTML = combatDopata;
+            let audio = new Audio("/audio/armaSlot.mp3");
+            audio.play();
+          }
+
+
 
 // Per visualizzare le carte creiamo una funzione sul bottone gioca una carta
 // che crea un div con all'interno le carte in possesso del giocatore e un bottone per toglierlo. 
@@ -325,127 +387,18 @@ window.ManoGioc = function (message) {
           button2.innerHTML = combatDopata;
           console.log('carteGiocate', carteGiocate);
 
-
-
           if (Fiamma == true) {
-            carteGiocate.push(armiRare[0]);
-            oggettoDifesa.push(armiRare[0].Dif);
-            oggettoCombattività.push(armiRare[0].Combat);
-            oggettoResistenza.push(armiRare[0].Resist);
-
-            sommaDifesa = 0;
-            for (let i = 0; i < oggettoDifesa.length; i++) {
-              sommaDifesa = sommaDifesa + oggettoDifesa[i];
-            };
-
-
-            sommaCombattività = 0;
-            for (let i = 0; i < oggettoCombattività.length; i++) {
-              sommaCombattività = sommaCombattività + oggettoCombattività[i];
-            };
-
-
-            sommaResistenza = 0;
-            for (let i = 0; i < oggettoResistenza.length; i++) {
-              sommaResistenza = sommaResistenza + oggettoResistenza[i];
-            };
-
-            let cartaRara = document.createElement('div');
-            cartaRara.classList.add('col-12');
-            cartaRara.style.cssText = "height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
-            slotArma1.appendChild(cartaRara);
-
-            let Nome = document.createElement('p');
-            Nome.style.cssText = "height:11px;padding:2px;color:white;size:13px;";
-            Nome.innerHTML = armiRare[0].name;
-            cartaRara.appendChild(Nome);
-            cartaRara.classList.add(armiRare[0].classe);
-
-            let valoreResistenza = document.createElement('p');
-            valoreResistenza.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valoreResistenza.innerHTML = 'Resistenza + ' + armiRare[0].Resist;
-            cartaRara.appendChild(valoreResistenza);
-
-            let valorecombattività = document.createElement('p');
-            valorecombattività.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valorecombattività.innerHTML = 'Combattività + ' + armiRare[0].Combat;
-            cartaRara.appendChild(valorecombattività);
-
-            let valoredifesa = document.createElement('p');
-            valoredifesa.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valoredifesa.innerHTML = 'Difesa + ' + armiRare[0].Dif;
-            cartaRara.appendChild(valoredifesa);
-
-            let button = document.getElementById('resistenza');
-            let button2 = document.getElementById('combattività');
-            let vitaDopata = vitaMassima + sommaResistenza;
-            let combatDopata = combatGiocatore + sommaCombattività;
-            button.innerHTML = resistGiocatore + '/' + vitaDopata;
-            button2.innerHTML = combatDopata;
-            let audio = new Audio("/audio/armaSlot.mp3");
-            audio.play();
+            let FiammaArma1=armiBoss(armiRare[0],slotArma1);
             Fiamma=false;
             Arma1 = true;
-            //                                              Arma Rara Eterno
+            return FiammaArma1;
+           
           } else if (Eterno == true) {
 
-            carteGiocate.push(armiRare[1]);
-            oggettoDifesa.push(armiRare[1].Dif);
-            oggettoCombattività.push(armiRare[1].Combat);
-            oggettoResistenza.push(armiRare[1].Resist);
-
-            sommaDifesa = 0;
-            for (let i = 0; i < oggettoDifesa.length; i++) {
-              sommaDifesa = sommaDifesa + oggettoDifesa[i];
-            };
-
-            sommaCombattività = 0;
-            for (let i = 0; i < oggettoCombattività.length; i++) {
-              sommaCombattività = sommaCombattività + oggettoCombattività[i];
-            };
-
-            sommaResistenza = 0;
-            for (let i = 0; i < oggettoResistenza.length; i++) {
-              sommaResistenza = sommaResistenza + oggettoResistenza[i];
-            };
-
-            let cartaRara = document.createElement('div');
-            cartaRara.classList.add('col-12');
-            cartaRara.style.cssText = "height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
-            slotArma1.appendChild(cartaRara);
-
-            let Nome = document.createElement('p');
-            Nome.style.cssText = "height:11px;padding:2px;color:white;size:13px;";
-            Nome.innerHTML = armiRare[1].name;
-            cartaRara.appendChild(Nome);
-            cartaRara.classList.add(armiRare[1].classe);
-
-            let valoreResistenza = document.createElement('p');
-            valoreResistenza.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valoreResistenza.innerHTML = 'Resistenza + ' + armiRare[1].Resist;
-            cartaRara.appendChild(valoreResistenza);
-
-            let valorecombattività = document.createElement('p');
-            valorecombattività.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valorecombattività.innerHTML = 'Combattività + ' + armiRare[1].Combat;
-            cartaRara.appendChild(valorecombattività);
-
-            let valoredifesa = document.createElement('p');
-            valoredifesa.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valoredifesa.innerHTML = 'Difesa + ' + armiRare[1].Dif;
-            cartaRara.appendChild(valoredifesa);
-
-            let button = document.getElementById('resistenza');
-            let button2 = document.getElementById('combattività');
-            let vitaDopata = vitaMassima + sommaResistenza;
-            let combatDopata = combatGiocatore + sommaCombattività;
-            button.innerHTML = resistGiocatore + '/' + vitaDopata;
-            button2.innerHTML = combatDopata;
-            let audio = new Audio("/audio/armaSlot.mp3");
-            audio.play();
+           let EternoArma1=armiBoss(armiRare[1],slotArma1);
             Eterno=false;
             Arma1 = true;
-
+            return EternoArma1;
           }
         })
 
@@ -582,121 +535,15 @@ window.ManoGioc = function (message) {
           button2.innerHTML = combatDopata;
 
           if (Fiamma == true) {
-            carteGiocate.push(armiRare[0]);
-            oggettoDifesa.push(armiRare[0].Dif);
-            oggettoCombattività.push(armiRare[0].Combat);
-            oggettoResistenza.push(armiRare[0].Resist);
-
-            sommaDifesa = 0;
-            for (let i = 0; i < oggettoDifesa.length; i++) {
-              sommaDifesa = sommaDifesa + oggettoDifesa[i];
-            };
-
-
-            sommaCombattività = 0;
-            for (let i = 0; i < oggettoCombattività.length; i++) {
-              sommaCombattività = sommaCombattività + oggettoCombattività[i];
-            };
-
-
-            sommaResistenza = 0;
-            for (let i = 0; i < oggettoResistenza.length; i++) {
-              sommaResistenza = sommaResistenza + oggettoResistenza[i];
-            };
-
-            let cartaRara = document.createElement('div');
-            cartaRara.classList.add('col-12');
-            cartaRara.style.cssText = "height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
-            slotArma2.appendChild(cartaRara);
-
-            let Nome = document.createElement('p');
-            Nome.style.cssText = "height:11px;padding:2px;color:white;size:13px;";
-            Nome.innerHTML = armiRare[0].name;
-            cartaRara.appendChild(Nome);
-            cartaRara.classList.add(armiRare[0].classe);
-
-            let valoreResistenza = document.createElement('p');
-            valoreResistenza.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valoreResistenza.innerHTML = 'Resistenza + ' + armiRare[0].Resist;
-            cartaRara.appendChild(valoreResistenza);
-
-            let valorecombattività = document.createElement('p');
-            valorecombattività.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valorecombattività.innerHTML = 'Combattività + ' + armiRare[0].Combat;
-            cartaRara.appendChild(valorecombattività);
-
-            let valoredifesa = document.createElement('p');
-            valoredifesa.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valoredifesa.innerHTML = 'Difesa + ' + armiRare[0].Dif;
-            cartaRara.appendChild(valoredifesa);
-
-            let button = document.getElementById('resistenza');
-            let button2 = document.getElementById('combattività');
-            let vitaDopata = vitaMassima + sommaResistenza;
-            let combatDopata = combatGiocatore + sommaCombattività;
-            button.innerHTML = resistGiocatore + '/' + vitaDopata;
-            button2.innerHTML = combatDopata;
-            let audio = new Audio("/audio/armaSlot.mp3");
-            audio.play();
+           let FiammaArma2=armiBoss(armiRare[0],slotArma2);
             Fiamma=false;
             Arma2 = true;
+            return FiammaArma2;
           } else if (Eterno == true) {
-            carteGiocate.push(armiRare[1]);
-            oggettoDifesa.push(armiRare[1].Dif);
-            oggettoCombattività.push(armiRare[1].Combat);
-            oggettoResistenza.push(armiRare[1].Resist);
-
-            sommaDifesa = 0;
-            for (let i = 0; i < oggettoDifesa.length; i++) {
-              sommaDifesa = sommaDifesa + oggettoDifesa[i];
-            };
-
-            sommaCombattività = 0;
-            for (let i = 0; i < oggettoCombattività.length; i++) {
-              sommaCombattività = sommaCombattività + oggettoCombattività[i];
-            };
-
-            sommaResistenza = 0;
-            for (let i = 0; i < oggettoResistenza.length; i++) {
-              sommaResistenza = sommaResistenza + oggettoResistenza[i];
-            };
-
-            let cartaRara = document.createElement('div');
-            cartaRara.classList.add('col-12');
-            cartaRara.style.cssText = "height:100%;width:100%;clear:both;color:black; text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;display:column;border:solid 5px;border-color:#5a4c38; border-radius:15px;";
-            slotArma2.appendChild(cartaRara);
-
-            let Nome = document.createElement('p');
-            Nome.style.cssText = "height:11px;padding:2px;color:white;size:13px;";
-            Nome.innerHTML = armiRare[1].name;
-            cartaRara.appendChild(Nome);
-            cartaRara.classList.add(armiRare[1].classe);
-
-            let valoreResistenza = document.createElement('p');
-            valoreResistenza.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valoreResistenza.innerHTML = 'Resistenza + ' + armiRare[1].Resist;
-            cartaRara.appendChild(valoreResistenza);
-
-            let valorecombattività = document.createElement('p');
-            valorecombattività.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valorecombattività.innerHTML = 'Combattività + ' + armiRare[1].Combat;
-            cartaRara.appendChild(valorecombattività);
-
-            let valoredifesa = document.createElement('p');
-            valoredifesa.style.cssText = "height:3vh;padding:auto;color:white;padding-top:2px;";
-            valoredifesa.innerHTML = 'Difesa + ' + armiRare[1].Dif;
-            cartaRara.appendChild(valoredifesa);
-
-            let button = document.getElementById('resistenza');
-            let button2 = document.getElementById('combattività');
-            let vitaDopata = vitaMassima + sommaResistenza;
-            let combatDopata = combatGiocatore + sommaCombattività;
-            button.innerHTML = resistGiocatore + '/' + vitaDopata;
-            button2.innerHTML = combatDopata;
-            let audio = new Audio("/audio/armaSlot.mp3");
-            audio.play();
+            let EternoArma2=armiBoss(armiRare[1],slotArma2);
             Eterno=false;
             Arma2 = true;
+            return EternoArma2;
           }
 
 
